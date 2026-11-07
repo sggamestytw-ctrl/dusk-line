@@ -297,6 +297,22 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
 .mright{display:flex;gap:6px;align-items:center}
 .lchip{cursor:pointer;font-family:var(--display);font-size:13px;padding:4px 10px;color:var(--ally)}
 body.lang-en .perk.rare::after{content:"RARE"}
+.evcard{width:min(100%,360px);display:grid;gap:6px;padding:12px 14px;text-align:left;box-shadow:inset 0 0 0 1px var(--coin),inset 4px 0 0 var(--coin)}
+.evhead{display:flex;align-items:center;gap:8px}
+.evhead .ico{stroke:var(--coin)}
+.evhead b{font-family:var(--display);font-weight:400;font-size:16px;color:var(--coin)}
+.evcard .sub{font-size:13px;line-height:1.5}
+.evcard .hl{color:var(--ink);font-weight:700}
+.evwin{font-size:12.5px;color:var(--muted);display:grid;gap:2px}
+.evwin b{color:var(--ink);font-weight:700}
+#prize{z-index:6}
+.prizebox{width:min(100%,330px);text-align:left}
+.prizebox h2{font-size:24px;color:var(--coin)}
+.prizebox input[type=tel]{width:100%;box-sizing:border-box;font-family:var(--mono);font-size:20px;letter-spacing:.06em;color:var(--ink);background:rgba(16,12,20,.75);border:1px solid #4a3d48;border-radius:9px;padding:10px 12px;-webkit-user-select:text;user-select:text}
+.consent{font-size:12px;line-height:1.55;color:var(--muted);background:rgba(16,12,20,.55);border-radius:8px;padding:8px 10px}
+.consent b{display:block;color:var(--ink);font-size:12.5px;margin-bottom:2px}
+.agree{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink);cursor:pointer}
+.agree input{width:18px;height:18px;accent-color:var(--tracer)}
 </style>
 
 <div class="hud">
@@ -339,7 +355,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
         <button class="dockbtn" id="gbBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>방명록</button>
         <button class="dockbtn" id="menuRankBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg>랭킹</button>
       </nav>
-      <div class="ver" id="verTxt">v2.1 · 2026.11.07</div>
+      <div class="ver" id="verTxt">v2.2 · 2026.11.07</div>
     </div>
   </div>
 
@@ -414,7 +430,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
     <h2>방어선 붕괴</h2>
     <div class="final" id="finalScore">0</div>
     <div class="newbest" id="newBest" hidden>최고 기록 갱신</div>
-    <div class="askcard panel" id="gbAsk" hidden><b>첫 판 수고했어요!</b><span class="sub">방명록에 짧은 후기를 남겨주면 큰 힘이 돼요</span><div class="btnrow"><button class="btn2" id="gbAskLater" type="button">다음에</button><button class="btn" id="gbAskGo" type="button">후기 쓰기</button></div></div>
+    <div class="askcard panel" id="gbAsk" hidden><b>첫 판 수고했어요!</b><span class="sub" id="gbAskText">방명록에 짧은 후기를 남겨주면 큰 힘이 돼요</span><div class="btnrow"><button class="btn2" id="gbAskLater" type="button">다음에</button><button class="btn" id="gbAskGo" type="button">후기 쓰기</button></div></div>
     <div class="statgrid" id="finalWave"></div>
     <span class="chip gold"><i class="coin"></i><span id="finalGold">0</span></span>
     <div class="build" id="finalBuild"></div>
@@ -423,6 +439,11 @@ body.lang-en .perk.rare::after{content:"RARE"}
   </div>
   <div class="overlay sheet" id="guest" hidden>
     <header class="sheet-head"><button class="back" id="gbBack" type="button" aria-label="돌아가기">‹</button><h2>방명록</h2><span></span></header>
+    <div class="evcard panel" id="gbEvent" hidden>
+      <div class="evhead"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M12 9v12M12 9c-2-4-7-4-6-1 .6 1.6 6 1 6 1zm0 0c2-4 7-4 6-1-.6 1.6-6 1-6 1z"/></svg><b>후기 이벤트 · 매주 기프티콘 추첨</b></div>
+      <div class="sub">후기를 남기면 <b class="hl">매주 1명</b>을 추첨해서 기프티콘을 드려요. 추첨은 매주 월요일 오전 10시, 한 사람당 한 주에 한 번 응모돼요. 당첨되면 다음에 게임에 들어올 때 알려드려요.</div>
+      <div class="evwin" id="gbWinners"></div>
+    </div>
     <form class="gbform panel" id="gbForm" autocomplete="off">
       <div class="tag">후기 남기기</div>
       <div class="stars" id="gbStars" role="radiogroup" aria-label="별점"></div>
@@ -432,6 +453,23 @@ body.lang-en .perk.rare::after{content:"RARE"}
     </form>
     <div class="msg" id="gbOut"></div>
     <div class="gblist" id="gbList"></div>
+  </div>
+
+  <div class="overlay" id="prize" hidden>
+    <form class="pausebox panel prizebox" id="prizeForm" autocomplete="off">
+      <div class="eyebrow">WINNER · 이번 주 당첨</div>
+      <h2>축하해요! 기프티콘 당첨</h2>
+      <div class="sub" id="prizeText">후기 이벤트에 당첨됐어요. 기프티콘을 보내드릴 휴대폰 번호를 남겨주세요.</div>
+      <input id="prizePhone" type="tel" inputmode="numeric" maxlength="13" placeholder="010-1234-5678" aria-label="휴대폰 번호">
+      <div class="consent">
+        <b>개인정보 수집·이용 동의</b>
+        수집 항목: 휴대폰 번호<br>이용 목적: 기프티콘 발송<br>보관 기간: 발송 후 삭제, 최대 30일 뒤 자동 삭제<br>동의하지 않을 수 있지만, 그러면 기프티콘을 받을 수 없어요.
+      </div>
+      <label class="agree"><input type="checkbox" id="prizeAgree"> 위 내용에 동의해요</label>
+      <button class="btn" id="prizeSend" type="submit">번호 보내기</button>
+      <button class="btn2" id="prizeLater" type="button">나중에</button>
+      <div class="msg" id="prizeMsg"></div>
+    </form>
   </div>
 
   <div class="overlay" id="tip" hidden>
@@ -1622,7 +1660,7 @@ $('gbForm').addEventListener('submit', async e => {
   gbBusy=true; $('gbSend').disabled=true; $('gbOut').textContent='보내는 중…';
   const c = CHARS[SAVE.char]||CHARS.soldier, meta = c.name+' · '+(SAVE.stats.bestStage ? '최고 STAGE '+SAVE.stats.bestStage : SAVE.stats.runs+'판 플레이');
   try {
-    const r = await fetch('/api/guestbook', {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({name, msg, rating:gbRating, meta})});
+    const r = await fetch('/api/guestbook', {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({name, msg, rating:gbRating, meta, token:gbToken()})});
     const j = await r.json().catch(()=>({}));
     if (!r.ok) throw new Error(j.error || '보내지 못했어요');
     $('gbText').value=''; $('gbCount').textContent='0 / 200'; $('gbOut').textContent='후기 고마워요!'; SND.lvl(); gbLoad();
@@ -1634,6 +1672,51 @@ $('gbBtn').addEventListener('click', () => openGuest('menu'));
 $('gbAskGo').addEventListener('click', () => { $('gbAsk').hidden=true; openGuest('over'); });
 $('gbAskLater').addEventListener('click', () => { $('gbAsk').hidden=true; });
 
+/* ---------- weekly gifticon draw for reviewers (Korean players only) ---------- */
+function gbToken(){
+  let t = LS.get('dusk-line-gbtoken');
+  if (!t || t.length < 20){ const a = new Uint8Array(16); (crypto.getRandomValues ? crypto.getRandomValues(a) : a.forEach((_, i) => a[i] = Math.random()*256)); t = [...a].map(b => b.toString(16).padStart(2,'0')).join(''); LS.set('dusk-line-gbtoken', t); }
+  return t;
+}
+function eventOn(){ return gbAvailable() && LANG==='ko'; }
+let prizePending = false, prizeWeek = '';
+async function prizeCheck(){
+  if (!eventOn()) return;
+  $('gbEvent').hidden = false;
+  $('gbAskText').textContent = '후기를 남기면 매주 추첨해서 기프티콘을 드려요!';
+  try {
+    const r = await fetch('/api/prize?token='+encodeURIComponent(gbToken()), {cache:'no-store'}); if (!r.ok) return;
+    const j = await r.json();
+    const w = $('gbWinners'); w.innerHTML='';
+    for (const x of (j.winners||[]).slice(0,4)){ const d=document.createElement('div'); d.innerHTML='<span></span> 당첨 · <b data-notr></b>'; d.querySelector('span').textContent=x.week+' 주'; d.querySelector('b').textContent=x.name; w.appendChild(d); }
+    if (j.me && j.me.won && !j.me.claimed && !j.me.expired){ prizeWeek = j.me.week; prizePending = true; if ($('tip').hidden) showPrize(); }
+  } catch(e){}
+}
+function showPrize(){
+  prizePending = false;
+  $('prizeText').textContent = prizeWeek+' 주 후기 이벤트에 당첨됐어요! 기프티콘을 보내드릴 휴대폰 번호를 남겨주세요. 당첨일로부터 7일 안에 남겨야 해요.';
+  $('prizeMsg').textContent=''; $('prize').hidden = false;
+}
+$('prizePhone').addEventListener('input', () => {
+  const d = $('prizePhone').value.replace(/\D/g,'').slice(0,11);
+  $('prizePhone').value = d.length>7 ? d.slice(0,3)+'-'+d.slice(3,d.length-4)+'-'+d.slice(-4) : d.length>3 ? d.slice(0,3)+'-'+d.slice(3) : d;
+});
+$('prizeLater').addEventListener('click', () => { $('prize').hidden = true; });
+$('prizeForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const phone = $('prizePhone').value.replace(/\D/g,'');
+  if (!/^01[016789]\d{7,8}$/.test(phone)){ $('prizeMsg').textContent='휴대폰 번호를 정확히 입력해주세요'; return; }
+  if (!$('prizeAgree').checked){ $('prizeMsg').textContent='개인정보 수집·이용에 동의해야 기프티콘을 보내드릴 수 있어요'; return; }
+  $('prizeSend').disabled = true; $('prizeMsg').textContent='보내는 중…';
+  try {
+    const r = await fetch('/api/prize', {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({token:gbToken(), phone, agree:true})});
+    const j = await r.json().catch(()=>({}));
+    if (!r.ok) throw new Error(j.error || '보내지 못했어요');
+    $('prizeMsg').textContent='접수됐어요! 며칠 안에 기프티콘을 보내드릴게요.'; $('prizePhone').value=''; SND.lvl();
+    setTimeout(() => { $('prize').hidden = true; }, 1800);
+  } catch(err){ $('prizeMsg').textContent = (err && err.message && !/fetch/i.test(err.message)) ? err.message : '보내지 못했어요. 인터넷 연결을 확인해주세요'; }
+  $('prizeSend').disabled = false;
+});
 /* ---------- first visit: recommend Chrome for the full-size screen ---------- */
 function initTip(){
   $('gbBtn').hidden = !gbAvailable();
@@ -1654,10 +1737,11 @@ function initTip(){
     const done = () => { $('tipMsg').textContent='주소를 복사했어요. 크롬 주소창에 붙여넣으세요'; };
     try { navigator.clipboard.writeText(url).then(done, () => { $('tipMsg').textContent=url; }); } catch(e){ $('tipMsg').textContent=url; }
   });
-  $('tipOk').addEventListener('click', () => { LS.set('dusk-line-tip','1'); $('tip').hidden=true; });
+  $('tipOk').addEventListener('click', () => { LS.set('dusk-line-tip','1'); $('tip').hidden=true; if (prizePending) showPrize(); });
   $('tip').hidden=false;
 }
 initTip();
+prizeCheck();
 $('langBtn').textContent = LANG==='ko' ? 'English' : '한국어';
 $('langBtn').addEventListener('click', () => { try { localStorage.setItem('dusk-line-lang', LANG==='ko' ? 'en' : 'ko'); } catch(e){} location.reload(); });
 function openRank(){ if (window.DuskToss && window.DuskToss.available) window.DuskToss.open(); }

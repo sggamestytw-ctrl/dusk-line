@@ -6,6 +6,11 @@ const BAD = ["시발", "씨발", "ㅅㅂ", "병신", "ㅂㅅ", "좆", "개새끼
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 
+export async function hashToken(t) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("dusk-line-token:" + t));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
 async function hashIp(ip) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("dusk-line:" + ip));
   return [...new Uint8Array(buf)].slice(0, 8).map(b => b.toString(16).padStart(2, "0")).join("");
@@ -16,7 +21,7 @@ export default async (req, context) => {
 
   if (req.method === "GET") {
     const list = (await store.get("entries", { type: "json" })) || [];
-    return json(list.slice(-100).reverse());
+    return json(list.slice(-100).reverse().map(({ tk, ...pub }) => pub)); // the entry ticket never leaves the server
   }
   if (req.method !== "POST") return json({ error: "지원하지 않는 요청이에요" }, 405);
 
@@ -40,11 +45,15 @@ export default async (req, context) => {
   await store.setJSON("ratelimit", rl);
 
   const list = (await store.get("entries", { type: "json" })) || [];
-  const entry = { id: now.toString(36) + Math.random().toString(36).slice(2, 6), name, msg, rating, meta, t: now };
+  // anonymous ticket for the weekly gifticon draw: a hash of the device's random token, never shown to anyone
+  const token = String(body.token || '').slice(0, 64);
+  const tk = /^[0-9a-f]{20,64}$/.test(token) ? await hashToken(token) : null;
+  const entry = { id: now.toString(36) + Math.random().toString(36).slice(2, 6), name, msg, rating, meta, t: now, tk };
   list.push(entry);
   while (list.length > 500) list.shift();
   await store.setJSON("entries", list);
-  return json(entry, 201);
+  const { tk: _hidden, ...pub } = entry;
+  return json(pub, 201);
 };
 
 export const config = { path: "/api/guestbook" };
