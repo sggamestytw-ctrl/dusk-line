@@ -5,7 +5,7 @@
 // 검열
 //  - 욕설·비하·성적 표현: 띄어쓰기나 기호, 숫자를 섞어 써도 걸러서 글을 거절해요 (닉네임은 "익명"으로 바꿔요)
 //  - 링크, 전화번호, 이메일, 카톡 아이디 같은 광고·연락처 거절
-//  - 같은 글 반복, 한 글자 도배 거절
+//  - 같은 글 반복, 한 글자 도배, 기호를 쌓아 화면을 덮는 글 거절
 //  - 30초에 1개, 하루 5개까지
 //  - 신고 3번(서로 다른 사람) 받으면 자동으로 숨김
 //  - 직접 숨기기: entries 에서 그 글에 "hidden": true 를 넣거나 글을 지우면 돼요
@@ -65,7 +65,9 @@ async function hashIp(ip) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("dusk-line:" + ip));
   return [...new Uint8Array(buf)].slice(0, 8).map(b => b.toString(16).padStart(2, "0")).join("");
 }
-const pub = ({ tk, rp, hidden, ...rest }) => rest; // 응모권·신고자·숨김 정보는 밖으로 안 나가요
+// 글자 위아래로 기호를 쌓아 화면을 덮는 글(잘고 텍스트)은 결합 기호를 지워서 막아요
+const unzalgo = v => String(v || "").normalize("NFC").replace(/\p{M}+/gu, "");
+const pub = ({ tk, rp, hidden, ...rest }) => ({ ...rest, name: unzalgo(rest.name), msg: unzalgo(rest.msg), meta: unzalgo(rest.meta) }); // 응모권·신고자·숨김 정보는 밖으로 안 나가요
 
 export default async (req, context) => {
   const store = getStore({ name: "guestbook", consistency: "strong" });
@@ -93,12 +95,12 @@ export default async (req, context) => {
     return json({ ok: true, hidden: !!e.hidden });
   }
 
-  const clean = v => String(v || "").replace(/[\u0000-\u001f​-‏⁠﻿]/g, " ").replace(/\s+/g, " ").trim();
+  const clean = v => unzalgo(v).replace(/[\u0000-\u001f​-‏⁠﻿]/g, " ").replace(/\s+/g, " ").trim();
   let name = clean(body.name).slice(0, 12) || "익명";
   const msg = clean(body.msg).slice(0, 200);
   const meta = clean(body.meta).slice(0, 40);
   const rating = Math.min(5, Math.max(1, parseInt(body.rating, 10) || 5));
-  if (msg.length < 2) return json({ error: "후기를 두 글자 이상 써주세요" }, 400);
+  if (msg.length < 2 || (msg.match(/[가-힣a-zA-Z]/g) || []).length < 2) return json({ error: "후기를 두 글자 이상 써주세요" }, 400);
   if (hasBanned(msg)) return json({ error: "부적절한 표현이 있어서 올릴 수 없어요" }, 400);
   if (hasContact(msg) || hasContact(name)) return json({ error: "링크나 연락처는 쓸 수 없어요" }, 400);
   if (isSpam(msg)) return json({ error: "같은 글자를 너무 많이 반복했어요" }, 400);
