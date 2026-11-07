@@ -359,7 +359,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
         <button class="dockbtn" id="gbBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>방명록</button>
         <button class="dockbtn" id="menuRankBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg>랭킹</button>
       </nav>
-      <div class="ver" id="verTxt">v2.6.1 · 2026.11.07</div>
+      <div class="ver" id="verTxt">v2.6.2 · 2026.11.07</div>
     </div>
   </div>
 
@@ -540,8 +540,8 @@ const EN = {
   '관통탄':'Piercing','탄환이 적 1명 더 관통':'Bullets pierce 1 more enemy','도탄':'Ricochet','탄환이 벽에 맞으면 튕김 +1':'Bullets bounce off walls +1',
   '폭발탄':'Explosive rounds','명중할 때마다 작은 폭발':'Small blast on every hit','회전 칼날':'Orbit blades','몸 주위를 도는 칼날 +1':'+1 blade circling you',
   '저격 본능':'Sniper instinct','치명타 확률 +11% (피해 2.25배)':'Crit chance +11% (2.25x damage)','가벼운 군화':'Light boots','이동 속도 +12%':'Move speed +12%',
-  '방탄조끼':'Body armor','최대 체력 +1, 체력 +1':'Max HP +1, +1 HP','자석':'Magnet','경험치 흡수 범위 2배':'2x XP pickup range',
-  '흡혈':'Vampire','적 25마리 처치마다 체력 +1':'+1 HP every 25 kills','신속 대시':'Swift dash','대시 쿨타임 -35%, 대시 중 충돌 피해':'Dash cooldown -35%, dash deals damage',
+  '방탄조끼':'Body armor','최대 체력 +1, 체력 +2':'Max HP +1, +2 HP','자석':'Magnet','경험치 흡수 범위 2배':'2x XP pickup range',
+  '흡혈':'Vampire','적 15마리 처치마다 체력 +1':'+1 HP every 15 kills','신속 대시':'Swift dash','대시 쿨타임 -35%, 대시 중 충돌 피해':'Dash cooldown -35%, dash deals damage',
   '충격파':'Shockwave','맞을 때 주변 적을 날려버림':'Blasts nearby enemies away when hit','연쇄 번개':'Chain lightning','처치 시 근처 적 2명에게 번개':'Kills zap 2 nearby enemies',
   '전투 드론':'Combat drone','주변을 돌며 알아서 쏘는 드론 +1':'+1 drone that orbits and shoots','화염 발자국':'Fire trail','지나간 자리에 불길이 남아 적을 태움':'Leaves fire that burns enemies',
   '유도탄':'Homing','조준 방향 앞쪽의 적을 살짝 따라감':'Bullets gently curve to enemies ahead','파편탄':'Shrapnel','명중하면 탄환이 부채꼴로 갈라짐':'Bullets split into a fan on hit',
@@ -757,9 +757,9 @@ const PERKS = [
   {id:'orbit',  name:'회전 칼날',   desc:'몸 주위를 도는 칼날 +1',         max:5},
   {id:'crit',   name:'저격 본능',   desc:'치명타 확률 +11% (피해 2.25배)', max:4},
   {id:'speed',  name:'가벼운 군화', desc:'이동 속도 +12%',                max:3},
-  {id:'hp',     name:'방탄조끼',    desc:'최대 체력 +1, 체력 +1',          max:4},
+  {id:'hp',     name:'방탄조끼',    desc:'최대 체력 +1, 체력 +2',          max:4},
   {id:'magnet', name:'자석',        desc:'경험치 흡수 범위 2배',           max:2},
-  {id:'vamp',   name:'흡혈',        desc:'적 25마리 처치마다 체력 +1',     max:1, rare:true},
+  {id:'vamp',   name:'흡혈',        desc:'적 15마리 처치마다 체력 +1',     max:1, rare:true},
   {id:'dash',   name:'신속 대시',   desc:'대시 쿨타임 -35%, 대시 중 충돌 피해', max:2},
   {id:'nova',   name:'충격파',      desc:'맞을 때 주변 적을 날려버림',     max:1, rare:true},
   {id:'chain',  name:'연쇄 번개',   desc:'처치 시 근처 적 2명에게 번개',   max:3, rare:true},
@@ -944,7 +944,7 @@ function stageClear(){
 function nextStage(){
   if (state!=='clear') return;
   stage++; foes=[]; eshots=[]; lobs=[]; holes=[]; meteors=[]; corpseQ=[]; flames=[]; items=[]; barrels=[]; decals=[]; boss=null;
-  P.hp=Math.min(P.max,P.hp+2); P.inv=1.5;
+  P.hp=Math.min(P.max,P.hp+3); P.inv=1.5;
   $('clear').hidden=true; document.body.classList.add('playing'); state='play';
   beginStage();
 }
@@ -1050,7 +1050,7 @@ function openChest(x,y){
   const r=Math.random(), n = r<.25?2 : 1, got=[];
   for (let i=0;i<n;i++){
     const avail = PERKS.filter(p => S[p.id] < p.max && p.id!=='revive'); if (!avail.length) break;
-    const p = pickOne(avail); S[p.id]++; if (p.id==='hp'){ P.max++; P.hp=Math.min(P.max,P.hp+1); } got.push(p.name);
+    const p = pickOne(avail); S[p.id]++; if (p.id==='hp'){ P.max++; P.hp=Math.min(P.max,P.hp+2); } got.push(p.name);
   }
   if (!got.length){ P.hp=Math.min(P.max,P.hp+1); got.push('체력 +1'); }
   say('보물상자!', '#ffd75e', 40, 2.2, got.join(' · ')); flash=.5; SND.lvl();
@@ -1198,12 +1198,12 @@ function kill(e){
     rings.push({x:e.x,y:e.y,r:0,max:220,life:.6,L:.6,color:COL.tracer});
   } else dropGems(e.x,e.y,e.xpv);
   if (S.chain) chainFrom(e, S.chain+1, 3.5*S.chain*dmgMult());
-  if (S.vamp && kills%25===0 && P.hp<P.max){ P.hp++; pop(P.x,P.y-28,'흡혈 +1',COL.foe,18); }
+  if (S.vamp && kills%15===0 && P.hp<P.max){ P.hp++; pop(P.x,P.y-28,'흡혈 +1',COL.foe,18); }
   const r = Math.random();
   if (e.type!=='boss'){
     if (Math.random() < .07) dropCoins(e.x,e.y,1,1);
     if (e.elite){ dropCoins(e.x,e.y,8,2); if (Math.random() < Math.max(.3, .65-.03*Math.max(0,stage-1)-(mode==='endless'?wave*.008:0))) items.push({kind:'chest', x:e.x, y:e.y, life:25, t:0}); }
-    if (r < .03 && P.hp < P.max) items.push({kind:'heart', x:e.x, y:e.y, life:10, t:0});
+    if (r < .06 && P.hp < P.max) items.push({kind:'heart', x:e.x, y:e.y, life:14, t:0});
     else if (r < .06+S.luck*.05) dropCrate(e.x,e.y,pickOne(Object.keys(CRATE)));
     if (S.corpse) corpseQ.push({x:e.x,y:e.y,r:35+12*S.corpse,dmg:2.5*S.corpse*dmgMult(),t:.12});
   }
@@ -1304,7 +1304,7 @@ function choose(i){
   const p = choices[i]; if (!p) return;
   if (p.id==='heal'){ P.hp=Math.min(P.max,P.hp+1); score+=500; }
   else { S[p.id]++;
-    if (p.id==='hp'){ P.max++; P.hp=Math.min(P.max,P.hp+1); } }
+    if (p.id==='hp'){ P.max++; P.hp=Math.min(P.max,P.hp+2); } }
   SND.pick(); pendingLv--;
   $('pick').hidden=true;
   pop(P.x,P.y-30,p.name,COL.gem,19);
