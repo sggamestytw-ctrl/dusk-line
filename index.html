@@ -244,6 +244,8 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
 .mini.danger{color:var(--foe);border-color:rgba(255,93,93,.5)}
 .savebox{width:min(100%,360px);display:grid;gap:8px;padding:14px;text-align:left}
 .savebox textarea{width:100%;box-sizing:border-box;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--ink);background:rgba(16,12,20,.75);border:1px solid #4a3d48;border-radius:8px;padding:8px;resize:vertical;-webkit-user-select:text;user-select:text}
+.gun .hgold{display:flex;align-items:center;justify-content:flex-end;gap:4px;font-family:var(--mono);font-size:12px;color:var(--coin);margin-top:2px}
+.gun .hgold .coin{width:12px;height:12px}
 .ver{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:#6d5f6c}
 </style>
 
@@ -256,7 +258,7 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
     <div class="score" id="score">0</div>
     <div class="wave" id="wave">WAVE 1</div>
   </div>
-  <div class="gun"><b id="gunName">권총</b><span id="ammo">∞</span></div>
+  <div class="gun"><b id="gunName">권총</b><span id="ammo">∞</span><span class="hgold"><i class="coin"></i><span id="hudGold">0</span></span></div>
 </div>
 <div class="xp"><b id="lvl">Lv 1</b><div class="bar"><i id="xpbar"></i></div></div>
 
@@ -286,7 +288,7 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
         <button class="dockbtn" id="howBtn" type="button"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="4"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="16" cy="11.5" r="1"/><circle cx="18" cy="14" r="1"/></svg>조작법</button>
         <button class="dockbtn" id="menuRankBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg>랭킹</button>
       </nav>
-      <div class="ver" id="verTxt">v1.3 · 2026.11.07</div>
+      <div class="ver" id="verTxt">v1.4 · 2026.11.07</div>
     </div>
   </div>
 
@@ -526,7 +528,11 @@ const THEMES = [
 ];
 const STAGE_LEN = 150;
 const MODES = { stage:{name:'스테이지', note:'2분 30초 버티고 보스를 잡으면 다음 지역으로'}, endless:{name:'무한', note:'끝없이 많아지고 빨라지는 웨이브'} };
-let runT = 0, threatLv = 0;
+let runT = 0, threatLv = 0, bankedScore = 0, goldDirty = false, goldSaveT = 0;
+// gold goes straight into the player's wallet the moment it is earned (coins, clear bonus, score)
+function bankGold(n){ n = Math.floor(n); if (n<=0) return; SAVE.gold += n; runGold += n; goldDirty = true; }
+function bankScore(){ const n = Math.floor((Math.floor(score) - bankedScore)/250); if (n>0){ bankGold(n); bankedScore += n*250; } }
+function flushGold(){ if (goldDirty){ goldDirty=false; saveSave(); } }
 let mode = 'stage', stage = 1, stageT = 0, bossSpawned = false, clearT = 0, stageKills = 0, TH = THEMES[0];
 try { mode = localStorage.getItem('dusk-line-mode') || 'stage'; } catch(e){}
 if (!MODES[mode]) mode = 'stage';
@@ -619,7 +625,7 @@ function reset(){
   foes=[]; shots=[]; eshots=[]; decals=[]; lobs=[]; flames=[]; holes=[]; meteors=[]; corpseQ=[]; droneT=[]; rerolls=2+U('reroll'); seen=new Set(['grunt','mini']); intro=null; items=[]; gems=[]; barrels=[]; parts=[]; pops=[]; rings=[]; bolts=[];
   score=0; combo=0; comboT=0; wave=0; toSpawn=0; spawnT=0; breakT=.6; banner=null; shake=0; fireT=0; stop=0; flash=0; kills=0; t=0;
   pendingLv=0; xp=0; level=1; need=6; boss=null;
-  stage=1; stageT=0; bossSpawned=false; clearT=0; stageKills=0; TH=THEMES[0]; runT=0; threatLv=0;
+  stage=1; stageT=0; bossSpawned=false; clearT=0; stageKills=0; TH=THEMES[0]; runT=0; threatLv=0; bankedScore=0; goldDirty=false;
 }
 reset();
 
@@ -652,8 +658,8 @@ function beginStage(){
 }
 function stageClear(){
   state='clear'; document.body.classList.remove('playing'); moveStick=aimStick=null; mouse.down=false;
-  let tot=0; for (const g of gems){ if (g.coin) runGold+=g.v; else tot+=g.v; }
-  runGold += 20*stage; gems=[]; if (tot) gainXP(tot);
+  let tot=0; for (const g of gems){ if (g.coin) bankGold(g.v); else tot+=g.v; }
+  bankGold(20*stage); bankScore(); flushGold(); gems=[]; if (tot) gainXP(tot);
   const bonus = Math.round(1000*stage*D.score); score += bonus;
   $('clearEyebrow').textContent = 'STAGE '+stage+' · '+TH.name;
   const nt = THEMES[stage%THEMES.length];
@@ -670,6 +676,7 @@ function nextStage(){
   beginStage();
 }
 function startWave(){
+  bankScore(); flushGold();
   wave++; if (wave>1) checkpoint();
   { const th = THEMES[Math.floor((wave-1)/5)%THEMES.length]; if (th!==TH){ TH=th; } }
   if (wave%5===0){
@@ -962,7 +969,7 @@ function hurtPlayer(){
 function die(){
   state='dying'; burst(P.x,P.y,COL.ally,40,280,.9,4); burst(P.x,P.y,COL.tracer,24,220,.8); SND.boom(true);
   const final=Math.floor(score), isBest = final>best;
-  runGold += Math.floor(final/250); SAVE.gold += runGold; saveSave();
+  bankScore(); saveSave();
   if (mode==='stage' && window.DuskToss && window.DuskToss.available) window.DuskToss.submit(final);
   if (isBest){ best=final; SAVE.best[bestKey()] = best; }
   SAVE.stats.runs++; SAVE.stats.kills += kills; if (mode==='stage') SAVE.stats.bestStage=Math.max(SAVE.stats.bestStage,stage); else SAVE.stats.bestWave=Math.max(SAVE.stats.bestWave,wave);
@@ -1096,6 +1103,7 @@ addEventListener('blur', () => { for (const k in keys) keys[k]=false; mouse.down
 let quitArm = false;
 function pauseGame(){
   if (state!=='play') return;
+  bankScore(); flushGold();
   state='paused'; moveStick=aimStick=null; mouse.down=false;
   quitArm=false; $('quitNote').hidden=true; $('quitBtn').textContent='메뉴로 나가기';
   $('pause').hidden=false; setTimeout(() => $('resumeBtn').focus({preventScroll:true}), 30);
@@ -1113,7 +1121,7 @@ function quitGame(){
 function checkpoint(){
   if (state!=='play') return;
   SAVE.run = { mode, diff, char:CH===CHARS[SAVE.char]?SAVE.char:Object.keys(CHARS).find(k=>CHARS[k]===CH), stage, wave, score:Math.floor(score), kills, level, xp, need,
-    runT, S:Object.assign({},S), hp:P.hp, max:P.max, gun:P.gun, ammo:P.ammo===Infinity?-1:P.ammo, ult:P.ult, rerolls, runGold, revived:!!P.revived, seen:[...seen], t:Date.now() };
+    runT, bankedScore, S:Object.assign({},S), hp:P.hp, max:P.max, gun:P.gun, ammo:P.ammo===Infinity?-1:P.ammo, ult:P.ult, rerolls, runGold, revived:!!P.revived, seen:[...seen], t:Date.now() };
   saveSave();
 }
 function continueRun(){
@@ -1122,7 +1130,7 @@ function continueRun(){
   loadBest(); document.body.classList.add('playing'); reset();
   S=Object.assign(S, r.S); score=r.score; kills=r.kills; level=r.level; xp=r.xp; need=r.need;
   P.max=r.max; P.hp=Math.max(1,r.hp); P.gun=GUNS[r.gun]?r.gun:P.base; P.ammo=r.ammo<0?Infinity:r.ammo; P.ult=r.ult||0; P.revived=r.revived;
-  rerolls=r.rerolls; runT=r.runT||0; threatLv=threat().lv; runGold=r.runGold||0; seen=new Set(r.seen||['grunt','mini']);
+  rerolls=r.rerolls; runT=r.runT||0; bankedScore=r.bankedScore!=null ? r.bankedScore : r.score; threatLv=threat().lv; runGold=r.runGold||0; seen=new Set(r.seen||['grunt','mini']);
   state='play'; for (const k of ['menu','over','pick','clear']) $(k).hidden=true; moveStick=aimStick=null;
   if (mode==='stage'){ stage=r.stage; beginStage(); } else { wave=r.wave-1; breakT=.8; }
   say('이어하기', COL.ally, 36, 1.4, mode==='stage' ? 'STAGE '+stage+' 처음부터' : 'WAVE '+r.wave+' 처음부터');
@@ -1391,6 +1399,7 @@ function update(dt){
     if (firing && fireT<=0){ fire(); fireT = GUNS[P.gun].rate/(1+S.rate*.15); }
     perkTick(dt);
     runT += dt;
+    goldSaveT += dt; if (goldSaveT > 5){ goldSaveT = 0; bankScore(); flushGold(); }
     { const tl = threat().lv; if (tl > threatLv){ threatLv = tl; if (tl>=1){ say('위협 '+tl+'단계', COL.foe, 34, 1.6, '적이 더 강하고, 많고, 빨리 공격해요'); SND.boss(); } } }
     if (P.freezeT>0) P.freezeT-=dt;
     if (P.blade && P.blade.length){
@@ -1605,7 +1614,7 @@ function update(dt){
     g.t+=dt; g.x+=g.vx*dt; g.y+=g.vy*dt; g.vx*=.9; g.vy*=.9;
     const dx=P.x-g.x, dy=P.y-g.y, d=Math.hypot(dx,dy)||1;
     if (play && (g.vacuum || d<mag)){ const sp = g.vacuum?700:Math.max(260, 600*(1-d/mag)+260); g.x+=dx/d*sp*dt; g.y+=dy/d*sp*dt; }
-    if (play && d<P.r+8){ g.dead=true; if (g.coin){ runGold+=g.v; SND.coin(); } else { gainXP(g.v); SND.gem(); } }
+    if (play && d<P.r+8){ g.dead=true; if (g.coin){ bankGold(g.v); SND.coin(); } else { gainXP(g.v); SND.gem(); } }
   }
   gems = gems.filter(g => !g.dead);
 
@@ -2170,11 +2179,12 @@ function hud(){
   if (mode==='stage'){ const left=Math.max(0,Math.ceil(STAGE_LEN-stageT)); wt='STAGE '+stage+' · '+(bossSpawned||left===0 ? '보스전' : '보스까지 '+Math.floor(left/60)+':'+String(left%60).padStart(2,'0')); }
   else wt='무한 WAVE '+Math.max(1,wave)+' · 최고 '+best.toLocaleString();
   if (threatLv>0) wt += ' · 위협 '+threatLv;
-  const key=[Math.floor(score),wt,P.hp,P.max,P.gun,P.ammo,level,xp,need].join('|');
+  const key=[SAVE.gold,Math.floor(score),wt,P.hp,P.max,P.gun,P.ammo,level,xp,need].join('|');
   if (key===hudKey) return; hudKey=key;
   $('score').textContent=Math.floor(score).toLocaleString();
   $('wave').textContent=wt;
   $('gunName').textContent=GUNS[P.gun].name;
+  $('hudGold').textContent=SAVE.gold.toLocaleString();
   $('ammo').textContent= P.ammo===Infinity ? '∞' : P.ammo+'발';
   $('lvl').textContent='Lv '+level;
   $('xpbar').style.width = Math.min(100, xp/need*100)+'%';
