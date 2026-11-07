@@ -294,6 +294,9 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
   body.playing .midbtns{gap:6px}
   body.playing .wave{font-size:11px}
 }
+.mright{display:flex;gap:6px;align-items:center}
+.lchip{cursor:pointer;font-family:var(--display);font-size:13px;padding:4px 10px;color:var(--ally)}
+body.lang-en .perk.rare::after{content:"RARE"}
 </style>
 
 <div class="hud">
@@ -314,7 +317,7 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
   <canvas id="cv"></canvas>
 
   <div class="overlay" id="menu">
-    <div class="mtop"><button class="chip pchip" id="profileBtn" type="button"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span id="profileName">플레이어 1</span></button><span class="chip gold"><i class="coin"></i><span id="goldTxt">0</span></span></div>
+    <div class="mtop"><button class="chip pchip" id="profileBtn" type="button"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span id="profileName">플레이어 1</span></button><span class="mright"><button class="chip lchip" id="langBtn" type="button" data-notr>English</button><span class="chip gold"><i class="coin"></i><span id="goldTxt">0</span></span></span></div>
     <div class="menucol">
       <div class="logo"><div class="eyebrow">POCKET SURVIVAL SHOOTER</div><h1>황혼의<br>서막</h1></div>
       <div class="hazard"></div>
@@ -336,7 +339,7 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
         <button class="dockbtn" id="gbBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>방명록</button>
         <button class="dockbtn" id="menuRankBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg>랭킹</button>
       </nav>
-      <div class="ver" id="verTxt">v2.0 · 2026.11.07</div>
+      <div class="ver" id="verTxt">v2.1 · 2026.11.07</div>
     </div>
   </div>
 
@@ -454,6 +457,159 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
 
 <script>
 (() => {
+/* ---------- language: Korean or English, picked from the device's language setting ----------
+   Every string still lives in Korean in the code; TR() turns it into English at the moment it is
+   shown (DOM text, canvas text, banners). Player-written text (guestbook, names) is left alone. */
+const LANG = (() => {
+  let v = null; try { v = localStorage.getItem('dusk-line-lang'); } catch(e){}
+  if (v==='ko' || v==='en') return v;
+  const l = ((navigator.languages && navigator.languages[0]) || navigator.language || 'ko').toLowerCase();
+  return l.startsWith('ko') ? 'ko' : 'en';
+})();
+const EN = {
+  // title, menu, HUD
+  '황혼의 서막':'DUSK LINE','황혼의':'DUSK','서막':'LINE','소리 켜짐':'Sound on','소리 꺼짐':'Sound off','일시정지':'Pause',
+  '교체 ›':'Change ›','이어하기':'Continue','이어하기 ›':'Continue ›','출격':'Deploy','새로 출격':'New run','저장 지우고 새로 출격':'Erase save & start new',
+  '상점':'Shop','조작법':'How to play','방명록':'Guestbook','랭킹':'Ranking','모드':'Mode','난이도':'Difficulty','돌아가기':'Back',
+  '스테이지 모드':'Stage mode','무한 모드':'Endless mode','스테이지':'Stage','무한':'Endless',
+  '2분 30초 버티고 보스를 잡으면 다음 지역으로':'Survive 2:30, beat the boss, move to the next region',
+  '끝없이 많아지고 빨라지는 웨이브':'Endless waves that keep getting bigger and faster',
+  '쉬움':'Easy','보통':'Normal','어려움':'Hard','지옥':'Hell',
+  '체력 7칸':'7 HP','체력 5칸':'5 HP','체력 4칸':'4 HP','체력 3칸':'3 HP','적이 약하고 느려요':'Weaker, slower enemies','기본 난이도':'Standard difficulty',
+  '적이 많고 단단해요':'More, tougher enemies','탄막 지옥':'Bullet hell','점수 x0.6':'Score x0.6','점수 x1.5':'Score x1.5','점수 x2.5':'Score x2.5',
+  '이동':'Move','궁극기':'Ultimate','대시':'Dash','조준 · 발사':'Aim · Fire','보스전':'BOSS FIGHT',
+  // pick / build
+  'LEVEL UP · 능력 선택':'LEVEL UP · Choose a power','다시 뽑기':'Reroll','공격':'Attack','광역':'Area','생존':'Survival','지원':'Support','회복':'Heal',
+  '응급치료':'First aid','체력 +2, 점수 +500':'HP +2, score +500',
+  // characters
+  '대원 선택':'Choose operator','레온':'Leon','미라':'Mira','브루노':'Bruno','지니':'Jini','카이':'Kai',
+  '돌격병':'Assault','저격수':'Sniper','화염병':'Pyro','공병':'Engineer','닌자':'Ninja',
+  '균형 잡힌 기본 병사':'A well-balanced soldier','적 3명을 꿰뚫는 저격총, 치명타 +1':'Rifle that pierces 3 enemies, Crit +1',
+  '무한 화염 산탄총과 화염 발자국, 체력 +1':'Endless flame shotgun and fire trail, HP +1','전투 드론을 데리고 시작':'Starts with a combat drone',
+  '빠른 수리검과 대시, 체력 -2':'Fast shuriken and dash, HP -2',
+  '융단 폭격':'Carpet bombing','화면 전체에 폭격':'Bombs the whole screen','시간 정지':'Time stop','모든 적과 탄을 4초간 멈춤':'Freezes all enemies and bullets for 4s',
+  '화염 폭풍':'Firestorm','주변을 불바다로':'Sets everything around you ablaze','드론 군단':'Drone swarm','드론 4대를 9초간 추가':'Adds 4 drones for 9s',
+  '그림자 난무':'Shadow dance','근처 적 12명을 순식간에 베기':'Slashes 12 nearby enemies in a flash',
+  '체력':'HP','속도':'Speed','화력':'Firepower','기본 무기':'Weapon','잠김':'Locked','이 대원으로 출격':'Deploy with this operator','출격 대원으로 선택됨':'Selected for deployment',
+  // guns
+  '권총':'Pistol','기관단총':'SMG','산탄총':'Shotgun','레일건':'Railgun','저격총':'Sniper rifle','화염 산탄':'Flame shotgun','수리검':'Shuriken','로켓':'Rocket','탄약 소진':'Out of ammo',
+  // perks
+  '철갑탄':'AP rounds','모든 피해 +25%':'All damage +25%','빠른 손':'Quick hands','연사 속도 +15%':'Fire rate +15%','다중 사격':'Multishot','한 번에 탄환 +1발':'+1 bullet per shot',
+  '관통탄':'Piercing','탄환이 적 1명 더 관통':'Bullets pierce 1 more enemy','도탄':'Ricochet','탄환이 벽에 맞으면 튕김 +1':'Bullets bounce off walls +1',
+  '폭발탄':'Explosive rounds','명중할 때마다 작은 폭발':'Small blast on every hit','회전 칼날':'Orbit blades','몸 주위를 도는 칼날 +1':'+1 blade circling you',
+  '저격 본능':'Sniper instinct','치명타 확률 +12% (피해 2.5배)':'Crit chance +12% (2.5x damage)','가벼운 군화':'Light boots','이동 속도 +12%':'Move speed +12%',
+  '방탄조끼':'Body armor','최대 체력 +1, 체력 전부 회복':'Max HP +1, full heal','자석':'Magnet','경험치 흡수 범위 2배':'2x XP pickup range',
+  '흡혈':'Vampire','적 20마리 처치마다 체력 +1':'+1 HP every 20 kills','신속 대시':'Swift dash','대시 쿨타임 -35%, 대시 중 충돌 피해':'Dash cooldown -35%, dash deals damage',
+  '충격파':'Shockwave','맞을 때 주변 적을 날려버림':'Blasts nearby enemies away when hit','연쇄 번개':'Chain lightning','처치 시 근처 적 2명에게 번개':'Kills zap 2 nearby enemies',
+  '전투 드론':'Combat drone','주변을 돌며 알아서 쏘는 드론 +1':'+1 drone that orbits and shoots','화염 발자국':'Fire trail','지나간 자리에 불길이 남아 적을 태움':'Leaves fire that burns enemies',
+  '유도탄':'Homing','조준 방향 앞쪽의 적을 살짝 따라감':'Bullets gently curve to enemies ahead','파편탄':'Shrapnel','명중하면 탄환이 부채꼴로 갈라짐':'Bullets split into a fan on hit',
+  '냉기탄':'Frost rounds','맞은 적이 느려짐. 2단계부터 얼어붙음':'Slows enemies; freezes from Lv 2','독침':'Venom','맞은 적에게 3초간 독 피해':'Poisons enemies for 3s',
+  '대구경탄':'Big bore','탄환 크기 +50%, 피해 +20%':'Bullet size +50%, damage +20%','블랙홀':'Black hole','조준 방향에 적을 빨아들이는 블랙홀 발사':'Fires a black hole that pulls enemies in',
+  '유성우':'Meteor shower','주기적으로 적 머리 위에 유성 낙하':'Meteors regularly fall on enemies','후방 사격':'Rear guns','뒤쪽으로도 탄환 발사':'Also fires backwards',
+  '광전사':'Berserker','잃은 체력 1칸당 피해 +20%':'+20% damage per missing HP','행운의 동전':'Lucky coin','선택지 4개, 무기 상자 더 자주':'4 choices, more weapon crates',
+  '불사조':'Phoenix','한 번 쓰러져도 체력 가득 부활':'Revive once with full HP','가시 갑옷':'Thorn armor','몸에 닿은 적에게 큰 피해':'Heavy damage to enemies that touch you',
+  '대용량 탄창':'Extended mags','특수 무기 탄약 +60%':'Special weapon ammo +60%','시체 폭발':'Corpse explosion','처치한 적이 터지며 연쇄 폭발':'Killed enemies explode in chains',
+  // shop
+  '보급 상점':'Supply shop','한 번 사면 모든 판에 계속 적용돼요':'Bought once, applies to every run','최대':'MAX',
+  '강화 장갑':'Plated armor','시작 체력 +1':'Starting HP +1','무기 개조':'Weapon mods','모든 피해 +10%':'All damage +10%','경량 전투화':'Light combat boots','이동 속도 +5%':'Move speed +5%',
+  '전술 교육':'Tactical training','경험치 +10%':'XP +10%','수집 장치':'Collector','흡수 범위 +20%':'Pickup range +20%','보급 요청':'Supply request','다시 뽑기 +1회':'Reroll +1',
+  '궁극기 연구':'Ultimate research','궁극기 충전 +15%':'Ultimate charge +15%',
+  // how to play
+  '이동과 사격':'Move & shoot','폰은 아래 왼쪽 스틱으로 이동, 오른쪽 스틱을 미는 동안 그 방향으로 자동 발사. PC는':'On phones, move with the left stick and push the right stick to fire that way. On PC,',
+  '이동, 마우스 조준, 누르고 있으면 발사.':'to move, aim with the mouse, hold to fire.','대시와 궁극기':'Dash & ultimate',
+  '대시는 잠깐 무적. 궁극기는 적을 잡을수록 충전돼요. PC는':'Dashing makes you briefly invincible. The ultimate charges as you kill. On PC,',
+  '대시,':'dash,','궁극기.':'ultimate.','레벨업':'Level up','파란 경험치를 모으면 능력 31종 중 하나를 골라요. 마음에 안 들면 다시 뽑기.':'Collect blue XP to pick one of 31 powers. Don\'t like them? Reroll.',
+  '엘리트와 보물상자':'Elites & chests','금색 왕관 적을 잡으면 보물상자. 열면 능력이 1~3개 공짜.':'Gold-crowned enemies drop chests with 1-3 free powers.',
+  '2분 30초 버티면 보스 등장. 잡으면 다음 지역으로. 지역마다 적과 보스가 달라요.':'Survive 2:30 and the boss appears. Beat it to move on. Every region has its own enemies and boss.',
+  '골드와 상점':'Gold & shop','금화와 판 점수로 골드를 모아 영구 강화와 새 대원을 사요.':'Earn gold from coins and score to buy permanent upgrades and new operators.',
+  // profiles / save
+  '플레이어':'Players','플레이어마다 골드, 강화, 대원, 기록, 이어하기가 따로 저장돼요':'Each player keeps their own gold, upgrades, operators, records and saved run',
+  '+ 새 플레이어':'+ New player','SAVE CODE · 다른 기기로 옮기기':'SAVE CODE · Move to another device','다른 기기로 옮기기':'Move to another device',
+  '아래 코드를 복사해서 다른 기기의 같은 화면에 붙여넣으면 지금 플레이어의 저장이 그대로 옮겨져요.':'Copy this code and paste it on the same screen on another device to move this player\'s save.',
+  '코드 복사':'Copy code','코드 불러오기':'Load code','저장 코드':'Save code','사용 중':'Active','선택':'Select','이름':'Rename','삭제':'Delete','정말 삭제':'Really delete',
+  '이어하기 있음':'Saved run','삭제했어요':'Deleted','새 플레이어를 만들었어요':'New player created','불러왔어요!':'Loaded!','플레이어 이름':'Player name',
+  '코드가 올바르지 않아요. 전체를 빠짐없이 붙여넣었는지 확인해주세요':'That code isn\'t valid. Make sure you pasted all of it',
+  '코드를 만들었어요. 길게 눌러 복사하세요':'Code ready. Long-press to copy it','코드를 복사했어요. 다른 기기에서 붙여넣으세요':'Code copied. Paste it on your other device',
+  'SAVED RUN · 이어하기':'SAVED RUN · Continue',
+  // pause / results
+  '계속하기':'Resume','메뉴로 나가기':'Quit to menu','정말 나가기':'Really quit','나가도 이번 지역 시작 지점부터 이어할 수 있어요':'You can continue from the start of this region',
+  '지역 정복':'Region cleared','다음 지역으로':'Next region','방어선 붕괴':'The line has fallen','최고 기록 갱신':'New record','다시 출격':'Deploy again','메뉴':'Menu','토스 랭킹':'Toss ranking',
+  '처치':'Kills','클리어 보너스':'Clear bonus','골드':'Gold','체력 회복':'HP restored','도달 지역':'Reached','도달 웨이브':'Reached','레벨':'Level','대원':'Operator','최고 기록':'Best','보스':'Boss',
+  '첫 판 수고했어요!':'Nice first run!','방명록에 짧은 후기를 남겨주면 큰 힘이 돼요':'A short review in the guestbook would mean a lot','다음에':'Later','후기 쓰기':'Write review',
+  // guestbook
+  '후기 남기기':'Leave a review','남기기':'Post','별점':'Rating','닉네임':'Nickname','닉네임 (12자까지)':'Nickname (up to 12)','후기':'Review',
+  '게임 어땠나요? 재밌었던 점, 아쉬운 점 모두 좋아요':'How was it? Tell us what you liked and what could be better','불러오는 중…':'Loading…',
+  '아직 후기가 없어요. 첫 번째 후기를 남겨주세요!':'No reviews yet. Be the first!','방명록을 불러오지 못했어요. 잠시 후 다시 열어주세요.':'Couldn\'t load the guestbook. Try again in a moment.',
+  '보내는 중…':'Sending…','후기 고마워요!':'Thanks for the review!','후기를 두 글자 이상 써주세요':'Please write at least 2 characters','보내지 못했어요':'Couldn\'t send',
+  '보내지 못했어요. 인터넷 연결을 확인해주세요':'Couldn\'t send. Check your connection','잠시 후에 다시 써주세요':'Please wait a moment before posting again','방금':'just now',
+  // chrome tip
+  '처음 오셨나요?':'First time here?','크롬으로 열어주세요':'Open it in Chrome','이 게임은 크롬 브라우저에서 화면이 가장 크고 선명하게 보여요.':'The game looks biggest and sharpest in Chrome.',
+  '크롬으로 열기':'Open in Chrome','주소 복사':'Copy link','확인':'OK','주소를 복사했어요. 크롬 주소창에 붙여넣으세요':'Link copied. Paste it into Chrome\'s address bar',
+  '지금은 앱 안의 브라우저라 화면이 작게 보일 수 있어요. 크롬 브라우저로 열어야 화면이 가장 크고 선명하게 보여요.':'This in-app browser may show the game small. Open it in Chrome for the biggest, sharpest screen.',
+  '크롬 브라우저로 열어야 화면이 가장 크고 선명하게 보여요.':'Open it in Chrome for the biggest, sharpest screen.',
+  '이 게임은 크롬에서 화면이 가장 크게 보여요. 지금처럼 크롬으로 접속하면 돼요!':'The game looks biggest in Chrome. You\'re all set!',
+  // regions, bosses, enemies
+  '황혼 사막':'Dusk Desert','얼음 협곡':'Ice Canyon','용암 지대':'Lava Fields','폐허 기지':'Ruined Base','공허의 틈':'Void Rift',
+  '파괴자':'Destroyer','빙결 거인':'Frost Giant','화염 군주':'Flame Lord','방위 시스템':'Defense System','공허의 눈':'Void Eye',
+  '돌격병':'Assault','점선 방향으로 직선 돌진해요. 옆으로 피하세요':'Charges straight along the dotted line. Sidestep it','벌떼':'Swarm','다섯 마리씩 몰려와요':'Comes in groups of five',
+  '사수':'Gunner','멀리서 탄을 쏴요':'Shoots from a distance','폭탄병':'Bomber','가까이 오면 자폭해요':'Explodes when close','탱크':'Tank','단단하지만 느려요':'Tough but slow',
+  '방패병':'Shield','정면 탄을 막아요. 옆이나 뒤를 노리세요':'Blocks shots from the front. Hit its side or back','치유사':'Healer','주변 적을 회복시켜요. 먼저 잡으세요':'Heals nearby enemies. Take it out first',
+  '유령':'Ghost','투명할 땐 무적이에요':'Invincible while transparent','분열체':'Splitter','죽으면 셋으로 갈라져요':'Splits into three when killed',
+  '박격포병':'Mortar','빨간 원에 포탄이 떨어져요':'Shells land in the red circles','빨간 레이저가 굵어지면 바로 피하세요':'Dodge when the red laser thickens',
+  '순간이동병':'Blinker','점선 원으로 순간이동해요':'Teleports to the dotted circle','둥지':'Nest','계속 새끼를 낳아요. 빨리 부수세요':'Keeps spawning young. Destroy it fast',
+  '엘리트':'Elite','금색 왕관 적. 잡으면 보물상자를 떨어뜨려요':'Gold-crowned enemy. Drops a treasure chest',
+  // banners
+  '보물상자!':'Treasure!','광란!':'Rampage!','학살!':'Massacre!','전설!':'Legendary!','신화!':'Mythic!','보스 격파!':'Boss down!','돌진!':'Charge!','불사조 부활!':'Phoenix revive!',
+  '적이 더 강하고, 많고, 빨리 공격해요':'Enemies are tougher, more numerous and faster','가운데 위 버튼':'Top middle button','E 키':'Press E','???':'???',
+};
+const ENRX = [
+  [/^체력 \+(\d+)$/, 'HP +$1'], [/^흡혈 \+(\d+)$/, 'Vampire +$1'], [/^위협 (\d+)단계$/, 'Threat Lv $1'], [/^위협 (\d+)$/, 'Threat $1'],
+  [/^STAGE (\d+) 처음부터$/, 'From the start of STAGE $1'], [/^WAVE (\d+) 처음부터$/, 'From the start of WAVE $1'],
+  [/^(\d+) 연속$/, '$1 combo'], [/^점수 x(\d+)$/, 'Score x$1'], [/^점수 ([\d,]+)$/, 'Score $1'], [/^궁극기 (\d+)%$/, 'ULT $1%'],
+  [/^보스까지 (\d+:\d+)$/, 'Boss in $1'], [/^무한 WAVE (\d+)$/, 'Endless WAVE $1'], [/^최고 ([\d,]+)$/, 'Best $1'], [/^(\d+)발$/, '$1 rds'],
+  [/^\+([\d,]+) 골드$/, '+$1 gold'], [/^보유 ([\d,]+)$/, 'Total $1'], [/^([\d,]+) 골드로 영입$/, 'Recruit for $1 gold'], [/^골드가 ([\d,]+) 부족해요$/, 'Need $1 more gold'],
+  [/^Lv (\d+) 달성$/, 'Lv $1 reached'], [/^다시 뽑기$/, 'Reroll'], [/^(\d+)회 남음$/, '$1 left'], [/^골드 ([\d,]+)$/, 'Gold $1'], [/^대원 (\d+)\/5$/, 'Operators $1/5'],
+  [/^최고 STAGE (\d+)$/, 'Best STAGE $1'], [/^(\d+)판$/, '$1 runs'], [/^(\d+)판 플레이$/, '$1 runs played'], [/^(\d+)분 전$/, '$1m ago'], [/^(\d+)시간 전$/, '$1h ago'], [/^(\d+)일 전$/, '$1d ago'],
+  [/^플레이어 (\d+)$/, 'Player $1'], [/^(.+) (II|III|IV|V)$/, (a, b) => TR(a) + ' ' + b],
+  [/^궁극기 준비! (.+)$/, s => 'ULT READY! ' + TR(s)], [/^(.+) 출격 준비 완료$/, s => TR(s) + ' is ready to deploy'], [/^(.+) 영입 완료!$/, s => TR(s) + ' recruited!'],
+  [/^(.+) 강화 완료!$/, s => TR(s) + ' upgraded!'], [/^(.+) 으로 바꿨어요$/, s => 'Switched to ' + s],
+  [/^(.+) 의 저장이 모두 지워져요\. 한 번 더 누르면 삭제해요$/, s => 'All of ' + s + '\'s save will be erased. Tap again to delete'],
+  [/^"(.*)" 저장\(골드 ([\d,]+)\)을 지금 플레이어에 덮어써요\. 한 번 더 누르면 불러와요$/, (n, g) => 'This will overwrite the current player with "' + n + '" (gold ' + g + '). Tap again to load'],
+];
+function TR(s){
+  if (LANG!=='en' || s==null) return s;
+  s = String(s);
+  if (!/[가-힣]/.test(s)) return s;
+  if (EN[s] != null) return EN[s];
+  for (const [rx, to] of ENRX){ const m = rx.exec(s); if (m) return typeof to==='function' ? to(...m.slice(1)) : s.replace(rx, to); }
+  if (s.includes(' · ')) return s.split(' · ').map(TR).join(' · ');
+  const m = /^(.+?) (\d+)$/.exec(s); if (m && EN[m[1]] != null) return EN[m[1]]+' '+m[2];
+  return s;
+}
+function trText(node){
+  const v = node.nodeValue; if (!v || !/[가-힣]/.test(v)) return;
+  const core = v.trim(), t = TR(core); if (t !== core) node.nodeValue = v.replace(core, t);
+}
+function trTree(root){
+  if (LANG!=='en' || !root) return;
+  if (root.nodeType===3){ if (!(root.parentElement && root.parentElement.closest('[data-notr],script,style,textarea'))) trText(root); return; }
+  if (root.nodeType!==1 || root.closest('[data-notr],script,style')) return;
+  for (const a of ['placeholder','aria-label']) if (root.hasAttribute && root.hasAttribute(a)) root.setAttribute(a, TR(root.getAttribute(a)));
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT, { acceptNode: n => (n.nodeType===1 && n.matches('[data-notr],script,style,textarea')) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  let n; while ((n = w.nextNode())){
+    if (n.nodeType===3) trText(n);
+    else for (const a of ['placeholder','aria-label']) if (n.hasAttribute(a)) n.setAttribute(a, TR(n.getAttribute(a)));
+  }
+}
+if (LANG==='en'){
+  document.documentElement.lang = 'en'; document.body.classList.add('lang-en'); document.title = 'DUSK LINE';
+  trTree(document.body);
+  new MutationObserver(ms => { for (const m of ms){
+    if (m.type==='characterData') trTree(m.target);
+    else for (const n of m.addedNodes) trTree(n);
+  } }).observe(document.body, { subtree:true, childList:true, characterData:true });
+}
+
 const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
 const $ = id => document.getElementById(id);
 const COL = { tracer:'#ffb347', foe:'#ff5d5d', ally:'#7fe0c4', gem:'#6fd3ff', ink:'#f5ece0', runner:'#ffd75e', tank:'#b8334a',
@@ -1444,7 +1600,7 @@ async function gbLoad(){
     if (!items.length){ list.innerHTML='<div class="sub">아직 후기가 없어요. 첫 번째 후기를 남겨주세요!</div>'; return; }
     for (const it of items){
       const el=document.createElement('div'); el.className='gbitem panel';
-      el.innerHTML='<div class="gbhead"><b></b><span class="st"></span><time></time></div><div class="gbbody"></div><div class="gbmeta"></div>';
+      el.innerHTML='<div class="gbhead"><b data-notr></b><span class="st"></span><time></time></div><div class="gbbody" data-notr></div><div class="gbmeta" data-notr></div>';
       el.querySelector('b').textContent=it.name; el.querySelector('.st').textContent='★'.repeat(it.rating)+'☆'.repeat(5-it.rating);
       el.querySelector('time').textContent=ago(it.t); el.querySelector('.gbbody').textContent=it.msg;
       el.querySelector('.gbmeta').textContent = it.meta || '';
@@ -1502,6 +1658,8 @@ function initTip(){
   $('tip').hidden=false;
 }
 initTip();
+$('langBtn').textContent = LANG==='ko' ? 'English' : '한국어';
+$('langBtn').addEventListener('click', () => { try { localStorage.setItem('dusk-line-lang', LANG==='ko' ? 'en' : 'ko'); } catch(e){} location.reload(); });
 function openRank(){ if (window.DuskToss && window.DuskToss.available) window.DuskToss.open(); }
 $('rankBtn').addEventListener('click', openRank);
 $('menuRankBtn').addEventListener('click', openRank);
@@ -1865,7 +2023,7 @@ function ol(w=2.5){ ctx.lineWidth=w; ctx.strokeStyle=OUT; ctx.lineJoin='round'; 
 function hi(r){ ctx.fillStyle='rgba(255,255,255,.22)'; ctx.beginPath(); ctx.ellipse(-r*.3,-r*.42,r*.38,r*.2,-.5,0,6.283); ctx.fill(); }
 function shadow(x,y,r){ ctx.fillStyle='rgba(8,4,12,.38)'; ctx.beginPath(); ctx.ellipse(x+r*.12,y+r*.8,r*.95,r*.4,0,0,6.283); ctx.fill(); }
 function hash(a,b){ const h=Math.sin(a*127.1+b*311.7)*43758.5453; return h-Math.floor(h); }
-function txt(s,x,y,size,color,font){ ctx.font=size+'px '+(font||'"Black Han Sans", sans-serif'); ctx.lineJoin='round'; ctx.lineWidth=Math.max(3,size*.2); ctx.strokeStyle=OUT; ctx.strokeText(s,x,y); ctx.fillStyle=color; ctx.fillText(s,x,y); }
+function txt(s,x,y,size,color,font){ s = TR(s); ctx.font=size+'px '+(font||'"Black Han Sans", sans-serif'); ctx.lineJoin='round'; ctx.lineWidth=Math.max(3,size*.2); ctx.strokeStyle=OUT; ctx.strokeText(s,x,y); ctx.fillStyle=color; ctx.fillText(s,x,y); }
 function addDecal(x,y,r,c,a=.35){
   const b=[[0,0,r*.6]], n=4+Math.floor(Math.random()*4);
   for (let i=0;i<n;i++){ const an=rand(0,6.283), dd=rand(0,r*.9); b.push([Math.cos(an)*dd, Math.sin(an)*dd, rand(r*.2,r*.5)]); }
@@ -2297,7 +2455,7 @@ function render(){
     ctx.globalAlpha=a; ctx.fillStyle='rgba(20,15,24,.88)'; roundRect(12,y,W-24,48,10); ctx.fill();
     ctx.strokeStyle=col; ctx.lineWidth=2; ctx.stroke();
     ctx.textAlign='center'; txt('NEW · '+intro.txt[0], W/2, y+21, 16, col);
-    ctx.fillStyle=COL.ink; ctx.font='12px "Gowun Dodum", sans-serif'; ctx.fillText(intro.txt[1], W/2, y+39);
+    ctx.fillStyle=COL.ink; ctx.font='12px "Gowun Dodum", sans-serif'; ctx.fillText(TR(intro.txt[1]), W/2, y+39);
     ctx.globalAlpha=1;
   }
   if (banner && state!=='clear' && state!=='over'){
