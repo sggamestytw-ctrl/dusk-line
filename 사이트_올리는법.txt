@@ -1,0 +1,11 @@
+황혼 방어선 사이트 올리는 법 (Netlify Drop, 무료, 약 2분)
+
+1. 이 폴더(dusk-line-site)의 압축을 풀어 둬요.
+2. 브라우저에서 https://app.netlify.com/drop 에 들어가요.
+3. 무료 계정으로 가입/로그인해요 (구글이나 GitHub 계정으로 바로 가입 가능).
+   로그인 없이 올리면 1시간 뒤 사이트가 지워져요.
+4. dusk-line-site 폴더를 통째로 화면의 점선 상자에 끌어다 놓아요.
+5. 몇 초 뒤 "https://랜덤이름.netlify.app" 주소가 생겨요. 이 링크를 누르면 바로 게임이 열려요.
+6. 주소 바꾸기: Site configuration > Change site name 에서
+   dusk-line 처럼 원하는 이름을 넣으면 https://dusk-line.netlify.app 이 돼요 (이미 쓰는 이름은 불가).
+7. 게임을 고친 뒤 다시 올리기: 사이트 화면의 Deploys 탭에 새 폴더를 다시 끌어다 놓으면 같은 주소로 바뀌어요.

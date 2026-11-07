@@ -1,0 +1,14 @@
+# Netlify 설정: 빌드 없이 이 폴더를 그대로 공개해요.
+[build]
+  publish = "."
+  command = ""
+
+# 업데이트가 바로 보이도록 게임 본문과 오프라인 스크립트는 캐시하지 않아요.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"

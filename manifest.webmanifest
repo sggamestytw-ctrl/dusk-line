@@ -1,0 +1,16 @@
+{
+  "name": "황혼 방어선",
+  "short_name": "황혼 방어선",
+  "description": "몰려오는 적을 막아내는 생존 슈팅 게임",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#241d29",
+  "theme_color": "#241d29",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
