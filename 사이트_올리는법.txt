@@ -1,4 +1,4 @@
-황혼 방어선 사이트 올리는 법 (Netlify Drop, 무료, 약 2분)
+황혼의 서막 사이트 올리는 법 (Netlify Drop, 무료, 약 2분)
 
 1. 이 폴더(dusk-line-site)의 압축을 풀어 둬요.
 2. 브라우저에서 https://app.netlify.com/drop 에 들어가요.
