@@ -3,6 +3,11 @@
   publish = "."
   command = ""
 
+# 방명록 서버 함수
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # 업데이트가 바로 보이도록 게임 본문과 오프라인 스크립트는 캐시하지 않아요.
 [[headers]]
   for = "/index.html"
