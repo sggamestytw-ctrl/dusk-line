@@ -314,6 +314,8 @@ body.lang-en .perk.rare::after{content:"RARE"}
 .consent b{display:block;color:var(--ink);font-size:12.5px;margin-bottom:2px}
 .agree{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink);cursor:pointer}
 .agree input{width:18px;height:18px;accent-color:var(--tracer)}
+.gbhead .rep{font-family:var(--body);font-size:11px;color:var(--muted);background:none;border:1px solid #4a3d48;border-radius:6px;padding:1px 6px;cursor:pointer}
+.gbhead .rep:disabled{opacity:.5;cursor:default}
 </style>
 
 <div class="hud">
@@ -356,7 +358,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
         <button class="dockbtn" id="gbBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>방명록</button>
         <button class="dockbtn" id="menuRankBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg>랭킹</button>
       </nav>
-      <div class="ver" id="verTxt">v2.3 · 2026.11.07</div>
+      <div class="ver" id="verTxt">v2.4 · 2026.11.07</div>
     </div>
   </div>
 
@@ -580,7 +582,9 @@ const EN = {
   '게임 어땠나요? 재밌었던 점, 아쉬운 점 모두 좋아요':'How was it? Tell us what you liked and what could be better','불러오는 중…':'Loading…',
   '아직 후기가 없어요. 첫 번째 후기를 남겨주세요!':'No reviews yet. Be the first!','방명록을 불러오지 못했어요. 잠시 후 다시 열어주세요.':'Couldn\'t load the guestbook. Try again in a moment.',
   '보내는 중…':'Sending…','후기 고마워요!':'Thanks for the review!','후기를 두 글자 이상 써주세요':'Please write at least 2 characters','보내지 못했어요':'Couldn\'t send',
-  '보내지 못했어요. 인터넷 연결을 확인해주세요':'Couldn\'t send. Check your connection','잠시 후에 다시 써주세요':'Please wait a moment before posting again','방금':'just now',
+  '보내지 못했어요. 인터넷 연결을 확인해주세요':'Couldn\'t send. Check your connection','잠시 후에 다시 써주세요':'Please wait a moment before posting again','신고':'Report','신고됨':'Reported','신고했어요. 여러 명이 신고하면 자동으로 숨겨져요':'Reported. Posts reported by several people are hidden automatically',
+  '부적절한 표현이 있어서 올릴 수 없어요':'This contains inappropriate language and can\'t be posted','링크나 연락처는 쓸 수 없어요':'Links and contact details aren\'t allowed',
+  '같은 글자를 너무 많이 반복했어요':'Too many repeated characters','오늘은 후기를 더 쓸 수 없어요. 내일 다시 써주세요':'You\'ve reached today\'s limit. Try again tomorrow','같은 내용은 다시 올릴 수 없어요':'You can\'t post the same thing twice','방금':'just now',
   // chrome tip
   '처음 오셨나요?':'First time here?','크롬으로 열어주세요':'Open it in Chrome','이 게임은 크롬 브라우저에서 화면이 가장 크고 선명하게 보여요.':'The game looks biggest and sharpest in Chrome.',
   '크롬으로 열기':'Open in Chrome','주소 복사':'Copy link','확인':'OK','주소를 복사했어요. 크롬 주소창에 붙여넣으세요':'Link copied. Paste it into Chrome\'s address bar',
@@ -1642,7 +1646,15 @@ async function gbLoad(){
     if (!items.length){ list.innerHTML='<div class="sub">아직 후기가 없어요. 첫 번째 후기를 남겨주세요!</div>'; return; }
     for (const it of items){
       const el=document.createElement('div'); el.className='gbitem panel';
-      el.innerHTML='<div class="gbhead"><b data-notr></b><span class="st"></span><time></time></div><div class="gbbody" data-notr></div><div class="gbmeta" data-notr></div>';
+      el.innerHTML='<div class="gbhead"><b data-notr></b><span class="st"></span><time></time><button class="rep" type="button">신고</button></div><div class="gbbody" data-notr></div><div class="gbmeta" data-notr></div>';
+      const rb = el.querySelector('.rep'), reported = (LS.get('dusk-line-reported')||'').split(',');
+      if (reported.includes(it.id)){ rb.textContent='신고됨'; rb.disabled=true; }
+      rb.addEventListener('click', async () => {
+        rb.disabled=true; rb.textContent='신고됨';
+        try { await fetch('/api/guestbook', {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({action:'report', id:it.id})}); } catch(e){}
+        const r2=(LS.get('dusk-line-reported')||'').split(',').filter(Boolean); r2.push(it.id); LS.set('dusk-line-reported', r2.slice(-200).join(','));
+        $('gbOut').textContent='신고했어요. 여러 명이 신고하면 자동으로 숨겨져요';
+      });
       el.querySelector('b').textContent=it.name; el.querySelector('.st').textContent='★'.repeat(it.rating)+'☆'.repeat(5-it.rating);
       el.querySelector('time').textContent=ago(it.t); el.querySelector('.gbbody').textContent=it.msg;
       el.querySelector('.gbmeta').textContent = it.meta || '';
