@@ -359,7 +359,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
         <button class="dockbtn" id="gbBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>방명록</button>
         <button class="dockbtn" id="menuRankBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg>랭킹</button>
       </nav>
-      <div class="ver" id="verTxt">v2.5 · 2026.11.07</div>
+      <div class="ver" id="verTxt">v2.6 · 2026.11.07</div>
     </div>
   </div>
 
@@ -390,7 +390,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="4"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="16" cy="11.5" r="1"/><circle cx="18" cy="14" r="1"/></svg></span><span><b>이동과 사격</b>폰은 아래 왼쪽 스틱으로 이동, 오른쪽 스틱을 미는 동안 그 방향으로 자동 발사. PC는 <span class="kcap">WASD</span> 이동, 마우스 조준, 누르고 있으면 발사.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span><b>대시와 궁극기</b>대시는 잠깐 무적. 궁극기는 적을 잡을수록 충전돼요. PC는 <span class="kcap">Space</span> 대시, <span class="kcap">E</span> 궁극기.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span><span><b>레벨업</b>파란 경험치를 모으면 능력 31종 중 하나를 골라요. 마음에 안 들면 다시 뽑기.</span></div>
-      <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9l3-5h10l3 5-8 11z"/><path d="M4 9h16M9 4l3 5 3-5"/></svg></span><span><b>엘리트와 보물상자</b>금색 왕관 적을 잡으면 보물상자. 열면 능력이 1~3개 공짜.</span></div>
+      <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9l3-5h10l3 5-8 11z"/><path d="M4 9h16M9 4l3 5 3-5"/></svg></span><span><b>엘리트와 보물상자</b>금색 왕관 적을 잡으면 가끔 보물상자. 열면 능력 1개 (가끔 2개) 공짜.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg></span><span><b>스테이지 모드</b>2분 30초 버티면 보스 등장. 잡으면 다음 지역으로. 지역마다 적과 보스가 달라요.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></span><span><b>골드와 상점</b>금화와 판 점수로 골드를 모아 영구 강화와 새 대원을 사요.</span></div>
     </div>
@@ -522,7 +522,7 @@ const EN = {
   '이동':'Move','궁극기':'Ultimate','대시':'Dash','조준 · 발사':'Aim · Fire','보스전':'BOSS FIGHT',
   // pick / build
   'LEVEL UP · 능력 선택':'LEVEL UP · Choose a power','다시 뽑기':'Reroll','공격':'Attack','광역':'Area','생존':'Survival','지원':'Support','회복':'Heal',
-  '응급치료':'First aid','체력 +2, 점수 +500':'HP +2, score +500',
+  '응급치료':'First aid','체력 +1, 점수 +500':'HP +1, score +500',
   // characters
   '대원 선택':'Choose operator','레온':'Leon','미라':'Mira','브루노':'Bruno','지니':'Jini','카이':'Kai',
   '돌격병':'Assault','저격수':'Sniper','화염병':'Pyro','공병':'Engineer','닌자':'Ninja',
@@ -536,19 +536,19 @@ const EN = {
   // guns
   '권총':'Pistol','기관단총':'SMG','산탄총':'Shotgun','레일건':'Railgun','저격총':'Sniper rifle','화염 산탄':'Flame shotgun','수리검':'Shuriken','로켓':'Rocket','탄약 소진':'Out of ammo',
   // perks
-  '철갑탄':'AP rounds','모든 피해 +25%':'All damage +25%','빠른 손':'Quick hands','연사 속도 +15%':'Fire rate +15%','다중 사격':'Multishot','한 번에 탄환 +1발':'+1 bullet per shot',
+  '철갑탄':'AP rounds','모든 피해 +18%':'All damage +18%','빠른 손':'Quick hands','연사 속도 +12%':'Fire rate +12%','다중 사격':'Multishot','탄환 +1발 (탄환당 피해 -12%)':'+1 bullet (-12% damage per bullet)',
   '관통탄':'Piercing','탄환이 적 1명 더 관통':'Bullets pierce 1 more enemy','도탄':'Ricochet','탄환이 벽에 맞으면 튕김 +1':'Bullets bounce off walls +1',
   '폭발탄':'Explosive rounds','명중할 때마다 작은 폭발':'Small blast on every hit','회전 칼날':'Orbit blades','몸 주위를 도는 칼날 +1':'+1 blade circling you',
-  '저격 본능':'Sniper instinct','치명타 확률 +12% (피해 2.5배)':'Crit chance +12% (2.5x damage)','가벼운 군화':'Light boots','이동 속도 +12%':'Move speed +12%',
-  '방탄조끼':'Body armor','최대 체력 +1, 체력 전부 회복':'Max HP +1, full heal','자석':'Magnet','경험치 흡수 범위 2배':'2x XP pickup range',
-  '흡혈':'Vampire','적 20마리 처치마다 체력 +1':'+1 HP every 20 kills','신속 대시':'Swift dash','대시 쿨타임 -35%, 대시 중 충돌 피해':'Dash cooldown -35%, dash deals damage',
+  '저격 본능':'Sniper instinct','치명타 확률 +10% (피해 2배)':'Crit chance +10% (2x damage)','가벼운 군화':'Light boots','이동 속도 +12%':'Move speed +12%',
+  '방탄조끼':'Body armor','최대 체력 +1, 체력 +1':'Max HP +1, +1 HP','자석':'Magnet','경험치 흡수 범위 2배':'2x XP pickup range',
+  '흡혈':'Vampire','적 30마리 처치마다 체력 +1':'+1 HP every 30 kills','신속 대시':'Swift dash','대시 쿨타임 -35%, 대시 중 충돌 피해':'Dash cooldown -35%, dash deals damage',
   '충격파':'Shockwave','맞을 때 주변 적을 날려버림':'Blasts nearby enemies away when hit','연쇄 번개':'Chain lightning','처치 시 근처 적 2명에게 번개':'Kills zap 2 nearby enemies',
   '전투 드론':'Combat drone','주변을 돌며 알아서 쏘는 드론 +1':'+1 drone that orbits and shoots','화염 발자국':'Fire trail','지나간 자리에 불길이 남아 적을 태움':'Leaves fire that burns enemies',
   '유도탄':'Homing','조준 방향 앞쪽의 적을 살짝 따라감':'Bullets gently curve to enemies ahead','파편탄':'Shrapnel','명중하면 탄환이 부채꼴로 갈라짐':'Bullets split into a fan on hit',
-  '냉기탄':'Frost rounds','맞은 적이 느려짐. 2단계부터 얼어붙음':'Slows enemies; freezes from Lv 2','독침':'Venom','맞은 적에게 3초간 독 피해':'Poisons enemies for 3s',
-  '대구경탄':'Big bore','탄환 크기 +50%, 피해 +20%':'Bullet size +50%, damage +20%','블랙홀':'Black hole','조준 방향에 적을 빨아들이는 블랙홀 발사':'Fires a black hole that pulls enemies in',
+  '냉기탄':'Frost rounds','맞은 적이 느려짐. 2단계부터 7번 맞으면 얼어붙음':'Slows enemies; from Lv 2, 7 hits freeze them','독침':'Venom','맞은 적에게 3초간 독 피해':'Poisons enemies for 3s',
+  '대구경탄':'Big bore','탄환 크기 +50%, 피해 +12%':'Bullet size +50%, damage +12%','블랙홀':'Black hole','조준 방향에 적을 빨아들이는 블랙홀 발사':'Fires a black hole that pulls enemies in',
   '유성우':'Meteor shower','주기적으로 적 머리 위에 유성 낙하':'Meteors regularly fall on enemies','후방 사격':'Rear guns','뒤쪽으로도 탄환 발사':'Also fires backwards',
-  '광전사':'Berserker','잃은 체력 1칸당 피해 +20%':'+20% damage per missing HP','행운의 동전':'Lucky coin','선택지 4개, 무기 상자 더 자주':'4 choices, more weapon crates',
+  '광전사':'Berserker','잃은 체력 1칸당 피해 +15%':'+15% damage per missing HP','행운의 동전':'Lucky coin','선택지 4개, 무기 상자 더 자주':'4 choices, more weapon crates',
   '불사조':'Phoenix','한 번 쓰러져도 체력 가득 부활':'Revive once with full HP','가시 갑옷':'Thorn armor','몸에 닿은 적에게 큰 피해':'Heavy damage to enemies that touch you',
   '대용량 탄창':'Extended mags','특수 무기 탄약 +60%':'Special weapon ammo +60%','시체 폭발':'Corpse explosion','처치한 적이 터지며 연쇄 폭발':'Killed enemies explode in chains',
   // shop
@@ -561,7 +561,7 @@ const EN = {
   '이동, 마우스 조준, 누르고 있으면 발사.':'to move, aim with the mouse, hold to fire.','대시와 궁극기':'Dash & ultimate',
   '대시는 잠깐 무적. 궁극기는 적을 잡을수록 충전돼요. PC는':'Dashing makes you briefly invincible. The ultimate charges as you kill. On PC,',
   '대시,':'dash,','궁극기.':'ultimate.','레벨업':'Level up','파란 경험치를 모으면 능력 31종 중 하나를 골라요. 마음에 안 들면 다시 뽑기.':'Collect blue XP to pick one of 31 powers. Don\'t like them? Reroll.',
-  '엘리트와 보물상자':'Elites & chests','금색 왕관 적을 잡으면 보물상자. 열면 능력이 1~3개 공짜.':'Gold-crowned enemies drop chests with 1-3 free powers.',
+  '엘리트와 보물상자':'Elites & chests','금색 왕관 적을 잡으면 가끔 보물상자. 열면 능력 1개 (가끔 2개) 공짜.':'Gold-crowned enemies sometimes drop chests with a free power (sometimes 2).',
   '2분 30초 버티면 보스 등장. 잡으면 다음 지역으로. 지역마다 적과 보스가 달라요.':'Survive 2:30 and the boss appears. Beat it to move on. Every region has its own enemies and boss.',
   '골드와 상점':'Gold & shop','금화와 판 점수로 골드를 모아 영구 강화와 새 대원을 사요.':'Earn gold from coins and score to buy permanent upgrades and new operators.',
   // profiles / save
@@ -601,7 +601,7 @@ const EN = {
   '유령':'Ghost','투명할 땐 무적이에요':'Invincible while transparent','분열체':'Splitter','죽으면 셋으로 갈라져요':'Splits into three when killed',
   '박격포병':'Mortar','빨간 원에 포탄이 떨어져요':'Shells land in the red circles','빨간 레이저가 굵어지면 바로 피하세요':'Dodge when the red laser thickens',
   '순간이동병':'Blinker','점선 원으로 순간이동해요':'Teleports to the dotted circle','둥지':'Nest','계속 새끼를 낳아요. 빨리 부수세요':'Keeps spawning young. Destroy it fast',
-  '엘리트':'Elite','금색 왕관 적. 잡으면 보물상자를 떨어뜨려요':'Gold-crowned enemy. Drops a treasure chest',
+  '엘리트':'Elite','금색 왕관 적. 잡으면 보물상자를 떨어뜨릴 수 있어요':'Gold-crowned enemy. May drop a treasure chest',
   // banners
   '보물상자!':'Treasure!','광란!':'Rampage!','학살!':'Massacre!','전설!':'Legendary!','신화!':'Mythic!','보스 격파!':'Boss down!','돌진!':'Charge!','불사조 부활!':'Phoenix revive!',
   '적이 더 강하고, 많고, 빨리 공격해요':'Enemies are tougher, more numerous and faster','가운데 위 버튼':'Top middle button','E 키':'Press E','???':'???',
@@ -737,7 +737,7 @@ $('mute').addEventListener('click', () => { initAudio(); setMute(!muted); });
 /* ---------- data ---------- */
 const GUNS = {
   pistol:  {name:'권총',     rate:.2,   dmg:2, n:1, spread:.04, speed:760,  life:.9,  ammo:Infinity, pierce:0,  shake:1},
-  smg:     {name:'기관단총', rate:.065, dmg:1, n:1, spread:.14, speed:780,  life:.8,  ammo:180, pierce:0,  shake:1.2},
+  smg:     {name:'기관단총', rate:.08,  dmg:.9, n:1, spread:.19, speed:760,  life:.75, ammo:130, pierce:0,  shake:1.2},
   shotgun: {name:'산탄총',   rate:.5,   dmg:1.4, n:7, spread:.55, speed:640, life:.4, ammo:26,  pierce:0,  shake:5},
   rail:    {name:'레일건',   rate:.55,  dmg:9, n:1, spread:0,   speed:1600, life:.6,  ammo:16,  pierce:99, shake:6},
   snipe:   {name:'저격총',   rate:.42,  dmg:6, n:1, spread:0,   speed:1500, life:.7,  ammo:Infinity, pierce:3, shake:3},
@@ -748,18 +748,18 @@ const GUNS = {
 const CRATE = {smg:'S', shotgun:'T', rail:'R', rocket:'B'};
 
 const PERKS = [
-  {id:'dmg',    name:'철갑탄',      desc:'모든 피해 +25%',                max:6},
-  {id:'rate',   name:'빠른 손',     desc:'연사 속도 +15%',                max:5},
-  {id:'multi',  name:'다중 사격',   desc:'한 번에 탄환 +1발',              max:4, rare:true},
+  {id:'dmg',    name:'철갑탄',      desc:'모든 피해 +18%',                max:5},
+  {id:'rate',   name:'빠른 손',     desc:'연사 속도 +12%',                max:5},
+  {id:'multi',  name:'다중 사격',   desc:'탄환 +1발 (탄환당 피해 -12%)',    max:3, rare:true},
   {id:'pierce', name:'관통탄',      desc:'탄환이 적 1명 더 관통',          max:3},
-  {id:'bounce', name:'도탄',        desc:'탄환이 벽에 맞으면 튕김 +1',     max:3},
+  {id:'bounce', name:'도탄',        desc:'탄환이 벽에 맞으면 튕김 +1',     max:2},
   {id:'boom',   name:'폭발탄',      desc:'명중할 때마다 작은 폭발',        max:3, rare:true},
-  {id:'orbit',  name:'회전 칼날',   desc:'몸 주위를 도는 칼날 +1',         max:5},
-  {id:'crit',   name:'저격 본능',   desc:'치명타 확률 +12% (피해 2.5배)',  max:4},
+  {id:'orbit',  name:'회전 칼날',   desc:'몸 주위를 도는 칼날 +1',         max:4},
+  {id:'crit',   name:'저격 본능',   desc:'치명타 확률 +10% (피해 2배)',    max:4},
   {id:'speed',  name:'가벼운 군화', desc:'이동 속도 +12%',                max:3},
-  {id:'hp',     name:'방탄조끼',    desc:'최대 체력 +1, 체력 전부 회복',   max:4},
+  {id:'hp',     name:'방탄조끼',    desc:'최대 체력 +1, 체력 +1',          max:3},
   {id:'magnet', name:'자석',        desc:'경험치 흡수 범위 2배',           max:2},
-  {id:'vamp',   name:'흡혈',        desc:'적 20마리 처치마다 체력 +1',     max:1, rare:true},
+  {id:'vamp',   name:'흡혈',        desc:'적 30마리 처치마다 체력 +1',     max:1, rare:true},
   {id:'dash',   name:'신속 대시',   desc:'대시 쿨타임 -35%, 대시 중 충돌 피해', max:2},
   {id:'nova',   name:'충격파',      desc:'맞을 때 주변 적을 날려버림',     max:1, rare:true},
   {id:'chain',  name:'연쇄 번개',   desc:'처치 시 근처 적 2명에게 번개',   max:3, rare:true},
@@ -767,13 +767,13 @@ const PERKS = [
   {id:'fire',   name:'화염 발자국', desc:'지나간 자리에 불길이 남아 적을 태움', max:3},
   {id:'homing', name:'유도탄',      desc:'조준 방향 앞쪽의 적을 살짝 따라감',       max:2, rare:true},
   {id:'splitshot', name:'파편탄',   desc:'명중하면 탄환이 부채꼴로 갈라짐', max:2},
-  {id:'frost',  name:'냉기탄',      desc:'맞은 적이 느려짐. 2단계부터 얼어붙음', max:2},
+  {id:'frost',  name:'냉기탄',      desc:'맞은 적이 느려짐. 2단계부터 7번 맞으면 얼어붙음', max:2},
   {id:'poison', name:'독침',        desc:'맞은 적에게 3초간 독 피해',       max:3},
-  {id:'giant',  name:'대구경탄',    desc:'탄환 크기 +50%, 피해 +20%',      max:2},
+  {id:'giant',  name:'대구경탄',    desc:'탄환 크기 +50%, 피해 +12%',      max:2},
   {id:'hole',   name:'블랙홀',      desc:'조준 방향에 적을 빨아들이는 블랙홀 발사', max:2, rare:true},
   {id:'meteor', name:'유성우',      desc:'주기적으로 적 머리 위에 유성 낙하', max:3, rare:true},
   {id:'back',   name:'후방 사격',   desc:'뒤쪽으로도 탄환 발사',            max:2},
-  {id:'berserk',name:'광전사',      desc:'잃은 체력 1칸당 피해 +20%',       max:1},
+  {id:'berserk',name:'광전사',      desc:'잃은 체력 1칸당 피해 +15%',       max:1},
   {id:'luck',   name:'행운의 동전', desc:'선택지 4개, 무기 상자 더 자주',   max:1},
   {id:'revive', name:'불사조',      desc:'한 번 쓰러져도 체력 가득 부활',   max:1, rare:true},
   {id:'thorns', name:'가시 갑옷',   desc:'몸에 닿은 적에게 큰 피해',        max:2},
@@ -944,7 +944,7 @@ function stageClear(){
 function nextStage(){
   if (state!=='clear') return;
   stage++; foes=[]; eshots=[]; lobs=[]; holes=[]; meteors=[]; corpseQ=[]; flames=[]; items=[]; barrels=[]; decals=[]; boss=null;
-  P.hp=Math.min(P.max,P.hp+2); P.inv=1.5;
+  P.hp=Math.min(P.max,P.hp+1); P.inv=1.5;
   $('clear').hidden=true; document.body.classList.add('playing'); state='play';
   beginStage();
 }
@@ -1045,14 +1045,14 @@ function spawnBoss(){
 function dropCrate(x,y,kind){ items.push({kind, x:clamp(x,VX+20,VX+W-20), y:clamp(y,VY+20,VY+H-20), life:15, t:0}); }
 function dropCoins(x,y,n,v){ for (let i=0;i<n;i++) gems.push({x:x+rand(-12,12), y:y+rand(-12,12), v, coin:true, vx:rand(-90,90), vy:rand(-90,90), t:rand(0,3)}); }
 function makeElite(f){ f.elite=true; f.hp*=4; f.max*=4; f.r*=1.3; f.pts*=5; f.xpv*=4; f.sp*=1.05;
-  if (!seen.has('elite')){ seen.add('elite'); intro={type:'runner', txt:['엘리트','금색 왕관 적. 잡으면 보물상자를 떨어뜨려요'], life:3.5}; } }
+  if (!seen.has('elite')){ seen.add('elite'); intro={type:'runner', txt:['엘리트','금색 왕관 적. 잡으면 보물상자를 떨어뜨릴 수 있어요'], life:3.5}; } }
 function openChest(x,y){
-  const r=Math.random(), n = r<.12?3 : r<.45?2 : 1, got=[];
+  const r=Math.random(), n = r<.1?2 : 1, got=[];
   for (let i=0;i<n;i++){
     const avail = PERKS.filter(p => S[p.id] < p.max && p.id!=='revive'); if (!avail.length) break;
-    const p = pickOne(avail); S[p.id]++; if (p.id==='hp'){ P.max++; P.hp=P.max; } got.push(p.name);
+    const p = pickOne(avail); S[p.id]++; if (p.id==='hp'){ P.max++; P.hp=Math.min(P.max,P.hp+1); } got.push(p.name);
   }
-  if (!got.length){ P.hp=Math.min(P.max,P.hp+2); got.push('체력 +2'); }
+  if (!got.length){ P.hp=Math.min(P.max,P.hp+1); got.push('체력 +1'); }
   say('보물상자!', '#ffd75e', 40, 2.2, got.join(' · ')); flash=.5; SND.lvl();
   burst(x,y,'#ffd75e',30,260,.7,4); dropCoins(x,y,6,2);
 }
@@ -1086,7 +1086,7 @@ function threat(){
     elite: Math.min(.25, .025*m),
     cap: Math.min(140, Math.floor(12*m)) };
 }
-function dmgMult(){ return (1 + U('dmg')*.1) * (1 + S.dmg*.25) * (1 + S.giant*.2) * (1 + S.berserk*.2*Math.max(0,P.max-P.hp)); }
+function dmgMult(){ return (1 + U('dmg')*.1) * (1 + S.dmg*.18) * (1 + S.giant*.12) * (1 + S.berserk*.15*Math.max(0,P.max-P.hp)); }
 function nearestFoe(x, y, maxD){
   let best=null, bd=maxD;
   for (const f of foes){ if (f.dead || f.phased || !onScreen(f.x,f.y,10)) continue; const d=Math.hypot(f.x-x,f.y-y); if (d<bd){ bd=d; best=f; } }
@@ -1102,12 +1102,12 @@ function homingTarget(s){
 }
 function dronePos(i){ const a=t*1.6+i*6.283/Math.max(1,droneCount()); return {x:P.x+Math.cos(a)*36, y:P.y+Math.sin(a)*36}; }
 function onHit(e, s){
-  if (S.frost){ e.slow=1.6; if (S.frost>=2 && e.type!=='boss'){ e.fst=(e.fst||0)+1; if (e.fst>=5){ e.fst=0; e.frozen=1.3; burst(e.x,e.y,'#bfe8ff',8,120,.4); } } }
-  if (S.poison){ e.poison=3; e.pdps=1.2*S.poison*dmgMult(); }
+  if (S.frost){ e.slow=1.6; if (S.frost>=2 && e.type!=='boss'){ e.fst=(e.fst||0)+1; if (e.fst>=7){ e.fst=0; e.frozen=1.3; burst(e.x,e.y,'#bfe8ff',8,120,.4); } } }
+  if (S.poison){ e.poison=3; e.pdps=.9*S.poison*dmgMult(); }
   if (S.splitshot && !s.child){
     const n=S.splitshot+1, a0=Math.atan2(s.vy,s.vx);
     for (let i=0;i<n;i++){ const a=a0+(i/(n-1)-.5)*1.4;
-      shots.push({x:s.x,y:s.y,vx:Math.cos(a)*620,vy:Math.sin(a)*620,life:.3,dmg:s.dmg*.5,pierce:0,bounce:0,hit:new Set([e]),kind:'frag',sz:.7,child:true}); }
+      shots.push({x:s.x,y:s.y,vx:Math.cos(a)*620,vy:Math.sin(a)*620,life:.3,dmg:s.dmg*.35,pierce:0,bounce:0,hit:new Set([e]),kind:'frag',sz:.7,child:true}); }
   }
 }
 function perkTick(dt){
@@ -1118,8 +1118,8 @@ function perkTick(dt){
       if (droneT[i]<=0){
         const q=dronePos(i), tg=nearestFoe(q.x,q.y,330);
         if (tg){ const a=Math.atan2(tg.y-q.y,tg.x-q.x);
-          shots.push({x:q.x,y:q.y,vx:Math.cos(a)*740,vy:Math.sin(a)*740,life:.7,dmg:1.6*dmgMult(),pierce:0,bounce:0,hit:new Set(),kind:'drone',sz:.8,child:true});
-          droneT[i]=.5; tone(950,.03,'square',.012,.7); }
+          shots.push({x:q.x,y:q.y,vx:Math.cos(a)*740,vy:Math.sin(a)*740,life:.7,dmg:1.3*dmgMult(),pierce:0,bounce:0,hit:new Set(),kind:'drone',sz:.8,child:true});
+          droneT[i]=.7; tone(950,.03,'square',.012,.7); }
         else droneT[i]=.2;
       }
     }
@@ -1130,14 +1130,14 @@ function perkTick(dt){
   }
   if (S.hole){
     P.holeT=(P.holeT===undefined?2:P.holeT)-dt;
-    if (P.holeT<=0 && foes.length){ P.holeT=9-S.hole*2.5;
+    if (P.holeT<=0 && foes.length){ P.holeT=11-S.hole*2.5;
       holes.push({x:P.x+Math.cos(P.ang)*170,y:P.y+Math.sin(P.ang)*170,life:2.8,max:2.8,tick:0}); tone(70,.9,'sine',.09,.4); noise(.6,.08,500); }
   }
   if (S.meteor){
     P.metT=(P.metT===undefined?2:P.metT)-dt;
-    if (P.metT<=0){ P.metT=5.2-S.meteor;
+    if (P.metT<=0){ P.metT=6.5-S.meteor;
       const vis=foes.filter(f=>!f.dead && onScreen(f.x,f.y,-10));
-      for (let i=0;i<S.meteor+1 && vis.length;i++){ const f=pickOne(vis); meteors.push({tx:f.x+rand(-12,12),ty:f.y+rand(-12,12),k:-i*.18,T:.7}); } }
+      for (let i=0;i<S.meteor && vis.length;i++){ const f=pickOne(vis); meteors.push({tx:f.x+rand(-12,12),ty:f.y+rand(-12,12),k:-i*.18,T:.7}); } }
   }
 }
 function fire(){
@@ -1147,7 +1147,7 @@ function fire(){
   for (let i=0;i<n;i++){
     const a = P.ang + (n>1 ? (i/(n-1)-.5)*spread*(g.n>1?1:1.6) + rand(-.03,.03) : rand(-g.spread,g.spread));
     const sp = g.speed*(g.n>1?rand(.85,1.1):1);
-    shots.push({x:bx,y:by,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:g.life,dmg:g.dmg*dmgMult(),pierce:g.pierce+S.pierce,bounce:S.bounce,hit:new Set(),kind:P.gun,sz:1+S.giant*.5});
+    shots.push({x:bx,y:by,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:g.life,dmg:g.dmg*dmgMult()*(1-.12*S.multi),pierce:g.pierce+S.pierce,bounce:S.bounce,hit:new Set(),kind:P.gun,sz:1+S.giant*.5});
   }
   for (let i=0;i<S.back;i++){
     const a = P.ang+Math.PI+(S.back>1?(i-.5)*.5:0);
@@ -1164,7 +1164,7 @@ function fire(){
 function hurtFoe(e, dmg, vx, vy, src){
   if (e.dead || e.phased) return;
   let crit = false;
-  if (src==='shot' && Math.random() < S.crit*.12){ dmg *= 2.5; crit = true; }
+  if (src==='shot' && Math.random() < S.crit*.1){ dmg *= 2; crit = true; }
   e.hp -= dmg; e.flash = .07;
   const l = Math.hypot(vx,vy)||1, kb = e.type==='boss'?0 : e.type==='tank'?40:140;
   e.kx += vx/l*kb; e.ky += vy/l*kb;
@@ -1197,15 +1197,15 @@ function kill(e){
     dropCrate(e.x, e.y+30, pickOne(Object.keys(CRATE)));
     rings.push({x:e.x,y:e.y,r:0,max:220,life:.6,L:.6,color:COL.tracer});
   } else dropGems(e.x,e.y,e.xpv);
-  if (S.chain) chainFrom(e, S.chain+1, 4*S.chain*dmgMult());
-  if (S.vamp && kills%20===0 && P.hp<P.max){ P.hp++; pop(P.x,P.y-28,'흡혈 +1',COL.foe,18); }
+  if (S.chain) chainFrom(e, S.chain+1, 3*S.chain*dmgMult());
+  if (S.vamp && kills%30===0 && P.hp<P.max){ P.hp++; pop(P.x,P.y-28,'흡혈 +1',COL.foe,18); }
   const r = Math.random();
   if (e.type!=='boss'){
     if (Math.random() < .07) dropCoins(e.x,e.y,1,1);
-    if (e.elite){ dropCoins(e.x,e.y,8,2); items.push({kind:'chest', x:e.x, y:e.y, life:25, t:0}); }
+    if (e.elite){ dropCoins(e.x,e.y,8,2); if (Math.random() < Math.max(.18, .5-.03*Math.max(0,stage-1)-(mode==='endless'?wave*.01:0))) items.push({kind:'chest', x:e.x, y:e.y, life:25, t:0}); }
     if (r < .03 && P.hp < P.max) items.push({kind:'heart', x:e.x, y:e.y, life:10, t:0});
     else if (r < .06+S.luck*.05) dropCrate(e.x,e.y,pickOne(Object.keys(CRATE)));
-    if (S.corpse) corpseQ.push({x:e.x,y:e.y,r:38+14*S.corpse,dmg:3*S.corpse*dmgMult(),t:.12});
+    if (S.corpse) corpseQ.push({x:e.x,y:e.y,r:32+10*S.corpse,dmg:2*S.corpse*dmgMult(),t:.12});
   }
 }
 function chainFrom(e, n, dmg){
@@ -1227,7 +1227,7 @@ function explode(x,y,r,dmg,hurtsPlayer){
 }
 function hurtPlayer(){
   if (P.inv>0 || P.dashT>0 || state!=='play') return;
-  P.hp--; P.inv = 1.1*D.inv; addShake(14); combo=0; comboT=0; flash=.35; stop=.08;
+  P.hp--; P.inv = .4*D.inv; addShake(14); combo=0; comboT=0; flash=.35; stop=.08;
   burst(P.x,P.y,COL.foe,18,220,.5); SND.hurt();
   if (S.nova){ explode(P.x,P.y,130,10*dmgMult(),false);
     for (const f of foes){ const d=Math.hypot(f.x-P.x,f.y-P.y); if (d<180 && f.type!=='boss'){ f.kx+=(f.x-P.x)/d*600; f.ky+=(f.y-P.y)/d*600; } }
@@ -1279,7 +1279,7 @@ function rollChoices(){
   const bag = []; for (const p of avail) bag.push(...Array(p.rare?2:4).fill(p));
   choices = [];
   while (choices.length<N && bag.length){ const p = pickOne(bag); if (!choices.includes(p)) choices.push(p); for (let i=bag.length-1;i>=0;i--) if (bag[i]===p) bag.splice(i,1); }
-  while (choices.length<N) choices.push({id:'heal', name:'응급치료', desc:'체력 +2, 점수 +500', max:99});
+  while (choices.length<N) choices.push({id:'heal', name:'응급치료', desc:'체력 +1, 점수 +500', max:99});
   $('pickTitle').textContent = 'Lv '+level+' 달성';
   const rb = $('rerollBtn'); rb.textContent = '다시 뽑기 · '+rerolls+'회 남음'; rb.disabled = rerolls<=0;
   const pb = $('pickBuild'); pb.innerHTML='';
@@ -1302,13 +1302,13 @@ function reroll(){
 function choose(i){
   if (state!=='pick' || performance.now()<pickReadyAt) return;
   const p = choices[i]; if (!p) return;
-  if (p.id==='heal'){ P.hp=Math.min(P.max,P.hp+2); score+=500; }
+  if (p.id==='heal'){ P.hp=Math.min(P.max,P.hp+1); score+=500; }
   else { S[p.id]++;
-    if (p.id==='hp'){ P.max++; P.hp=P.max; } }
+    if (p.id==='hp'){ P.max++; P.hp=Math.min(P.max,P.hp+1); } }
   SND.pick(); pendingLv--;
   $('pick').hidden=true;
   pop(P.x,P.y-30,p.name,COL.gem,19);
-  P.inv = Math.max(P.inv,.6);
+  P.inv = Math.max(P.inv,.4);
   if (pendingLv>0) openPick(); else state='play';
 }
 
@@ -1857,7 +1857,7 @@ function update(dt){
       if (e.ptick<=0){ e.ptick=.5; hurtFoe(e,e.pdps,0,0,'poison'); parts.push({x:e.x+rand(-e.r,e.r)*.6,y:e.y,vx:0,vy:-30,life:.5,max:.5,color:'#9be15d',r:2.5}); }
       if (e.dead) continue; }
     if (flames.length){ e.fireCD=(e.fireCD||0)-dt;
-      if (e.fireCD<=0){ for (const f of flames){ if (Math.hypot(f.x-e.x,f.y-e.y)<f.r+e.r){ e.fireCD=.3; hurtFoe(e,1.4*Math.max(1,S.fire)*dmgMult(),0,0,'fire'); break; } }
+      if (e.fireCD<=0){ for (const f of flames){ if (Math.hypot(f.x-e.x,f.y-e.y)<f.r+e.r){ e.fireCD=.3; hurtFoe(e,1.1*Math.max(1,S.fire)*dmgMult(),0,0,'fire'); break; } }
         if (e.dead) continue; } }
     const dx=P.x-e.x, dy=P.y-e.y, d=Math.hypot(dx,dy)||1;
     let vx=dx/d, vy=dy/d, sp=e.sp;
@@ -1926,7 +1926,7 @@ function update(dt){
     e.x += (vx*sp + e.kx)*dt; e.y += (vy*sp + e.ky)*dt;
     e.kx*=.86; e.ky*=.86; e.flash=Math.max(0,e.flash-dt);
     if (S.thorns && play && !e.phased && d < e.r+P.r+3){ e.thCD=(e.thCD||0)-dt;
-      if (e.thCD<=0){ e.thCD=.4; hurtFoe(e,6*S.thorns*dmgMult(),e.x-P.x,e.y-P.y,'thorns'); burst((e.x+P.x)/2,(e.y+P.y)/2,'#cfe6ff',5,140,.3,2); }
+      if (e.thCD<=0){ e.thCD=.4; hurtFoe(e,4*S.thorns*dmgMult(),e.x-P.x,e.y-P.y,'thorns'); burst((e.x+P.x)/2,(e.y+P.y)/2,'#cfe6ff',5,140,.3,2); }
       if (e.dead) continue; }
     if (play && !e.phased && !(e.frozen>0) && d < e.r+P.r-2) hurtPlayer();
     // orbit blades
@@ -1934,7 +1934,7 @@ function update(dt){
       e.orbCD-=dt;
       if (e.orbCD<=0 && Math.abs(d-orbR) < e.r+9){
         for (let i=0;i<orbN;i++){ const a=t*4+i*6.283/orbN, bx=P.x+Math.cos(a)*orbR, by=P.y+Math.sin(a)*orbR;
-          if (Math.hypot(e.x-bx,e.y-by) < e.r+9){ e.orbCD=.3; hurtFoe(e, 3*dmgMult(), e.x-P.x, e.y-P.y, 'orbit'); break; } }
+          if (Math.hypot(e.x-bx,e.y-by) < e.r+9){ e.orbCD=.3; hurtFoe(e, 2.2*dmgMult(), e.x-P.x, e.y-P.y, 'orbit'); break; } }
       }
     }
   }
@@ -1980,7 +1980,7 @@ function update(dt){
           s.life=0; burst(s.x,s.y,'#cfe6ff',3,120,.2,2); tone(1500,.03,'square',.02,.8); break; }
         hurtFoe(e, s.dmg, s.vx, s.vy, 'shot');
         onHit(e, s);
-        if (S.boom) explode(s.x,s.y,22+S.boom*12,1.2*S.boom*dmgMult(),false);
+        if (S.boom) explode(s.x,s.y,18+S.boom*8,.8*S.boom*dmgMult(),false);
         if (s.pierce>0) s.pierce--; else s.life=0;
       }
     }
@@ -2007,12 +2007,12 @@ function update(dt){
     const hit = h.tick<=0; if (hit) h.tick=.25;
     for (const f of foes){ if (f.dead || f.type==='boss') continue; const dx=h.x-f.x, dy=h.y-f.y, d=Math.hypot(dx,dy)||1;
       if (d<140){ const pull=280*(1.2-d/140)*dt; f.x+=dx/d*Math.min(pull,d); f.y+=dy/d*Math.min(pull,d); }
-      if (hit && d<46) hurtFoe(f, 2.5*dmgMult(), 0, 0, 'hole'); }
+      if (hit && d<46) hurtFoe(f, 2*dmgMult(), 0, 0, 'hole'); }
     eshots = eshots.filter(q => Math.hypot(q.x-h.x,q.y-h.y) > 44);
     if (h.life<=0){ explode(h.x,h.y,90,8*dmgMult(),false); }
   }
   holes = holes.filter(h => h.life>0);
-  for (const m of meteors){ m.k += dt/m.T; if (m.k>=1){ m.done=true; explode(m.tx,m.ty,62,9*dmgMult(),false); } }
+  for (const m of meteors){ m.k += dt/m.T; if (m.k>=1){ m.done=true; explode(m.tx,m.ty,58,7*dmgMult(),false); } }
   meteors = meteors.filter(m => !m.done);
   for (const c of corpseQ){ c.t-=dt; if (c.t<=0){ c.done=true; explode(c.x,c.y,c.r,c.dmg,false); } }
   corpseQ = corpseQ.filter(c => !c.done);
