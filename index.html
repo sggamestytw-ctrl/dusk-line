@@ -210,6 +210,9 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
 .pcat{font-family:var(--body);font-size:11px;color:var(--c);border:1px solid var(--c);border-radius:99px;padding:0 7px;line-height:1.5}
 .pdesc{font-size:13px;color:var(--muted);line-height:1.35}
 .perk .pips{width:min(100%,130px);margin-top:2px}
+.evoh{color:#ff8fae!important;font-size:11px!important;opacity:.9}
+.perk.evo{border-color:#ff5d8a!important;box-shadow:0 0 0 2px rgba(255,93,138,.35),0 0 22px rgba(255,93,138,.35)}
+.perk.evo::after{content:"진화";position:absolute;top:10px;right:-26px;transform:rotate(45deg);background:linear-gradient(90deg,#ff5d8a,#ffd75e);color:#241d29;font-family:var(--display);font-size:11px;padding:2px 30px}
 .perk.rare::after{content:"희귀";position:absolute;top:10px;right:-26px;transform:rotate(45deg);background:var(--coin);color:var(--ground);font-family:var(--display);font-size:11px;padding:2px 30px}
 .perk .key{position:absolute;bottom:7px;right:14px;font-family:var(--mono);font-size:10px;color:#6d5f6c}
 .build{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;max-width:350px}
@@ -305,7 +308,7 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
 }
 .mright{display:flex;gap:6px;align-items:center}
 .lchip{cursor:pointer;font-family:var(--display);font-size:13px;padding:4px 10px;color:var(--ally)}
-body.lang-en .perk.rare::after{content:"RARE"}
+body.lang-en .perk.rare::after{content:"RARE"}body.lang-en .perk.evo::after{content:"EVOLVED"}
 .evcard{width:min(100%,360px);display:grid;gap:6px;padding:12px 14px;text-align:left;box-shadow:inset 0 0 0 1px var(--coin),inset 4px 0 0 var(--coin)}
 .evhead{display:flex;align-items:center;gap:8px}
 .evhead .ico{stroke:var(--coin)}
@@ -366,7 +369,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
         <button class="dockbtn" id="gbBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>방명록</button>
         <button class="dockbtn" id="menuRankBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg>랭킹</button>
       </nav>
-      <div class="ver" id="verTxt">v2.7 · 2026.11.20</div>
+      <div class="ver" id="verTxt">v3.0 · 2026.11.20</div>
     </div>
   </div>
 
@@ -397,6 +400,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="4"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="16" cy="11.5" r="1"/><circle cx="18" cy="14" r="1"/></svg></span><span><b>이동과 사격</b>폰은 아래 왼쪽 스틱으로 이동, 오른쪽 스틱을 미는 동안 그 방향으로 자동 발사. PC는 <span class="kcap">WASD</span> 이동, 마우스 조준, 누르고 있으면 발사.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span><b>대시와 궁극기</b>대시는 잠깐 무적. 궁극기는 적을 잡을수록 충전돼요. PC는 <span class="kcap">Space</span> 대시, <span class="kcap">E</span> 궁극기.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span><span><b>레벨업</b>파란 경험치를 모으면 능력 36종 중 하나를 골라요. 마음에 안 들면 다시 뽑기.</span></div>
+      <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9l3-5h10l3 5-8 11z"/><path d="M4 9h16M9 4l3 5 3-5"/></svg></span><span><b>진화와 이벤트</b>능력 하나를 끝까지 찍고 짝 능력을 가지면 진화 카드가 나와요. 판 도중에 보급 투하, 대군 습격, 황금 고블린이 터져요.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9l3-5h10l3 5-8 11z"/><path d="M4 9h16M9 4l3 5 3-5"/></svg></span><span><b>엘리트와 보물상자</b>금색 왕관 적을 잡으면 가끔 보물상자. 열면 능력 1개 (가끔 2개) 공짜.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg></span><span><b>스테이지 모드</b>2분 30초 버티면 보스 등장. 잡으면 다음 지역으로. 지역마다 적과 보스가 달라요.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></span><span><b>골드와 상점</b>금화와 판 점수로 골드를 모아 영구 강화와 새 대원을 사요.</span></div>
@@ -556,6 +560,9 @@ const EN = {
   '대구경탄':'Big bore','탄환 크기 +50%, 피해 +16%':'Bullet size +50%, damage +16%','블랙홀':'Black hole','조준 방향에 적을 빨아들이는 블랙홀 발사':'Fires a black hole that pulls enemies in',
   '유성우':'Meteor shower','주기적으로 적 머리 위에 유성 낙하':'Meteors regularly fall on enemies','후방 사격':'Rear guns','뒤쪽으로도 탄환 발사':'Also fires backwards',
   '광전사':'Berserker','잃은 체력 1칸당 피해 +18%':'+18% damage per missing HP','행운의 동전':'Lucky coin','선택지 4개, 무기 상자 더 자주':'4 choices, more weapon crates',
+  '진화':'EVOLVE','폭풍 칼날':'Storm blades','칼날 +3개, 더 넓게 돌고 피해 2배':'+3 blades, wider orbit, 2x damage','드론 함대':'Drone fleet','드론 +2대, 연사 2배':'+2 drones, 2x fire rate','뇌신':'Thunder god','번개가 7명에게 튀고 피해 2배':'Lightning jumps to 7 enemies, 2x damage','종말의 비':'Doomfall','유성 2배, 폭발 범위와 피해 대폭 증가':'2x meteors, much bigger and stronger blasts','궤도 포격':'Orbital strike','레이저가 굵어지고 1.6초마다 발사':'Thicker laser, fires every 1.6s','탄막 폭풍':'Bullet storm','1.5초마다 관통 탄환 24발':'24 piercing bullets every 1.5s','암살자':'Assassin','치명타 3.5배, 처형 기준 25%':'Crits deal 3.5x, execute under 25%',
+  '보급 투하!':'Supply drop!','표시된 곳에 보급품이 떨어졌어요':'Supplies landed at the marker','대군 습격!':'Horde incoming!','사방에서 적이 몰려와요':'Enemies from every side','황금 고블린 등장!':'Golden goblin!','14초 안에 잡으면 골드 대박':'Catch it within 14s for a gold jackpot','황금 고블린 처치!':'Goblin caught!','황금 고블린이 도망쳤어요':'The goblin got away',
+  '진화와 이벤트':'Evolutions & events','능력 하나를 끝까지 찍고 짝 능력을 가지면 진화 카드가 나와요. 판 도중에 보급 투하, 대군 습격, 황금 고블린이 터져요.':'Max a power and own its partner to unlock an evolution card. Supply drops, hordes and golden goblins pop up mid-run.',
   '보호막':'Shield','주기적으로 공격 1번을 막는 보호막':'A shield that blocks one hit, recharges over time','레이저 포':'Laser cannon','주기적으로 조준 방향에 관통 레이저':'Fires a piercing laser where you aim','재생':'Regeneration','일정 시간마다 체력 +1':'+1 HP every so often','처형자':'Executioner','체력이 10% 이하인 적을 즉시 처치 (보스 제외)':'Instantly kills enemies under 10% HP (not bosses)','탄환 고리':'Bullet ring','주기적으로 사방에 탄환을 뿌림':'Sprays bullets in all directions','방어!':'Blocked!',
   '세라':'Sera','바크':'Bark','루나':'Luna','위생병':'Medic','중화기병':'Heavy gunner','번개술사':'Stormcaller','기관포':'Minigun','번개탄':'Arc bolt',
   '체력이 저절로 회복돼요, 체력 +1':'Regenerates HP, HP +1','긴급 치료':'Emergency care','체력 +2, 3초 무적, 주변 적을 밀쳐냄':'HP +2, 3s invincible, pushes enemies away',
@@ -623,6 +630,8 @@ const ENRX = [
   [/^STAGE (\d+) 처음부터$/, 'From the start of STAGE $1'], [/^WAVE (\d+) 처음부터$/, 'From the start of WAVE $1'],
   [/^(\d+) 연속$/, '$1 combo'], [/^점수 x(\d+)$/, 'Score x$1'], [/^점수 ([\d,]+)$/, 'Score $1'], [/^궁극기 (\d+)%$/, 'ULT $1%'],
   [/^보스까지 (\d+:\d+)$/, 'Boss in $1'], [/^무한 WAVE (\d+)$/, 'Endless WAVE $1'], [/^최고 ([\d,]+)$/, 'Best $1'], [/^(\d+)발$/, '$1 rds'],
+  [/^진화: (.+) 최대 \+ (.+) → (.+)$/, (a,b,c) => 'Evolve: max '+(EN[a]||a)+' + '+(EN[b]||b)+' → '+(EN[c]||c)],
+  [/^진화! (.+)$/, n => 'Evolved! '+(EN[n]||n)],
   [/^\+([\d,]+) 골드$/, '+$1 gold'], [/^보유 ([\d,]+)$/, 'Total $1'], [/^([\d,]+) 골드로 영입$/, 'Recruit for $1 gold'], [/^골드가 ([\d,]+) 부족해요$/, 'Need $1 more gold'],
   [/^Lv (\d+) 달성$/, 'Lv $1 reached'], [/^다시 뽑기$/, 'Reroll'], [/^(\d+)회 남음$/, '$1 left'], [/^골드 ([\d,]+)$/, 'Gold $1'], [/^대원 (\d+)\/5$/, 'Operators $1/5'],
   [/^최고 STAGE (\d+)$/, 'Best STAGE $1'], [/^(\d+)판$/, '$1 runs'], [/^(\d+)판 플레이$/, '$1 runs played'], [/^(\d+)분 전$/, '$1m ago'], [/^(\d+)시간 전$/, '$1h ago'], [/^(\d+)일 전$/, '$1d ago'],
@@ -798,7 +807,18 @@ const PERKS = [
   {id:'regen',  name:'재생',        desc:'일정 시간마다 체력 +1',          max:2},
   {id:'execute',name:'처형자',      desc:'체력이 10% 이하인 적을 즉시 처치 (보스 제외)', max:2},
   {id:'ring',   name:'탄환 고리',   desc:'주기적으로 사방에 탄환을 뿌림',    max:3},
+  // evolutions: offered once the base power is maxed and the partner power is owned
+  {id:'evoOrbit', name:'폭풍 칼날',  desc:'칼날 +3개, 더 넓게 돌고 피해 2배', max:1, evo:['orbit','speed']},
+  {id:'evoDrone', name:'드론 함대',  desc:'드론 +2대, 연사 2배',             max:1, evo:['drone','rate']},
+  {id:'evoChain', name:'뇌신',       desc:'번개가 7명에게 튀고 피해 2배',     max:1, evo:['chain','crit']},
+  {id:'evoMeteor',name:'종말의 비',  desc:'유성 2배, 폭발 범위와 피해 대폭 증가', max:1, evo:['meteor','boom']},
+  {id:'evoLaser', name:'궤도 포격',  desc:'레이저가 굵어지고 1.6초마다 발사',  max:1, evo:['laser','pierce']},
+  {id:'evoRing',  name:'탄막 폭풍',  desc:'1.5초마다 관통 탄환 24발',          max:1, evo:['ring','multi']},
+  {id:'evoCrit',  name:'암살자',     desc:'치명타 3.5배, 처형 기준 25%',       max:1, evo:['crit','execute']},
 ];
+const PMAX = {}; for (const p of PERKS) PMAX[p.id]=p.max;
+function evoHint(p){ const e=PERKS.find(q=>q.evo&&q.evo[0]===p.id&&!S[q.id]); if (!e) return ''; const w=PERKS.find(q=>q.id===e.evo[1]); return `<span class="pdesc evoh">${TR('진화: '+p.name+' 최대 + '+w.name+' → '+e.name)}</span>`; }
+function perkOK(p){ if (S[p.id] >= p.max) return false; if (p.evo) return S[p.evo[0]] >= PMAX[p.evo[0]] && S[p.evo[1]] >= 1; return true; }
 
 const DIFFS = {
   easy:   {name:'쉬움',   hp:7, foeHp:.75, foeSp:.85, count:.8,  shot:.85,  xp:1.3, score:.6, inv:1.5, note:'체력 7칸 · 적이 약하고 느려요 · 점수 x0.6'},
@@ -820,7 +840,7 @@ const THEMES = [
 ];
 const STAGE_LEN = 150;
 const MODES = { stage:{name:'스테이지', note:'2분 30초 버티고 보스를 잡으면 다음 지역으로'}, endless:{name:'무한', note:'끝없이 많아지고 빨라지는 웨이브'} };
-let runT = 0, threatLv = 0, bankedScore = 0, goldDirty = false, goldSaveT = 0;
+let evT = 55, runT = 0, threatLv = 0, bankedScore = 0, goldDirty = false, goldSaveT = 0;
 // gold goes straight into the player's wallet the moment it is earned (coins, clear bonus, score)
 function bankGold(n){ n = Math.floor(n); if (n<=0) return; SAVE.gold += n; runGold += n; goldDirty = true; }
 function bankScore(){ const n = Math.floor((Math.floor(score) - bankedScore)/250); if (n>0){ bankGold(n); bankedScore += n*250; } }
@@ -917,7 +937,7 @@ function reset(){
   const mh = Math.max(1, D.hp + CH.hp + U('hp'));
   P = {x:0, y:0, r:12, hp:mh, max:mh, ang:-Math.PI/2, inv:0, gun:CH.gun, base:CH.gun, ult:0, tmpT:0, freezeT:0, blade:null, bladeT:0, ammo:Infinity, recoil:0, dashT:0, dashCD:0, dx:0, dy:-1};
   S = {}; for (const p of PERKS) S[p.id]=0; for (const k in CH.perks) S[k]+=CH.perks[k];
-  foes=[]; shots=[]; eshots=[]; decals=[]; lobs=[]; flames=[]; holes=[]; meteors=[]; corpseQ=[]; droneT=[]; rerolls=2+U('reroll'); seen=new Set(['grunt','mini']); intro=null; items=[]; gems=[]; barrels=[]; parts=[]; pops=[]; rings=[]; bolts=[];
+  foes=[]; shots=[]; eshots=[]; decals=[]; lobs=[]; flames=[]; holes=[]; meteors=[]; corpseQ=[]; droneT=[]; evT=55; rerolls=2+U('reroll'); seen=new Set(['grunt','mini']); intro=null; items=[]; gems=[]; barrels=[]; parts=[]; pops=[]; rings=[]; bolts=[];
   score=0; combo=0; comboT=0; wave=0; toSpawn=0; spawnT=0; breakT=.6; banner=null; shake=0; fireT=0; stop=0; flash=0; kills=0; t=0;
   pendingLv=0; xp=0; level=1; need=6; boss=null;
   stage=1; stageT=0; bossSpawned=false; clearT=0; stageKills=0; TH=THEMES[0]; runT=0; threatLv=0; bankedScore=0; goldDirty=false;
@@ -1071,7 +1091,7 @@ function makeElite(f){ f.elite=true; f.hp*=4; f.max*=4; f.r*=1.3; f.pts*=5; f.xp
 function openChest(x,y){
   const r=Math.random(), n = r<.25?2 : 1, got=[];
   for (let i=0;i<n;i++){
-    const avail = PERKS.filter(p => S[p.id] < p.max && p.id!=='revive'); if (!avail.length) break;
+    const avail = PERKS.filter(p => perkOK(p) && p.id!=='revive'); if (!avail.length) break;
     const p = pickOne(avail); S[p.id]++; if (p.id==='hp'){ P.max++; P.hp=Math.min(P.max,P.hp+2); } got.push(p.name);
   }
   if (!got.length){ P.hp=Math.min(P.max,P.hp+1); got.push('체력 +1'); }
@@ -1092,7 +1112,7 @@ function useUlt(){
     vis.forEach((f,i) => setTimeout(() => { if (state!=='play' || f.dead) return; bolts.push({x1:f.x+rand(-30,30),y1:f.y-220,x2:f.x,y2:f.y,life:.15}); hurtFoe(f, 18*dmgMult(), 0, 1, 'chain'); burst(f.x,f.y,COL.gem,8,180,.3,3); }, i*45)); addShake(14); }
   else if (CH.ult==='blade'){ P.blade = foes.filter(f=>!f.dead && onScreen(f.x,f.y,20)).sort((a,b)=>Math.hypot(a.x-P.x,a.y-P.y)-Math.hypot(b.x-P.x,b.y-P.y)).slice(0,12); P.bladeT=0; }
 }
-function droneCount(){ return S.drone + (P.tmpT>0 ? 4 : 0); }
+function droneCount(){ return S.drone + (S.evoDrone?2:0) + (P.tmpT>0 ? 4 : 0); }
 function dropGems(x,y,total){
   while (total>0){ const v = total>=5 ? 5 : 1; total -= v;
     gems.push({x:x+rand(-10,10), y:y+rand(-10,10), v, vx:rand(-60,60), vy:rand(-60,60), t:0}); }
@@ -1137,6 +1157,26 @@ function onHit(e, s){
       shots.push({x:s.x,y:s.y,vx:Math.cos(a)*620,vy:Math.sin(a)*620,life:.3,dmg:s.dmg*.42,pierce:0,bounce:0,hit:new Set([e]),kind:'frag',sz:.7,child:true}); }
   }
 }
+function eventTick(dt){
+  evT -= dt; if (evT > 0 || boss) return;
+  evT = rand(45, 65);
+  const roll = Math.random();
+  if (roll < .34){ // supply drop
+    const x=clamp(P.x+rand(-120,120),VX+30,VX+W-30), y=clamp(P.y+rand(-150,150),VY+40,VY+H-40);
+    say('보급 투하!', '#7fe0c4', 38, 1.8, '표시된 곳에 보급품이 떨어졌어요');
+    items.push({kind:'heart',x:x-16,y,life:20,t:0}); dropCrate(x+16,y,pickOne(Object.keys(CRATE))); dropCoins(x,y,10,2);
+    rings.push({x,y,r:0,max:120,life:.8,L:.8,color:'#7fe0c4'}); SND.lvl();
+  } else if (roll < .68){ // horde
+    say('대군 습격!', COL.foe, 42, 1.8, '사방에서 적이 몰려와요'); SND.boom(false); flash=.25;
+    const n = Math.floor(16 + Math.min(18, runT/25)), types=['grunt','grunt','runner','swarm'];
+    setTimeout(() => { if (state!=='play') return;
+      for (let i=0;i<n;i++){ const a=i/n*6.283, R=Math.max(W,H)*.62; makeFoe(pickOne(types), P.x+Math.cos(a)*R, P.y+Math.sin(a)*R); } }, 1300);
+  } else { // golden goblin
+    const q=edgePoint(), f=makeFoe('mini', q[0], q[1]);
+    f.gold=true; f.r=11; f.hp=f.max=Math.ceil(45*threat().hp*D.foeHp); f.sp=118; f.goldT=14; f.pts=500; f.xpv=12;
+    say('황금 고블린 등장!', '#ffd75e', 40, 2, '14초 안에 잡으면 골드 대박');
+  }
+}
 function perkTick(dt){
   if (P.tmpT>0) P.tmpT-=dt;
   if (droneCount()){
@@ -1146,7 +1186,7 @@ function perkTick(dt){
         const q=dronePos(i), tg=nearestFoe(q.x,q.y,330);
         if (tg){ const a=Math.atan2(tg.y-q.y,tg.x-q.x);
           shots.push({x:q.x,y:q.y,vx:Math.cos(a)*740,vy:Math.sin(a)*740,life:.7,dmg:1.45*dmgMult(),pierce:0,bounce:0,hit:new Set(),kind:'drone',sz:.8,child:true});
-          droneT[i]=.6; tone(950,.03,'square',.012,.7); }
+          droneT[i]=S.evoDrone?.3:.6; tone(950,.03,'square',.012,.7); }
         else droneT[i]=.2;
       }
     }
@@ -1164,20 +1204,20 @@ function perkTick(dt){
   if (S.regen){ P.rgT=(P.rgT===undefined?40-S.regen*10:P.rgT)-dt; if (P.rgT<=0){ P.rgT=40-S.regen*10; if (P.hp<P.max){ P.hp++; pop(P.x,P.y-22,'체력 +1','#7fe0c4',16); tone(880,.1,'sine',.04,.7); } } }
   if (S.laser){
     P.lzT=(P.lzT===undefined?1.5:P.lzT)-dt;
-    if (P.lzT<=0 && foes.length){ P.lzT=5-S.laser;
+    if (P.lzT<=0 && foes.length){ P.lzT=S.evoLaser?1.6:5-S.laser;
       const ca=Math.cos(P.ang), sa=Math.sin(P.ang), L=440, x2=P.x+ca*L, y2=P.y+sa*L;
-      for (const f of foes){ if (f.dead) continue; const t=(f.x-P.x)*ca+(f.y-P.y)*sa; if (t<0||t>L) continue; const d=Math.abs((f.y-P.y)*ca-(f.x-P.x)*sa); if (d<12+f.r) hurtFoe(f, 6*S.laser*dmgMult(), ca, sa, 'laser'); }
-      bolts.push({x1:P.x,y1:P.y,x2,y2,life:.15,beam:true}); addShake(3); tone(1200,.18,'sawtooth',.04,.25); } }
+      for (const f of foes){ if (f.dead) continue; const t=(f.x-P.x)*ca+(f.y-P.y)*sa; if (t<0||t>L) continue; const d=Math.abs((f.y-P.y)*ca-(f.x-P.x)*sa); if (d<(S.evoLaser?30:12)+f.r) hurtFoe(f, 6*S.laser*(S.evoLaser?1.5:1)*dmgMult(), ca, sa, 'laser'); }
+      bolts.push({x1:P.x,y1:P.y,x2,y2,life:.15,beam:true,w:S.evoLaser?2.4:1}); addShake(3); tone(1200,.18,'sawtooth',.04,.25); } }
   if (S.ring){
     P.rnT=(P.rnT===undefined?2:P.rnT)-dt;
-    if (P.rnT<=0 && foes.length){ P.rnT=6-S.ring; const n=8+S.ring*4, a0=rand(0,6.283);
-      for (let i=0;i<n;i++){ const a=a0+i/n*6.283; shots.push({x:P.x,y:P.y,vx:Math.cos(a)*560,vy:Math.sin(a)*560,life:.55,dmg:1.6*dmgMult(),pierce:0,bounce:0,hit:new Set(),kind:'drone',sz:.8,child:true}); }
+    if (P.rnT<=0 && foes.length){ P.rnT=S.evoRing?1.5:6-S.ring; const n=S.evoRing?24:8+S.ring*4, a0=rand(0,6.283);
+      for (let i=0;i<n;i++){ const a=a0+i/n*6.283; shots.push({x:P.x,y:P.y,vx:Math.cos(a)*560,vy:Math.sin(a)*560,life:.55,dmg:1.6*dmgMult(),pierce:S.evoRing?2:0,bounce:0,hit:new Set(),kind:'drone',sz:.8,child:true}); }
       tone(520,.08,'square',.03,.6); } }
   if (S.meteor){
     P.metT=(P.metT===undefined?2:P.metT)-dt;
     if (P.metT<=0){ P.metT=5.8-S.meteor;
       const vis=foes.filter(f=>!f.dead && onScreen(f.x,f.y,-10));
-      for (let i=0;i<S.meteor && vis.length;i++){ const f=pickOne(vis); meteors.push({tx:f.x+rand(-12,12),ty:f.y+rand(-12,12),k:-i*.18,T:.7}); } }
+      for (let i=0;i<S.meteor*(S.evoMeteor?2:1) && vis.length;i++){ const f=pickOne(vis); meteors.push({tx:f.x+rand(-12,12),ty:f.y+rand(-12,12),k:-i*.18,T:.7}); } }
   }
 }
 function fire(){
@@ -1204,8 +1244,8 @@ function fire(){
 function hurtFoe(e, dmg, vx, vy, src){
   if (e.dead || e.phased) return;
   let crit = false;
-  if (src==='shot' && Math.random() < S.crit*.11){ dmg *= 2.25; crit = true; }
-  if (S.execute && src==='shot' && e.type!=='boss' && e.hp-dmg < e.max*.1*S.execute && e.hp-dmg > 0){ dmg = e.hp; crit = true; }
+  if (src==='shot' && Math.random() < S.crit*.11){ dmg *= S.evoCrit?3.5:2.25; crit = true; }
+  if (S.execute && src==='shot' && e.type!=='boss' && e.hp-dmg < e.max*(S.evoCrit?.25:.1*S.execute) && e.hp-dmg > 0){ dmg = e.hp; crit = true; }
   e.hp -= dmg; e.flash = .07;
   const l = Math.hypot(vx,vy)||1, kb = e.type==='boss'?0 : e.type==='tank'?40:140;
   e.kx += vx/l*kb; e.ky += vy/l*kb;
@@ -1230,6 +1270,7 @@ function kill(e){
   else if (combo===100) say('신화!', COL.runner, 54, 1.4);
   if (e.type==='tank'){ addShake(9); stop = Math.max(stop,.05); }
   if (e.type==='bomber') explode(e.x,e.y,75,8*dmgMult(),false);
+  if (e.gold){ dropCoins(e.x,e.y,30,3); items.push({kind:'chest', x:e.x, y:e.y, life:25, t:0}); say('황금 고블린 처치!', '#ffd75e', 40, 1.8); SND.lvl(); rings.push({x:e.x,y:e.y,r:0,max:160,life:.6,L:.6,color:'#ffd75e'}); }
   if (e.type==='split') for (let i=0;i<3;i++){ const m = makeFoe('mini', e.x+rand(-8,8), e.y+rand(-8,8)); m.kx=rand(-200,200); m.ky=rand(-200,200); }
   if (e.type==='boss'){
     boss=null; stop=.25; flash=.8; addShake(22); SND.boom(true); rerolls++; if (mode==='stage') clearT=1.8;
@@ -1238,7 +1279,7 @@ function kill(e){
     dropCrate(e.x, e.y+30, pickOne(Object.keys(CRATE)));
     rings.push({x:e.x,y:e.y,r:0,max:220,life:.6,L:.6,color:COL.tracer});
   } else dropGems(e.x,e.y,e.xpv);
-  if (S.chain) chainFrom(e, S.chain+1, 3.5*S.chain*dmgMult());
+  if (S.chain) chainFrom(e, S.evoChain?7:S.chain+1, 3.5*S.chain*(S.evoChain?2:1)*dmgMult());
   if (S.vamp && kills%15===0 && P.hp<P.max){ P.hp++; pop(P.x,P.y-28,'흡혈 +1',COL.foe,18); }
   const r = Math.random();
   if (e.type!=='boss'){
@@ -1250,7 +1291,7 @@ function kill(e){
   }
 }
 function chainFrom(e, n, dmg){
-  const near = foes.filter(f => !f.dead && f!==e).map(f => [f, Math.hypot(f.x-e.x,f.y-e.y)]).filter(p=>p[1]<170).sort((a,b)=>a[1]-b[1]).slice(0,n);
+  const near = foes.filter(f => !f.dead && f!==e).map(f => [f, Math.hypot(f.x-e.x,f.y-e.y)]).filter(p=>p[1]<(S.evoChain?240:170)).sort((a,b)=>a[1]-b[1]).slice(0,n);
   for (const [f] of near){
     bolts.push({x1:e.x,y1:e.y,x2:f.x,y2:f.y,life:.15});
     setTimeout(() => { if (!f.dead && state==='play') hurtFoe(f, dmg, f.x-e.x, f.y-e.y, 'chain'); }, 40);
@@ -1317,21 +1358,22 @@ function openPick(){
 }
 function rollChoices(){
   const N = 3 + S.luck;
-  const avail = PERKS.filter(p => S[p.id] < p.max);
+  const avail = PERKS.filter(p => perkOK(p) && !p.evo);
   const bag = []; for (const p of avail) bag.push(...Array(p.rare?2:4).fill(p));
   choices = [];
+  const evos = PERKS.filter(p => p.evo && perkOK(p)); if (evos.length) choices.push(pickOne(evos));
   while (choices.length<N && bag.length){ const p = pickOne(bag); if (!choices.includes(p)) choices.push(p); for (let i=bag.length-1;i>=0;i--) if (bag[i]===p) bag.splice(i,1); }
   while (choices.length<N) choices.push({id:'heal', name:'응급치료', desc:'체력 +1, 점수 +500', max:99});
   $('pickTitle').textContent = 'Lv '+level+' 달성';
   const rb = $('rerollBtn'); rb.textContent = '다시 뽑기 · '+rerolls+'회 남음'; rb.disabled = rerolls<=0;
   const pb = $('pickBuild'); pb.innerHTML='';
-  for (const q of PERKS) if (S[q.id]){ const sp=document.createElement('span'); sp.textContent=q.name+(q.max>1?' '+S[q.id]:''); pb.appendChild(sp); }
+  for (const q of PERKS) if (S[q.id] && !q.evo){ const sp=document.createElement('span'); sp.textContent=q.name+(q.max>1?' '+S[q.id]:''); pb.appendChild(sp); }
   const box = $('cards'); box.innerHTML='';
   choices.forEach((p,i) => {
-    const b = document.createElement('button'); b.type='button'; b.className='perk'+(p.rare?' rare':''); const cat = PCAT[p.id] || ['지원','#6fd3ff']; b.style.setProperty('--c', cat[1]);
+    const b = document.createElement('button'); b.type='button'; b.className='perk'+(p.evo?' evo':p.rare?' rare':''); const cat = p.evo ? ['진화','#ff5d8a'] : PCAT[p.id] || ['지원','#6fd3ff']; b.style.setProperty('--c', cat[1]);
     const cur = S[p.id]||0;
     const pipN = p.id==='heal' ? 0 : p.max; let pips=''; for (let k=0;k<pipN;k++) pips += `<i class="${k<cur?'on':k===cur?'on nx':''}"></i>`;
-    b.innerHTML = `<span class="hex">${p.name[0]}</span><span class="pname">${p.name}<span class="pcat">${cat[0]}</span></span><span class="pdesc">${p.desc}</span>${pipN>1?`<span class="pips" style="--n:${pipN}">${pips}</span>`:''}<span class="key">${i+1}</span>`;
+    b.innerHTML = `<span class="hex">${p.name[0]}</span><span class="pname">${p.name}<span class="pcat">${cat[0]}</span></span><span class="pdesc">${p.desc}</span>${evoHint(p)}${pipN>1?`<span class="pips" style="--n:${pipN}">${pips}</span>`:''}<span class="key">${i+1}</span>`;
     b.addEventListener('click', () => choose(i));
     box.appendChild(b);
   });
@@ -1346,6 +1388,7 @@ function choose(i){
   const p = choices[i]; if (!p) return;
   if (p.id==='heal'){ P.hp=Math.min(P.max,P.hp+1); score+=500; }
   else { S[p.id]++;
+    if (p.evo){ say('진화! '+p.name, '#ff5d8a', 40, 2); flash=.6; addShake(10); burst(P.x,P.y,'#ff5d8a',40,320,.8,5); rings.push({x:P.x,y:P.y,r:0,max:200,life:.6,L:.6,color:'#ff5d8a'}); }
     if (p.id==='hp'){ P.max++; P.hp=Math.min(P.max,P.hp+2); } }
   SND.pick(); pendingLv--;
   $('pick').hidden=true;
@@ -1849,7 +1892,7 @@ function update(dt){
     } else if (mouse.active){ P.ang=Math.atan2(mouse.y+VY-P.y, mouse.x+VX-P.x); firing=mouse.down; }
     fireT -= dt;
     if (firing && fireT<=0){ fire(); fireT = GUNS[P.gun].rate/(1+S.rate*.14); }
-    perkTick(dt);
+    perkTick(dt); if (state==='play') eventTick(dt);
     runT += dt;
     goldSaveT += dt; if (goldSaveT > 5){ goldSaveT = 0; bankScore(); flushGold(); }
     { const tl = threat().lv; if (tl > threatLv){ threatLv = tl; if (tl>=1){ say('위협 '+tl+'단계', COL.foe, 34, 1.6, '적이 더 강하고, 많고, 빨리 공격해요'); SND.boss(); } } }
@@ -1889,7 +1932,7 @@ function update(dt){
   }
 
   // foes
-  const orbN = S.orbit, orbR = 48;
+  const orbN = S.orbit + (S.evoOrbit?3:0), orbR = S.evoOrbit?64:48;
   for (const e of foes){
     if (e.dead) continue;
     if (e.type!=='boss' && Math.hypot(e.x-P.x,e.y-P.y) > Math.max(W,H)*1.25){ const q=edgePoint(); e.x=q[0]; e.y=q[1]; e.fuse=-1; e.warp=0; }
@@ -1903,6 +1946,10 @@ function update(dt){
         if (e.dead) continue; } }
     const dx=P.x-e.x, dy=P.y-e.y, d=Math.hypot(dx,dy)||1;
     let vx=dx/d, vy=dy/d, sp=e.sp;
+    if (e.gold){ e.goldT-=dt; if (e.goldT<=0){ e.dead=true; burst(e.x,e.y,'#ffd75e',16,200,.5,3); say('황금 고블린이 도망쳤어요', '#ffd75e', 26, 1.4); continue; }
+      vx=-vx; vy=-vy; const tx=-vy, ty=vx, w=Math.sin(t*3+e.strafe*2)*.7; vx+=tx*w; vy+=ty*w; const l=Math.hypot(vx,vy)||1; vx/=l; vy/=l;
+      e.x+=vx*sp*dt+e.kx*dt; e.y+=vy*sp*dt+e.ky*dt; e.kx*=.86; e.ky*=.86; if (e.flash>0) e.flash-=dt;
+      if (Math.random()<dt*8) parts.push({x:e.x+rand(-6,6),y:e.y+rand(-6,6),vx:0,vy:-20,life:.5,max:.5,color:'#ffd75e',r:2}); continue; }
     if (e.type==='spit'){
       if (d<160){ vx=-vx; vy=-vy; }
       else if (d<240){ const tx=-vy*e.strafe, ty=vx*e.strafe; vx=tx; vy=ty; }
@@ -1976,7 +2023,7 @@ function update(dt){
       e.orbCD-=dt;
       if (e.orbCD<=0 && Math.abs(d-orbR) < e.r+9){
         for (let i=0;i<orbN;i++){ const a=t*4+i*6.283/orbN, bx=P.x+Math.cos(a)*orbR, by=P.y+Math.sin(a)*orbR;
-          if (Math.hypot(e.x-bx,e.y-by) < e.r+9){ e.orbCD=.3; hurtFoe(e, 2.6*dmgMult(), e.x-P.x, e.y-P.y, 'orbit'); break; } }
+          if (Math.hypot(e.x-bx,e.y-by) < e.r+9){ e.orbCD=.3; hurtFoe(e, 2.6*(S.evoOrbit?2:1)*dmgMult(), e.x-P.x, e.y-P.y, 'orbit'); break; } }
       }
     }
   }
@@ -2054,7 +2101,7 @@ function update(dt){
     if (h.life<=0){ explode(h.x,h.y,90,8*dmgMult(),false); }
   }
   holes = holes.filter(h => h.life>0);
-  for (const m of meteors){ m.k += dt/m.T; if (m.k>=1){ m.done=true; explode(m.tx,m.ty,60,8*dmgMult(),false); } }
+  for (const m of meteors){ m.k += dt/m.T; if (m.k>=1){ m.done=true; explode(m.tx,m.ty,S.evoMeteor?95:60,(S.evoMeteor?13:8)*dmgMult(),false); } }
   meteors = meteors.filter(m => !m.done);
   for (const c of corpseQ){ c.t-=dt; if (c.t<=0){ c.done=true; explode(c.x,c.y,c.r,c.dmg,false); } }
   corpseQ = corpseQ.filter(c => !c.done);
@@ -2220,7 +2267,8 @@ function face(r, s, angry){
 }
 
 function drawFoe(e){
-  const ang=Math.atan2(P.y-e.y,P.x-e.x), fl=e.flash>0, base=e.type==='boss'?TH.bossCol:(COL[e.type]||COL.foe), c=fl?'#ffffff':base, r=e.r;
+  if (e.gold){ ctx.globalCompositeOperation='lighter'; glow(e.x,e.y,34,'#ffd75e',.55+.2*Math.sin(t*10)); ctx.globalCompositeOperation='source-over'; }
+  const ang=Math.atan2(P.y-e.y,P.x-e.x), fl=e.flash>0, base=e.gold?'#ffd75e':e.type==='boss'?TH.bossCol:(COL[e.type]||COL.foe), c=fl?'#ffffff':base, r=e.r;
   if (e.type==='runner' && !e.sprint && e.rt!==undefined){ ctx.strokeStyle='rgba(255,215,94,.5)'; ctx.lineWidth=2; ctx.setLineDash([5,5]); ctx.beginPath(); ctx.moveTo(e.x,e.y); ctx.lineTo(e.x+Math.cos(ang)*80,e.y+Math.sin(ang)*80); ctx.stroke(); ctx.setLineDash([]); }
   if (e.type==='sniper' && e.aiming && e.aim!==undefined){ const locked=e.cd<.35;
     ctx.strokeStyle=locked?'rgba(255,61,110,.95)':'rgba(255,61,110,.35)'; ctx.lineWidth=locked?3:1.2;
@@ -2348,8 +2396,9 @@ function drawFoe(e){
 
 const GUNLOOK = {pistol:[13,5,'#3a3440'], smg:[18,6,'#3a3440'], shotgun:[21,7,'#6a4a32'], rail:[25,6,'#2f5a52'], rocket:[22,10,'#55606a'], snipe:[27,5,'#3a2f52'], flame:[20,8,'#7a3a1a'], shuriken:[9,9,'#2b2430'], minigun:[23,9,'#4a4f58'], arc:[16,6,'#2a3a6a']};
 function drawPlayer(){
-  for (let i=0;i<S.orbit;i++){
-    const a=t*4+i*6.283/S.orbit, bx=P.x+Math.cos(a)*48, by=P.y+Math.sin(a)*48;
+  const oN=S.orbit+(S.evoOrbit?3:0), oR=S.evoOrbit?64:48;
+  for (let i=0;i<oN;i++){
+    const a=t*4+i*6.283/oN, bx=P.x+Math.cos(a)*oR, by=P.y+Math.sin(a)*oR;
     ctx.globalCompositeOperation='lighter'; glow(bx,by,18,COL.gem,.6); ctx.globalCompositeOperation='source-over';
     ctx.save(); ctx.translate(bx,by); ctx.rotate(t*14); ctx.fillStyle='#dff6ff';
     ctx.beginPath(); for (let k=0;k<4;k++){ const q=k*Math.PI/2; ctx.lineTo(Math.cos(q)*10,Math.sin(q)*10); ctx.lineTo(Math.cos(q+.785)*3,Math.sin(q+.785)*3); } ctx.closePath(); ctx.fill(); ol(1.5);
@@ -2507,8 +2556,8 @@ function render(){
   }
   for (const s of eshots) glow(s.x,s.y,(s.r||5.5)*2.8,s.c||COL.spit,.85);
   for (const b of bolts){
-    if (b.beam){ ctx.globalAlpha=b.life/.15; ctx.lineCap='round'; ctx.strokeStyle='#ff5d8a'; ctx.lineWidth=12; ctx.beginPath(); ctx.moveTo(b.x1,b.y1); ctx.lineTo(b.x2,b.y2); ctx.stroke();
-      ctx.strokeStyle='#ffffff'; ctx.lineWidth=4; ctx.stroke(); continue; }
+    if (b.beam){ ctx.globalAlpha=b.life/.15; ctx.lineCap='round'; ctx.strokeStyle='#ff5d8a'; ctx.lineWidth=12*(b.w||1); ctx.beginPath(); ctx.moveTo(b.x1,b.y1); ctx.lineTo(b.x2,b.y2); ctx.stroke();
+      ctx.strokeStyle='#ffffff'; ctx.lineWidth=4*(b.w||1); ctx.stroke(); continue; }
     ctx.strokeStyle=COL.gem; ctx.globalAlpha=b.life/.15; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(b.x1,b.y1);
     for (let i=1;i<6;i++){ const k=i/6; ctx.lineTo(b.x1+(b.x2-b.x1)*k+rand(-9,9), b.y1+(b.y2-b.y1)*k+rand(-9,9)); }
     ctx.lineTo(b.x2,b.y2); ctx.stroke(); glow(b.x2,b.y2,16,COL.gem,b.life/.15);
