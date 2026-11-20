@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="description" content="몰려오는 적을 막아내는 생존 슈팅 게임. 대원 5명, 능력 31종, 지역 5곳, 보스전. 폰과 PC 브라우저에서 바로 플레이.">
+<meta name="description" content="몰려오는 적을 막아내는 생존 슈팅 게임. 대원 8명, 능력 36종, 지역 5곳, 보스전. 폰과 PC 브라우저에서 바로 플레이.">
 <meta name="theme-color" content="#241d29">
 <meta property="og:type" content="website">
 <meta property="og:title" content="황혼의 서막">
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://dusk-line.netlify.app/">
 <meta property="og:site_name" content="황혼의 서막">
 <meta property="og:locale" content="ko_KR">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"황혼의 서막","alternateName":["DUSK LINE","황혼의서막"],"url":"https://dusk-line.netlify.app/","image":"https://dusk-line.netlify.app/og.jpg","description":"몰려오는 적을 막아내는 생존 슈팅 게임. 대원 5명, 능력 31종, 지역 5곳, 보스전. 폰과 PC 브라우저에서 설치 없이 무료로 플레이.","genre":["슈팅","생존","로그라이크"],"gamePlatform":["Web browser","Mobile","PC"],"applicationCategory":"Game","operatingSystem":"Any","inLanguage":["ko","en"],"isAccessibleForFree":true,"author":{"@type":"Organization","name":"Kclip Studios"},"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"황혼의 서막","alternateName":["DUSK LINE","황혼의서막"],"url":"https://dusk-line.netlify.app/","image":"https://dusk-line.netlify.app/og.jpg","description":"몰려오는 적을 막아내는 생존 슈팅 게임. 대원 8명, 능력 36종, 지역 5곳, 보스전. 폰과 PC 브라우저에서 설치 없이 무료로 플레이.","genre":["슈팅","생존","로그라이크"],"gamePlatform":["Web browser","Mobile","PC"],"applicationCategory":"Game","operatingSystem":"Any","inLanguage":["ko","en"],"isAccessibleForFree":true,"author":{"@type":"Organization","name":"Kclip Studios"},"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -162,7 +162,7 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
 .sheet-head{position:sticky;top:0;z-index:2;align-self:stretch;margin-inline:-16px;display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:10px;padding:12px 16px 10px;background:linear-gradient(rgba(22,17,26,.98),rgba(22,17,26,.92));border-bottom:1px solid #3e3342}
 .sheet-head h2{font-size:22px;color:var(--ink);text-align:left}
 .back{width:40px;height:40px;border-radius:10px;border:1px solid #4a3d48;background:rgba(47,38,51,.9);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;font-family:var(--display)}
-.roster{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;width:min(100%,360px)}
+.roster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:min(100%,360px)}
 .rtile{position:relative;aspect-ratio:3/4;border:0;padding:0;background:linear-gradient(180deg,#3a2f42,#1f1924);border-radius:10px;cursor:pointer;box-shadow:inset 0 0 0 1px #4a3d4c;display:grid;align-content:end;justify-items:center;overflow:hidden;min-width:0}
 .rtile canvas{position:absolute;left:0;top:4%;width:100%;height:auto;aspect-ratio:1}
 .rtile span{position:relative;font-family:var(--display);font-size:12px;color:var(--ink);padding-bottom:6px}
@@ -366,7 +366,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
         <button class="dockbtn" id="gbBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>방명록</button>
         <button class="dockbtn" id="menuRankBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg>랭킹</button>
       </nav>
-      <div class="ver" id="verTxt">v2.6.2 · 2026.11.07</div>
+      <div class="ver" id="verTxt">v2.7 · 2026.11.20</div>
     </div>
   </div>
 
@@ -396,7 +396,7 @@ body.lang-en .perk.rare::after{content:"RARE"}
     <div class="howlist">
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="4"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="16" cy="11.5" r="1"/><circle cx="18" cy="14" r="1"/></svg></span><span><b>이동과 사격</b>폰은 아래 왼쪽 스틱으로 이동, 오른쪽 스틱을 미는 동안 그 방향으로 자동 발사. PC는 <span class="kcap">WASD</span> 이동, 마우스 조준, 누르고 있으면 발사.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span><b>대시와 궁극기</b>대시는 잠깐 무적. 궁극기는 적을 잡을수록 충전돼요. PC는 <span class="kcap">Space</span> 대시, <span class="kcap">E</span> 궁극기.</span></div>
-      <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span><span><b>레벨업</b>파란 경험치를 모으면 능력 31종 중 하나를 골라요. 마음에 안 들면 다시 뽑기.</span></div>
+      <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span><span><b>레벨업</b>파란 경험치를 모으면 능력 36종 중 하나를 골라요. 마음에 안 들면 다시 뽑기.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9l3-5h10l3 5-8 11z"/><path d="M4 9h16M9 4l3 5 3-5"/></svg></span><span><b>엘리트와 보물상자</b>금색 왕관 적을 잡으면 가끔 보물상자. 열면 능력 1개 (가끔 2개) 공짜.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg></span><span><b>스테이지 모드</b>2분 30초 버티면 보스 등장. 잡으면 다음 지역으로. 지역마다 적과 보스가 달라요.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></span><span><b>골드와 상점</b>금화와 판 점수로 골드를 모아 영구 강화와 새 대원을 사요.</span></div>
@@ -556,6 +556,11 @@ const EN = {
   '대구경탄':'Big bore','탄환 크기 +50%, 피해 +16%':'Bullet size +50%, damage +16%','블랙홀':'Black hole','조준 방향에 적을 빨아들이는 블랙홀 발사':'Fires a black hole that pulls enemies in',
   '유성우':'Meteor shower','주기적으로 적 머리 위에 유성 낙하':'Meteors regularly fall on enemies','후방 사격':'Rear guns','뒤쪽으로도 탄환 발사':'Also fires backwards',
   '광전사':'Berserker','잃은 체력 1칸당 피해 +18%':'+18% damage per missing HP','행운의 동전':'Lucky coin','선택지 4개, 무기 상자 더 자주':'4 choices, more weapon crates',
+  '보호막':'Shield','주기적으로 공격 1번을 막는 보호막':'A shield that blocks one hit, recharges over time','레이저 포':'Laser cannon','주기적으로 조준 방향에 관통 레이저':'Fires a piercing laser where you aim','재생':'Regeneration','일정 시간마다 체력 +1':'+1 HP every so often','처형자':'Executioner','체력이 10% 이하인 적을 즉시 처치 (보스 제외)':'Instantly kills enemies under 10% HP (not bosses)','탄환 고리':'Bullet ring','주기적으로 사방에 탄환을 뿌림':'Sprays bullets in all directions','방어!':'Blocked!',
+  '세라':'Sera','바크':'Bark','루나':'Luna','위생병':'Medic','중화기병':'Heavy gunner','번개술사':'Stormcaller','기관포':'Minigun','번개탄':'Arc bolt',
+  '체력이 저절로 회복돼요, 체력 +1':'Regenerates HP, HP +1','긴급 치료':'Emergency care','체력 +2, 3초 무적, 주변 적을 밀쳐냄':'HP +2, 3s invincible, pushes enemies away',
+  '무한 기관포를 든 탱커, 체력 +2, 느림':'Tank with an endless minigun, HP +2, slow','미사일 세례':'Missile rain','화면 안의 적에게 미사일 16발':'16 missiles on enemies on screen',
+  '관통 번개탄과 연쇄 번개, 체력 -1':'Piercing arc bolts and chain lightning, HP -1','천둥 폭풍':'Thunderstorm','화면 안의 적 24명에게 낙뢰':'Lightning strikes 24 enemies on screen',
   '불사조':'Phoenix','한 번 쓰러져도 체력 가득 부활':'Revive once with full HP','가시 갑옷':'Thorn armor','몸에 닿은 적에게 큰 피해':'Heavy damage to enemies that touch you',
   '대용량 탄창':'Extended mags','특수 무기 탄약 +60%':'Special weapon ammo +60%','시체 폭발':'Corpse explosion','처치한 적이 터지며 연쇄 폭발':'Killed enemies explode in chains',
   // shop
@@ -567,7 +572,7 @@ const EN = {
   '이동과 사격':'Move & shoot','폰은 아래 왼쪽 스틱으로 이동, 오른쪽 스틱을 미는 동안 그 방향으로 자동 발사. PC는':'On phones, move with the left stick and push the right stick to fire that way. On PC,',
   '이동, 마우스 조준, 누르고 있으면 발사.':'to move, aim with the mouse, hold to fire.','대시와 궁극기':'Dash & ultimate',
   '대시는 잠깐 무적. 궁극기는 적을 잡을수록 충전돼요. PC는':'Dashing makes you briefly invincible. The ultimate charges as you kill. On PC,',
-  '대시,':'dash,','궁극기.':'ultimate.','레벨업':'Level up','파란 경험치를 모으면 능력 31종 중 하나를 골라요. 마음에 안 들면 다시 뽑기.':'Collect blue XP to pick one of 31 powers. Don\'t like them? Reroll.',
+  '대시,':'dash,','궁극기.':'ultimate.','레벨업':'Level up','파란 경험치를 모으면 능력 36종 중 하나를 골라요. 마음에 안 들면 다시 뽑기.':'Collect blue XP to pick one of 36 powers. Don\'t like them? Reroll.',
   '엘리트와 보물상자':'Elites & chests','금색 왕관 적을 잡으면 가끔 보물상자. 열면 능력 1개 (가끔 2개) 공짜.':'Gold-crowned enemies sometimes drop chests with a free power (sometimes 2).',
   '2분 30초 버티면 보스 등장. 잡으면 다음 지역으로. 지역마다 적과 보스가 달라요.':'Survive 2:30 and the boss appears. Beat it to move on. Every region has its own enemies and boss.',
   '골드와 상점':'Gold & shop','금화와 판 점수로 골드를 모아 영구 강화와 새 대원을 사요.':'Earn gold from coins and score to buy permanent upgrades and new operators.',
@@ -720,7 +725,7 @@ function noise(dur, vol=.15, freq=1200, delay=0){
   s.connect(f).connect(g).connect(AC.destination); s.start(t0); s.stop(t0+dur+.02);
 }
 const SND = {
-  shot(g){ const now=performance.now(); if (now-lastShotSnd<45) return; lastShotSnd=now; g = g==='snipe'?'rail':g==='flame'?'shotgun':g;
+  shot(g){ const now=performance.now(); if (now-lastShotSnd<45) return; lastShotSnd=now; g = g==='snipe'?'rail':g==='flame'?'shotgun':g==='minigun'?'smg':g;
     if (g==='shotgun'){ noise(.18,.22,2500); tone(110,.12,'square',.05,.5); }
     else if (g==='rail'){ tone(1400,.25,'sawtooth',.05,.2); tone(700,.25,'square',.03,.3); }
     else if (g==='rocket'){ noise(.25,.12,900); tone(220,.3,'sawtooth',.04,.4); }
@@ -750,6 +755,8 @@ const GUNS = {
   snipe:   {name:'저격총',   rate:.42,  dmg:6, n:1, spread:0,   speed:1500, life:.7,  ammo:Infinity, pierce:3, shake:3},
   flame:   {name:'화염 산탄', rate:.55, dmg:1.3, n:6, spread:.6, speed:600, life:.35, ammo:Infinity, pierce:0, shake:4},
   shuriken:{name:'수리검',   rate:.13,  dmg:1.5, n:1, spread:.06, speed:820, life:.7,  ammo:Infinity, pierce:1, shake:.6},
+  minigun: {name:'기관포',   rate:.085, dmg:1.05, n:1, spread:.2, speed:760, life:.75, ammo:Infinity, pierce:0, shake:1.4},
+  arc:     {name:'번개탄',   rate:.3,   dmg:2.3, n:1, spread:.03, speed:900, life:.8, ammo:Infinity, pierce:1, shake:1},
   rocket:  {name:'로켓',     rate:.7,   dmg:5, n:1, spread:.02, speed:460,  life:1.4, ammo:12,  pierce:0,  shake:4},
 };
 const CRATE = {smg:'S', shotgun:'T', rail:'R', rocket:'B'};
@@ -786,13 +793,18 @@ const PERKS = [
   {id:'thorns', name:'가시 갑옷',   desc:'몸에 닿은 적에게 큰 피해',        max:2},
   {id:'ammo',   name:'대용량 탄창', desc:'특수 무기 탄약 +60%',            max:2},
   {id:'corpse', name:'시체 폭발',   desc:'처치한 적이 터지며 연쇄 폭발',    max:2, rare:true},
+  {id:'shield', name:'보호막',      desc:'주기적으로 공격 1번을 막는 보호막', max:2},
+  {id:'laser',  name:'레이저 포',   desc:'주기적으로 조준 방향에 관통 레이저', max:3, rare:true},
+  {id:'regen',  name:'재생',        desc:'일정 시간마다 체력 +1',          max:2},
+  {id:'execute',name:'처형자',      desc:'체력이 10% 이하인 적을 즉시 처치 (보스 제외)', max:2},
+  {id:'ring',   name:'탄환 고리',   desc:'주기적으로 사방에 탄환을 뿌림',    max:3},
 ];
 
 const DIFFS = {
-  easy:   {name:'쉬움',   hp:7, foeHp:.7,  foeSp:.82, count:.75, shot:.8,  xp:1.3, score:.6, inv:1.5, note:'체력 7칸 · 적이 약하고 느려요 · 점수 x0.6'},
-  normal: {name:'보통',   hp:5, foeHp:.9,  foeSp:.92, count:.9,  shot:.9,  xp:1.1, score:1,  inv:1.25,note:'체력 5칸 · 기본 난이도'},
-  hard:   {name:'어려움', hp:4, foeHp:1.15,foeSp:1.08,count:1.15,shot:1.1, xp:1,   score:1.5,inv:1,   note:'체력 4칸 · 적이 많고 단단해요 · 점수 x1.5'},
-  hell:   {name:'지옥',   hp:3, foeHp:1.5, foeSp:1.2, count:1.4, shot:1.25,xp:.9,  score:2.5,inv:.9,  note:'체력 3칸 · 탄막 지옥 · 점수 x2.5'},
+  easy:   {name:'쉬움',   hp:7, foeHp:.75, foeSp:.85, count:.8,  shot:.85,  xp:1.3, score:.6, inv:1.5, note:'체력 7칸 · 적이 약하고 느려요 · 점수 x0.6'},
+  normal: {name:'보통',   hp:5, foeHp:1,   foeSp:.96, count:1,   shot:.95, xp:1.1, score:1,  inv:1.25,note:'체력 5칸 · 기본 난이도'},
+  hard:   {name:'어려움', hp:4, foeHp:1.25,foeSp:1.1, count:1.25,shot:1.15,xp:1,   score:1.5,inv:1,   note:'체력 4칸 · 적이 많고 단단해요 · 점수 x1.5'},
+  hell:   {name:'지옥',   hp:3, foeHp:1.65,foeSp:1.22,count:1.5, shot:1.3, xp:.9,  score:2.5,inv:.9,  note:'체력 3칸 · 탄막 지옥 · 점수 x2.5'},
 };
 const THEMES = [
   {name:'황혼 사막', boss:'파괴자', bossCol:'#e0405e', ground:'#2a2130', specks:['#33283a','#241c29','#3a2c34','#2f2536','#41323b'], ripL:'rgba(255,190,140,.05)', ripD:'rgba(0,0,0,.1)', rock:'#3e3242', rockHi:'#53444f', shrub:'#6b5640', crack:'rgba(10,6,14,.5)', bone:'#bfb09f', dot:'#3a2d3c', sky:'rgba(255,150,90,.11)', skyB:'rgba(70,40,140,.12)', amb:'dust',
@@ -822,6 +834,9 @@ const CHARS = {
   pyro:{name:'브루노', role:'화염병', desc:'무한 화염 산탄총과 화염 발자국, 체력 +1', cost:700, color:'#ff8a3d', helmet:'#a8521c', hp:1, speed:.9, gun:'flame', perks:{fire:1}, ult:'inferno', ultName:'화염 폭풍', ultDesc:'주변을 불바다로'},
   engi:{name:'지니', role:'공병', desc:'전투 드론을 데리고 시작', cost:1000, color:'#ffd75e', helmet:'#a88a2a', hp:0, speed:1, gun:'pistol', perks:{drone:1}, ult:'swarm', ultName:'드론 군단', ultDesc:'드론 4대를 9초간 추가'},
   ninja:{name:'카이', role:'닌자', desc:'빠른 수리검과 대시, 체력 -2', cost:1500, color:'#ff5d8a', helmet:'#2b2430', band:'#ff5d5d', hp:-2, speed:1.25, gun:'shuriken', perks:{dash:1}, ult:'blade', ultName:'그림자 난무', ultDesc:'근처 적 12명을 순식간에 베기'},
+  medic:{name:'세라', role:'위생병', desc:'체력이 저절로 회복돼요, 체력 +1', cost:1200, color:'#8fd8ff', helmet:'#eef3f6', band:'#ff5d6c', hp:1, speed:1, gun:'pistol', perks:{regen:1}, ult:'heal', ultName:'긴급 치료', ultDesc:'체력 +2, 3초 무적, 주변 적을 밀쳐냄'},
+  gunner:{name:'바크', role:'중화기병', desc:'무한 기관포를 든 탱커, 체력 +2, 느림', cost:2000, color:'#c9a27a', helmet:'#5c4a3a', hp:2, speed:.82, gun:'minigun', perks:{}, ult:'barrage', ultName:'미사일 세례', ultDesc:'화면 안의 적에게 미사일 16발'},
+  storm:{name:'루나', role:'번개술사', desc:'관통 번개탄과 연쇄 번개, 체력 -1', cost:2500, color:'#a6b8ff', helmet:'#34407a', hp:-1, speed:1.05, gun:'arc', perks:{chain:1}, ult:'storm', ultName:'천둥 폭풍', ultDesc:'화면 안의 적 24명에게 낙뢰'},
 };
 const UPG = [
   {id:'hp',     name:'강화 장갑',   desc:'시작 체력 +1',      cost:[150,350,700]},
@@ -1070,6 +1085,11 @@ function useUlt(){
   else if (CH.ult==='freeze'){ for (const f of foes){ if (f.type==='boss') f.slow=5; else f.frozen=4.5; } eshots=[]; lobs=[]; P.freezeT=4.5; }
   else if (CH.ult==='inferno'){ explode(P.x,P.y,190,25*dmgMult(),false); for (let k=0;k<36;k++){ const a=k/36*6.283, rr=60+(k%3)*45; flames.push({x:P.x+Math.cos(a)*rr, y:P.y+Math.sin(a)*rr, life:4, max:4, r:22}); } }
   else if (CH.ult==='swarm'){ P.tmpT=9; }
+  else if (CH.ult==='heal'){ P.hp=Math.min(P.max,P.hp+2); P.inv=Math.max(P.inv,3); burst(P.x,P.y,'#8fd8ff',40,300,.8,4); explode(P.x,P.y,150,8*dmgMult(),false);
+    for (const f of foes){ const d=Math.hypot(f.x-P.x,f.y-P.y)||1; if (d<220 && f.type!=='boss'){ f.kx+=(f.x-P.x)/d*700; f.ky+=(f.y-P.y)/d*700; } } eshots=[]; }
+  else if (CH.ult==='barrage'){ const vis=foes.filter(f=>!f.dead && onScreen(f.x,f.y,10)); for (let i=0;i<16;i++){ const f=vis.length?pickOne(vis):null; corpseQ.push({x:f?f.x+rand(-10,10):VX+rand(30,W-30), y:f?f.y+rand(-10,10):VY+rand(30,H-30), r:60, dmg:16*dmgMult(), t:.12+i*.07}); } }
+  else if (CH.ult==='storm'){ const vis=foes.filter(f=>!f.dead && onScreen(f.x,f.y,10)).sort(()=>Math.random()-.5).slice(0,24);
+    vis.forEach((f,i) => setTimeout(() => { if (state!=='play' || f.dead) return; bolts.push({x1:f.x+rand(-30,30),y1:f.y-220,x2:f.x,y2:f.y,life:.15}); hurtFoe(f, 18*dmgMult(), 0, 1, 'chain'); burst(f.x,f.y,COL.gem,8,180,.3,3); }, i*45)); addShake(14); }
   else if (CH.ult==='blade'){ P.blade = foes.filter(f=>!f.dead && onScreen(f.x,f.y,20)).sort((a,b)=>Math.hypot(a.x-P.x,a.y-P.y)-Math.hypot(b.x-P.x,b.y-P.y)).slice(0,12); P.bladeT=0; }
 }
 function droneCount(){ return S.drone + (P.tmpT>0 ? 4 : 0); }
@@ -1083,15 +1103,15 @@ function dropGems(x,y,total){
 // tougher, faster, more numerous and attack faster (m = minutes past the grace period).
 let ATK = 1, BSPD = 1;
 function threat(){
-  const m = Math.max(0, (runT-90)/60);
+  const m = Math.max(0, (runT-75)/60);
   return { m, lv: m>0 ? 1+Math.floor(m) : 0,
-    hp: 1 + .7*m + .18*m*m,
-    spawn: Math.min(4, 1 + .32*m),
-    spd: Math.min(1.7, 1 + .05*m),
-    atk: Math.min(3, 1 + .2*m),
-    bspd: Math.min(1.8, 1 + .07*m),
-    elite: Math.min(.25, .025*m),
-    cap: Math.min(140, Math.floor(12*m)) };
+    hp: 1 + .85*m + .22*m*m,
+    spawn: Math.min(4.6, 1 + .38*m),
+    spd: Math.min(1.8, 1 + .06*m),
+    atk: Math.min(3.4, 1 + .24*m),
+    bspd: Math.min(1.9, 1 + .08*m),
+    elite: Math.min(.28, .03*m),
+    cap: Math.min(160, Math.floor(14*m)) };
 }
 function dmgMult(){ return (1 + U('dmg')*.1) * (1 + S.dmg*.22) * (1 + S.giant*.16) * (1 + S.berserk*.18*Math.max(0,P.max-P.hp)); }
 function nearestFoe(x, y, maxD){
@@ -1140,6 +1160,19 @@ function perkTick(dt){
     if (P.holeT<=0 && foes.length){ P.holeT=10-S.hole*2.5;
       holes.push({x:P.x+Math.cos(P.ang)*170,y:P.y+Math.sin(P.ang)*170,life:2.8,max:2.8,tick:0}); tone(70,.9,'sine',.09,.4); noise(.6,.08,500); }
   }
+  if (S.shield && !P.shield){ P.shT=(P.shT===undefined?3:P.shT)-dt; if (P.shT<=0){ P.shield=1; P.shT=14-S.shield*4; tone(660,.12,'sine',.05,.6); } }
+  if (S.regen){ P.rgT=(P.rgT===undefined?40-S.regen*10:P.rgT)-dt; if (P.rgT<=0){ P.rgT=40-S.regen*10; if (P.hp<P.max){ P.hp++; pop(P.x,P.y-22,'체력 +1','#7fe0c4',16); tone(880,.1,'sine',.04,.7); } } }
+  if (S.laser){
+    P.lzT=(P.lzT===undefined?1.5:P.lzT)-dt;
+    if (P.lzT<=0 && foes.length){ P.lzT=5-S.laser;
+      const ca=Math.cos(P.ang), sa=Math.sin(P.ang), L=440, x2=P.x+ca*L, y2=P.y+sa*L;
+      for (const f of foes){ if (f.dead) continue; const t=(f.x-P.x)*ca+(f.y-P.y)*sa; if (t<0||t>L) continue; const d=Math.abs((f.y-P.y)*ca-(f.x-P.x)*sa); if (d<12+f.r) hurtFoe(f, 6*S.laser*dmgMult(), ca, sa, 'laser'); }
+      bolts.push({x1:P.x,y1:P.y,x2,y2,life:.15,beam:true}); addShake(3); tone(1200,.18,'sawtooth',.04,.25); } }
+  if (S.ring){
+    P.rnT=(P.rnT===undefined?2:P.rnT)-dt;
+    if (P.rnT<=0 && foes.length){ P.rnT=6-S.ring; const n=8+S.ring*4, a0=rand(0,6.283);
+      for (let i=0;i<n;i++){ const a=a0+i/n*6.283; shots.push({x:P.x,y:P.y,vx:Math.cos(a)*560,vy:Math.sin(a)*560,life:.55,dmg:1.6*dmgMult(),pierce:0,bounce:0,hit:new Set(),kind:'drone',sz:.8,child:true}); }
+      tone(520,.08,'square',.03,.6); } }
   if (S.meteor){
     P.metT=(P.metT===undefined?2:P.metT)-dt;
     if (P.metT<=0){ P.metT=5.8-S.meteor;
@@ -1172,6 +1205,7 @@ function hurtFoe(e, dmg, vx, vy, src){
   if (e.dead || e.phased) return;
   let crit = false;
   if (src==='shot' && Math.random() < S.crit*.11){ dmg *= 2.25; crit = true; }
+  if (S.execute && src==='shot' && e.type!=='boss' && e.hp-dmg < e.max*.1*S.execute && e.hp-dmg > 0){ dmg = e.hp; crit = true; }
   e.hp -= dmg; e.flash = .07;
   const l = Math.hypot(vx,vy)||1, kb = e.type==='boss'?0 : e.type==='tank'?40:140;
   e.kx += vx/l*kb; e.ky += vy/l*kb;
@@ -1234,6 +1268,7 @@ function explode(x,y,r,dmg,hurtsPlayer){
 }
 function hurtPlayer(){
   if (P.inv>0 || P.dashT>0 || state!=='play') return;
+  if (P.shield){ P.shield=0; P.inv=.5; burst(P.x,P.y,'#6fd3ff',22,240,.5,3); pop(P.x,P.y-22,'방어!','#6fd3ff',17); tone(400,.15,'triangle',.06,.5); addShake(5); return; }
   P.hp--; P.inv = .75*D.inv; addShake(14); combo=0; comboT=0; flash=.35; stop=.08;
   burst(P.x,P.y,COL.foe,18,220,.5); SND.hurt();
   if (S.nova){ explode(P.x,P.y,130,10*dmgMult(),false);
@@ -1430,12 +1465,12 @@ document.addEventListener('visibilitychange', () => {
 });
 /* ---------- characters & shop ---------- */
 const PCAT = {};
-for (const id of ['dmg','rate','multi','pierce','bounce','crit','giant','back','splitshot','homing','berserk']) PCAT[id]=['공격','#ffb347'];
-for (const id of ['boom','chain','hole','meteor','corpse','fire','orbit','nova']) PCAT[id]=['광역','#b58cff'];
-for (const id of ['hp','vamp','thorns','revive','dash','speed']) PCAT[id]=['생존','#7fe0c4'];
+for (const id of ['dmg','rate','multi','pierce','bounce','crit','giant','back','splitshot','homing','berserk','execute']) PCAT[id]=['공격','#ffb347'];
+for (const id of ['boom','chain','hole','meteor','corpse','fire','orbit','nova','laser','ring']) PCAT[id]=['광역','#b58cff'];
+for (const id of ['hp','vamp','thorns','revive','dash','speed','shield','regen']) PCAT[id]=['생존','#7fe0c4'];
 for (const id of ['magnet','luck','ammo','drone','frost','poison']) PCAT[id]=['지원','#6fd3ff'];
 PCAT.heal=['회복','#ff5d5d'];
-const CSTAT = { soldier:[3,3,3,1], sniper:[2,3,4,3], pyro:[4,2,4,2], engi:[3,3,3,2], ninja:[1,5,3,4] };
+const CSTAT = { soldier:[3,3,3,1], sniper:[2,3,4,3], pyro:[4,2,4,2], engi:[3,3,3,2], ninja:[1,5,3,4], medic:[4,3,2,2], gunner:[5,1,5,3], storm:[2,3,5,4] };
 const UICON = {
   hp:'<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/>',
   dmg:'<circle cx="12" cy="12" r="6"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/>',
@@ -1813,7 +1848,7 @@ function update(dt){
         P.target=tg; P.ang = tg ? Math.atan2(tg.y-P.y,tg.x-P.x) : raw; firing=true; }
     } else if (mouse.active){ P.ang=Math.atan2(mouse.y+VY-P.y, mouse.x+VX-P.x); firing=mouse.down; }
     fireT -= dt;
-    if (firing && fireT<=0){ fire(); fireT = GUNS[P.gun].rate/(1+S.rate*.15); }
+    if (firing && fireT<=0){ fire(); fireT = GUNS[P.gun].rate/(1+S.rate*.14); }
     perkTick(dt);
     runT += dt;
     goldSaveT += dt; if (goldSaveT > 5){ goldSaveT = 0; bankScore(); flushGold(); }
@@ -2311,7 +2346,7 @@ function drawFoe(e){
     const bw=r*2; ctx.fillStyle=OUT; ctx.fillRect(e.x-bw/2-1,e.y-r-15,bw+2,6); ctx.fillStyle=COL.foe; ctx.fillRect(e.x-bw/2,e.y-r-14,bw*Math.max(0,e.hp/e.max),4); }
 }
 
-const GUNLOOK = {pistol:[13,5,'#3a3440'], smg:[18,6,'#3a3440'], shotgun:[21,7,'#6a4a32'], rail:[25,6,'#2f5a52'], rocket:[22,10,'#55606a'], snipe:[27,5,'#3a2f52'], flame:[20,8,'#7a3a1a'], shuriken:[9,9,'#2b2430']};
+const GUNLOOK = {pistol:[13,5,'#3a3440'], smg:[18,6,'#3a3440'], shotgun:[21,7,'#6a4a32'], rail:[25,6,'#2f5a52'], rocket:[22,10,'#55606a'], snipe:[27,5,'#3a2f52'], flame:[20,8,'#7a3a1a'], shuriken:[9,9,'#2b2430'], minigun:[23,9,'#4a4f58'], arc:[16,6,'#2a3a6a']};
 function drawPlayer(){
   for (let i=0;i<S.orbit;i++){
     const a=t*4+i*6.283/S.orbit, bx=P.x+Math.cos(a)*48, by=P.y+Math.sin(a)*48;
@@ -2324,6 +2359,7 @@ function drawPlayer(){
   const g = GUNLOOK[P.gun], gx = 6-P.recoil;
   if (!(P.inv>0 && P.dashT<=0 && Math.floor(P.inv*16)%2)){
     const moving = P.dx||P.dy, md = moving ? Math.atan2(P.dy,P.dx) : P.ang, st = moving ? Math.sin(P.walk||0)*5 : 0;
+    if (P.shield){ ctx.strokeStyle='rgba(111,211,255,'+(.55+.3*Math.sin(t*6))+')'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(P.x,P.y,P.r+8,0,6.283); ctx.stroke(); }
     ctx.save(); ctx.translate(P.x,P.y);
     ctx.save(); ctx.rotate(md); ctx.fillStyle='#2b2430';
     for (const k of [-1,1]){ ctx.beginPath(); ctx.ellipse(st*k,k*6,5,3.6,0,0,6.283); ctx.fill(); ol(1.5); }
@@ -2471,6 +2507,8 @@ function render(){
   }
   for (const s of eshots) glow(s.x,s.y,(s.r||5.5)*2.8,s.c||COL.spit,.85);
   for (const b of bolts){
+    if (b.beam){ ctx.globalAlpha=b.life/.15; ctx.lineCap='round'; ctx.strokeStyle='#ff5d8a'; ctx.lineWidth=12; ctx.beginPath(); ctx.moveTo(b.x1,b.y1); ctx.lineTo(b.x2,b.y2); ctx.stroke();
+      ctx.strokeStyle='#ffffff'; ctx.lineWidth=4; ctx.stroke(); continue; }
     ctx.strokeStyle=COL.gem; ctx.globalAlpha=b.life/.15; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(b.x1,b.y1);
     for (let i=1;i<6;i++){ const k=i/6; ctx.lineTo(b.x1+(b.x2-b.x1)*k+rand(-9,9), b.y1+(b.y2-b.y1)*k+rand(-9,9)); }
     ctx.lineTo(b.x2,b.y2); ctx.stroke(); glow(b.x2,b.y2,16,COL.gem,b.life/.15);
