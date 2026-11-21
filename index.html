@@ -147,7 +147,7 @@ button:focus-visible{outline:3px solid var(--ally);outline-offset:3px}
 .hero-ult{font-size:12px;color:var(--tracer)}
 .hero-go{font-family:var(--display);font-size:14px;color:var(--ally);white-space:nowrap}
 .seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:min(100%,340px);padding:4px;background:rgba(20,15,24,.75);border:1px solid #3e3342;border-radius:12px}
-.seg.modes{grid-template-columns:repeat(2,1fr)}
+.seg.modes{grid-template-columns:repeat(3,1fr)}
 .seg button{font-family:var(--display);font-size:15px;color:var(--muted);background:transparent;border:0;border-radius:9px;padding:9px 0;cursor:pointer}
 .seg.modes button{font-size:17px;padding:11px 0}
 .seg button[aria-checked="true"]{color:var(--ground);background:linear-gradient(#ffd08a,var(--tracer));box-shadow:0 2px 0 #a8621c}
@@ -369,7 +369,7 @@ body.lang-en .perk.rare::after{content:"RARE"}body.lang-en .perk.evo::after{cont
         <button class="dockbtn" id="gbBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>방명록</button>
         <button class="dockbtn" id="menuRankBtn" type="button" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg>랭킹</button>
       </nav>
-      <div class="ver" id="verTxt">v3.0 · 2026.11.20</div>
+      <div class="ver" id="verTxt">v4.0 · 2026.11.21</div>
     </div>
   </div>
 
@@ -400,6 +400,7 @@ body.lang-en .perk.rare::after{content:"RARE"}body.lang-en .perk.evo::after{cont
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="4"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="16" cy="11.5" r="1"/><circle cx="18" cy="14" r="1"/></svg></span><span><b>이동과 사격</b>폰은 아래 왼쪽 스틱으로 이동, 오른쪽 스틱을 미는 동안 그 방향으로 자동 발사. PC는 <span class="kcap">WASD</span> 이동, 마우스 조준, 누르고 있으면 발사.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span><b>대시와 궁극기</b>대시는 잠깐 무적. 궁극기는 적을 잡을수록 충전돼요. PC는 <span class="kcap">Space</span> 대시, <span class="kcap">E</span> 궁극기.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></span><span><b>레벨업</b>파란 경험치를 모으면 능력 36종 중 하나를 골라요. 마음에 안 들면 다시 뽑기.</span></div>
+      <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9l3-5h10l3 5-8 11z"/><path d="M4 9h16M9 4l3 5 3-5"/></svg></span><span><b>던전 탐험</b>방에 들어가면 문이 잠기고 적이 나와요. 다 잡으면 문이 열려요. 보물방, 상점, 엘리트 방을 찾고 빨간 보스방을 깨면 아래층으로.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9l3-5h10l3 5-8 11z"/><path d="M4 9h16M9 4l3 5 3-5"/></svg></span><span><b>진화와 이벤트</b>능력 하나를 끝까지 찍고 짝 능력을 가지면 진화 카드가 나와요. 판 도중에 보급 투하, 대군 습격, 황금 고블린이 터져요.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9l3-5h10l3 5-8 11z"/><path d="M4 9h16M9 4l3 5 3-5"/></svg></span><span><b>엘리트와 보물상자</b>금색 왕관 적을 잡으면 가끔 보물상자. 열면 능력 1개 (가끔 2개) 공짜.</span></div>
       <div class="howrow panel"><span class="sico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v3M8.5 20h7M10 16h4v4h-4z"/></svg></span><span><b>스테이지 모드</b>2분 30초 버티면 보스 등장. 잡으면 다음 지역으로. 지역마다 적과 보스가 달라요.</span></div>
@@ -434,7 +435,7 @@ body.lang-en .perk.rare::after{content:"RARE"}body.lang-en .perk.evo::after{cont
   <div class="overlay result" id="clear" hidden>
     <div class="stamp">MISSION CLEAR</div>
     <div class="eyebrow" id="clearEyebrow">STAGE 1</div>
-    <h2>지역 정복</h2>
+    <h2 id="clearTitle">지역 정복</h2>
     <div class="statgrid" id="clearStats"></div>
     <div class="nextcard panel" id="clearNext"></div>
     <button class="btn big" id="nextBtn" type="button">다음 지역으로</button>
@@ -524,6 +525,7 @@ const EN = {
   '황혼의 서막':'DUSK LINE','황혼의':'DUSK','서막':'LINE','소리 켜짐':'Sound on','소리 꺼짐':'Sound off','일시정지':'Pause',
   '교체 ›':'Change ›','이어하기':'Continue','이어하기 ›':'Continue ›','출격':'Deploy','새로 출격':'New run','저장 지우고 새로 출격':'Erase save & start new',
   '상점':'Shop','조작법':'How to play','방명록':'Guestbook','랭킹':'Ranking','모드':'Mode','난이도':'Difficulty','돌아가기':'Back',
+  '던전 모드':'Dungeon mode','던전':'Dungeon','방을 하나씩 깨고 보스방에서 보스를 잡으면 다음 층으로':'Clear rooms one by one, beat the boss room to go down a floor','엘리트 방':'Elite room','왕관 쓴 강적이 나와요':'Crowned elites inside','보물방':'Treasure room','상자를 열면 능력이 공짜':'Open the chest for a free power','상점':'Shop','골드로 아이템을 사요. 올라서면 구매':'Spend gold. Step on an item to buy','체력 +2':'HP +2','최대 체력 +1':'Max HP +1','능력 선택':'Pick a power','무기 상자':'Weapon crate','완료':'Sold','방 클리어':'Room clear','다음 층 ▼':'Next floor ▼','도달 층':'Floor reached',
   '스테이지 모드':'Stage mode','무한 모드':'Endless mode','스테이지':'Stage','무한':'Endless',
   '2분 30초 버티고 보스를 잡으면 다음 지역으로':'Survive 2:30, beat the boss, move to the next region',
   '끝없이 많아지고 빨라지는 웨이브':'Endless waves that keep getting bigger and faster',
@@ -594,7 +596,7 @@ const EN = {
   'SAVED RUN · 이어하기':'SAVED RUN · Continue',
   // pause / results
   '계속하기':'Resume','메뉴로 나가기':'Quit to menu','정말 나가기':'Really quit','나가도 이번 지역 시작 지점부터 이어할 수 있어요':'You can continue from the start of this region',
-  '지역 정복':'Region cleared','다음 지역으로':'Next region','방어선 붕괴':'The line has fallen','최고 기록 갱신':'New record','다시 출격':'Deploy again','메뉴':'Menu','토스 랭킹':'Toss ranking',
+  '지역 정복':'Region cleared','층 돌파':'Floor cleared','다음 층으로':'Next floor','던전 탐험':'Dungeon crawl','방에 들어가면 문이 잠기고 적이 나와요. 다 잡으면 문이 열려요. 보물방, 상점, 엘리트 방을 찾고 빨간 보스방을 깨면 아래층으로.':'Doors lock when you enter a room. Clear it to open them. Find treasure, shop and elite rooms, then beat the red boss room to go down.','다음 지역으로':'Next region','방어선 붕괴':'The line has fallen','최고 기록 갱신':'New record','다시 출격':'Deploy again','메뉴':'Menu','토스 랭킹':'Toss ranking',
   '처치':'Kills','클리어 보너스':'Clear bonus','골드':'Gold','체력 회복':'HP restored','도달 지역':'Reached','도달 웨이브':'Reached','레벨':'Level','대원':'Operator','최고 기록':'Best','보스':'Boss',
   '첫 판 수고했어요!':'Nice first run!','방명록에 짧은 후기를 남겨주면 큰 힘이 돼요':'A short review in the guestbook would mean a lot','다음에':'Later','후기 쓰기':'Write review',
   // guestbook
@@ -630,6 +632,7 @@ const ENRX = [
   [/^STAGE (\d+) 처음부터$/, 'From the start of STAGE $1'], [/^WAVE (\d+) 처음부터$/, 'From the start of WAVE $1'],
   [/^(\d+) 연속$/, '$1 combo'], [/^점수 x(\d+)$/, 'Score x$1'], [/^점수 ([\d,]+)$/, 'Score $1'], [/^궁극기 (\d+)%$/, 'ULT $1%'],
   [/^보스까지 (\d+:\d+)$/, 'Boss in $1'], [/^무한 WAVE (\d+)$/, 'Endless WAVE $1'], [/^최고 ([\d,]+)$/, 'Best $1'], [/^(\d+)발$/, '$1 rds'],
+  [/^B(\d+)층$/, 'Floor $1'], [/^B(\d+)층 처음부터$/, 'From the start of Floor $1'], [/^(B\d+층) · 방 (\d+)\/(\d+)(.*)$/, (a,b,c2,d) => 'Floor '+a.slice(1,-1)+' · Rooms '+b+'/'+c2+d.replace('위협','Threat')], [/^골드가 (\d+) 부족해요$/, 'Need $1 more gold'],
   [/^진화: (.+) 최대 \+ (.+) → (.+)$/, (a,b,c) => 'Evolve: max '+(EN[a]||a)+' + '+(EN[b]||b)+' → '+(EN[c]||c)],
   [/^진화! (.+)$/, n => 'Evolved! '+(EN[n]||n)],
   [/^\+([\d,]+) 골드$/, '+$1 gold'], [/^보유 ([\d,]+)$/, 'Total $1'], [/^([\d,]+) 골드로 영입$/, 'Recruit for $1 gold'], [/^골드가 ([\d,]+) 부족해요$/, 'Need $1 more gold'],
@@ -839,15 +842,17 @@ const THEMES = [
    pool:[['grunt',3],['runner',2],['swarm',2],['spit',2],['bomber',2],['tank',2],['split',2],['shield',2],['healer',2],['ghost',3],['mortar',2],['sniper',2],['blinker',3],['nest',1]]},
 ];
 const STAGE_LEN = 150;
-const MODES = { stage:{name:'스테이지', note:'2분 30초 버티고 보스를 잡으면 다음 지역으로'}, endless:{name:'무한', note:'끝없이 많아지고 빨라지는 웨이브'} };
+const MODES = { dungeon:{name:'던전', note:'방을 하나씩 깨고 보스방에서 보스를 잡으면 다음 층으로'}, stage:{name:'스테이지', note:'2분 30초 버티고 보스를 잡으면 다음 지역으로'}, endless:{name:'무한', note:'끝없이 많아지고 빨라지는 웨이브'} };
 let evT = 55, runT = 0, threatLv = 0, bankedScore = 0, goldDirty = false, goldSaveT = 0;
 // gold goes straight into the player's wallet the moment it is earned (coins, clear bonus, score)
 function bankGold(n){ n = Math.floor(n); if (n<=0) return; SAVE.gold += n; runGold += n; goldDirty = true; }
 function bankScore(){ const n = Math.floor((Math.floor(score) - bankedScore)/250); if (n>0){ bankGold(n); bankedScore += n*250; } }
 function flushGold(){ if (goldDirty){ goldDirty=false; saveSave(); } }
 let mode = 'stage', stage = 1, stageT = 0, bossSpawned = false, clearT = 0, stageKills = 0, TH = THEMES[0];
-try { mode = localStorage.getItem('dusk-line-mode') || 'stage'; } catch(e){}
-if (!MODES[mode]) mode = 'stage';
+try { mode = localStorage.getItem('dusk-line-mode') || 'dungeon'; if (!localStorage.getItem('dusk-line-v3')){ localStorage.setItem('dusk-line-v3','1'); mode='dungeon'; localStorage.setItem('dusk-line-mode','dungeon'); } } catch(e){}
+if (!MODES[mode]) mode = 'dungeon';
+const stagey = () => mode==='stage' || mode==='dungeon';
+const stageLabel = (m=mode, n=stage) => m==='dungeon' ? 'B'+n+'층' : 'STAGE '+n;
 const CHARS = {
   soldier:{name:'레온', role:'돌격병', desc:'균형 잡힌 기본 병사', cost:0, color:'#7fe0c4', helmet:'#5e9a78', hp:0, speed:1, gun:'pistol', perks:{}, ult:'strike', ultName:'융단 폭격', ultDesc:'화면 전체에 폭격'},
   sniper:{name:'미라', role:'저격수', desc:'적 3명을 꿰뚫는 저격총, 치명타 +1', cost:400, color:'#b58cff', helmet:'#6a4fa8', hp:-1, speed:.95, gun:'snipe', perks:{crit:1}, ult:'freeze', ultName:'시간 정지', ultDesc:'모든 적과 탄을 4초간 멈춤'},
@@ -905,14 +910,14 @@ let diff = 'normal';
 try { diff = localStorage.getItem('dusk-line-diff') || 'normal'; } catch(e){}
 if (!DIFFS[diff]) diff = 'normal';
 let D = DIFFS[diff], best = 0;
-function bestKey(){ return (diff==='normal' ? 'dusk-line-best' : 'dusk-line-best-'+diff) + (mode==='stage' ? '-stage' : ''); }
+function bestKey(){ return (diff==='normal' ? 'dusk-line-best' : 'dusk-line-best-'+diff) + (mode==='stage' ? '-stage' : mode==='dungeon' ? '-dungeon' : ''); }
 function loadBest(){ best = +(SAVE.best||{})[bestKey()] || 0; }
 loadBest();
 function buildDiff(){
   const mb = $('modes'); mb.innerHTML='';
   for (const k in MODES){
     const b = document.createElement('button'); b.type='button'; b.setAttribute('role','radio'); b.setAttribute('aria-checked', String(k===mode));
-    b.textContent = MODES[k].name + ' 모드';
+    b.textContent = MODES[k].name;
     b.addEventListener('click', () => { mode=k; try{ localStorage.setItem('dusk-line-mode',k); }catch(e){} loadBest(); hudKey=''; reset(); buildDiff(); });
     mb.appendChild(b);
   }
@@ -931,6 +936,203 @@ function buildDiff(){
 let state='menu', P, S, foes, shots, eshots, items, gems, barrels, parts, pops, rings, bolts, lobs, seen, intro, decals = [], flames = [], holes = [], meteors = [], corpseQ = [], droneT = [], rerolls = 2;
 let score, combo, comboT, wave, toSpawn, spawnT, breakT, banner, shake, fireT, stop, flash, kills, t, pendingLv, xp, level, need, boss;
 
+/* ---------- dungeon ---------- */
+const RW = 280, RH = 356, RGAP = 700, DOOR = 56;
+const DIRS = {n:[0,-1], s:[0,1], w:[-1,0], e:[1,0]}, OPP = {n:'s', s:'n', w:'e', e:'w'};
+let DG = null, dgSpawns = [], dgHatch = null, dgFade = 0;
+const dkey = (x,y) => x+','+y;
+function roomC(r){ return {x:r.gx*RGAP, y:r.gy*RGAP}; }
+function inRoom(){ return mode==='dungeon' && DG && DG.cur; }
+function bounds(){ if (inRoom()){ const c=roomC(DG.cur); return {x0:c.x-RW/2, y0:c.y-RH/2, x1:c.x+RW/2, y1:c.y+RH/2}; } return {x0:VX, y0:VY, x1:VX+W, y1:VY+H}; }
+function genFloor(){
+  const want = Math.min(15, 8 + stage), map = new Map(), list = [];
+  const add = (x,y) => { const r = {gx:x, gy:y, kind:'fight', cleared:false, seen:false, visited:false}; map.set(dkey(x,y), r); list.push(r); return r; };
+  add(0,0).kind = 'start';
+  const D4 = Object.values(DIRS); let guard = 0;
+  while (list.length < want && guard++ < 800){
+    const b = pickOne(list), d = pickOne(D4), x = b.gx+d[0], y = b.gy+d[1];
+    if (map.has(dkey(x,y))) continue;
+    let nb = 0; for (const q of D4) if (map.has(dkey(x+q[0],y+q[1]))) nb++;
+    if (nb > 1 && Math.random() < .8) continue;
+    add(x,y);
+  }
+  const deg = r => D4.filter(d => map.has(dkey(r.gx+d[0], r.gy+d[1]))).length;
+  const dist = new Map([[dkey(0,0),0]]), Q = [list[0]];
+  while (Q.length){ const r = Q.shift(); for (const d of D4){ const k = dkey(r.gx+d[0], r.gy+d[1]); if (map.has(k) && !dist.has(k)){ dist.set(k, dist.get(dkey(r.gx,r.gy))+1); Q.push(map.get(k)); } } }
+  for (const r of list) r.d = dist.get(dkey(r.gx,r.gy));
+  const rest = list.filter(r => r.kind!=='start').sort((a,b) => (b.d+(deg(b)===1?.5:0)) - (a.d+(deg(a)===1?.5:0)));
+  rest.shift().kind = 'boss';
+  const ends = rest.filter(r => deg(r)===1 && r.d>1), mids = rest.filter(r => !ends.includes(r));
+  const take = () => { const src = ends.length ? ends : mids; return src.length ? src.splice(Math.floor(Math.random()*src.length),1)[0] : null; };
+  const tr = take(); if (tr) tr.kind = 'treasure';
+  const sh = take(); if (sh) sh.kind = 'shop';
+  for (const r of [...ends, ...mids]) if (r.kind==='fight' && r.d>1 && Math.random() < .2) r.kind = 'elite';
+  for (const r of list){ r.doors = {}; for (const k in DIRS) r.doors[k] = map.has(dkey(r.gx+DIRS[k][0], r.gy+DIRS[k][1])); }
+  DG = {map, list, cur:null};
+  enterRoom(list[0], null);
+}
+function enterRoom(r, from){
+  DG.cur = r; r.visited = true; r.seen = true;
+  for (const k in DIRS){ const n = DG.map.get(dkey(r.gx+DIRS[k][0], r.gy+DIRS[k][1])); if (n) n.seen = true; }
+  const c = roomC(r);
+  if (from){ const o = {n:[0,-RH/2+26], s:[0,RH/2-26], w:[-RW/2+26,0], e:[RW/2-26,0]}[from]; P.x = c.x+o[0]; P.y = c.y+o[1]; }
+  else { P.x = c.x; P.y = c.y+70; }
+  cam.x = c.x; cam.y = c.y; view();
+  foes=[]; shots=[]; eshots=[]; lobs=[]; holes=[]; meteors=[]; corpseQ=[]; flames=[]; barrels=[]; bolts=[]; dgSpawns=[]; dgHatch=null; boss=null;
+  items = r.items || []; r.items = null;
+  dgFade = .35; P.inv = Math.max(P.inv, .7); P.dashT = 0;
+  if (!r.cleared){
+    if (r.kind==='fight' || r.kind==='elite'){
+      r.waves = r.kind==='elite' ? 2 : 2 + Math.min(2, Math.floor(stage/2)); r.wave = 0;
+      const nb = Math.floor(rand(0,3)); for (let i=0;i<nb;i++) barrels.push({x:c.x+rand(-RW/2+30,RW/2-30), y:c.y+rand(-RH/2+30,RH/2-30), r:12, hp:4, fuse:0});
+      if (r.kind==='elite') say('엘리트 방', '#ffd75e', 32, 1.4, '왕관 쓴 강적이 나와요');
+      dgNextWave();
+    } else if (r.kind==='boss'){
+      spawnBoss(); boss.x = c.x; boss.y = c.y-RH/2+50;
+      say('BOSS', TH.bossCol, 56, 2, TH.boss); SND.boss();
+    } else if (r.kind==='treasure'){
+      items.push({kind:'chest', x:c.x, y:c.y-20, life:1e9, t:0}); r.cleared = true;
+      say('보물방', '#ffd75e', 34, 1.4, '상자를 열면 능력이 공짜'); SND.lvl();
+    } else if (r.kind==='shop'){
+      const f = 1 + .35*(stage-1), cx = [-90,-30,30,90];
+      r.shop = [['heal','체력 +2',25],['maxhp','최대 체력 +1',90],['perk','능력 선택',70],['gun','무기 상자',35]].map((q,i) => ({kind:q[0], name:q[1], price:Math.round(q[2]*f), x:c.x+cx[i], y:c.y-30, sold:false, cd:0}));
+      r.cleared = true; say('상점', '#7fe0c4', 34, 1.4, '골드로 아이템을 사요. 올라서면 구매');
+    } else r.cleared = true;
+  }
+  if (r.kind==='boss' && r.cleared) dgHatch = {x:c.x, y:c.y+RH/2-80};
+}
+function dgNextWave(){
+  const r = DG.cur, c = roomC(r); r.wave++;
+  const n = Math.max(3, Math.round((4 + stage*1.4 + r.wave*1.6) * D.count * Math.sqrt(threat().spawn) * (r.kind==='elite' ? .65 : 1)));
+  for (let i=0;i<n;i++){
+    let x, y, tr = 0;
+    do { x = c.x+rand(-RW/2+22, RW/2-22); y = c.y+rand(-RH/2+22, RH/2-22); } while (Math.hypot(x-P.x, y-P.y) < 120 && ++tr < 25);
+    dgSpawns.push({x, y, type:pickType(), t:.75+i*.07, max:.75+i*.07, elite: r.kind==='elite' && i < 1+Math.floor(stage/3)});
+  }
+  if (r.waves > 1) pop(c.x, c.y-RH/2+30, 'WAVE '+r.wave+'/'+r.waves, COL.ink, 16);
+}
+function dgClear(){
+  const r = DG.cur, c = roomC(r); r.cleared = true;
+  for (const g of gems) g.vacuum = true;
+  dropCoins(P.x, P.y-30, 3+stage, r.kind==='elite' ? 3 : 1);
+  if (r.kind==='elite') items.push({kind:'chest', x:c.x, y:c.y, life:1e9, t:0});
+  else if (Math.random() < .22 && P.hp < P.max) items.push({kind:'heart', x:c.x, y:c.y, life:1e9, t:0});
+  pop(P.x, P.y-34, '방 클리어', COL.ally, 20); tone(523,.1,'triangle',.06); tone(784,.16,'triangle',.06,0,.1);
+  rings.push({x:P.x, y:P.y, r:0, max:140, life:.5, L:.5, color:COL.ally});
+}
+function dgCollect(){ let tot = 0; for (const g of gems){ if (g.coin) bankGold(g.v); else tot += g.v; } gems = []; if (tot) gainXP(tot); }
+function goRoom(dir){
+  const r = DG.cur, n = DG.map.get(dkey(r.gx+DIRS[dir][0], r.gy+DIRS[dir][1])); if (!n) return;
+  r.items = items.filter(it => it.life > 0 && it.kind!=='heart' || it.life > 1e8);
+  dgCollect(); bankScore(); flushGold();
+  enterRoom(n, OPP[dir]);
+}
+function buy(it){
+  if (it.sold || it.cd > 0) return; it.cd = 1;
+  if (SAVE.gold < it.price){ pop(it.x, it.y-24, '골드가 '+(it.price-SAVE.gold)+' 부족해요', COL.foe, 14); tone(160,.12,'square',.04); return; }
+  SAVE.gold -= it.price; goldDirty = true; it.sold = true; flushGold();
+  burst(it.x, it.y, '#ffd75e', 16, 200, .5, 3); tone(880,.08,'triangle',.06); tone(1320,.12,'triangle',.06,0,.08);
+  if (it.kind==='heal'){ P.hp = Math.min(P.max, P.hp+2); pop(it.x, it.y-24, '체력 +2', COL.ally, 16); }
+  else if (it.kind==='maxhp'){ P.max++; P.hp = Math.min(P.max, P.hp+1); pop(it.x, it.y-24, '최대 체력 +1', COL.ally, 16); }
+  else if (it.kind==='gun'){ dropCrate(it.x, it.y+34, pickOne(Object.keys(CRATE))); }
+  else if (it.kind==='perk'){ pendingLv++; }
+}
+function dgTick(dt){
+  const r = DG && DG.cur; if (!r) return false;
+  const c = roomC(r), b = bounds();
+  dgFade = Math.max(0, dgFade-dt);
+  for (const sp of dgSpawns){ sp.t -= dt;
+    if (sp.t <= 0){ sp.done = true;
+      if (!seen.has(sp.type) && INTRO[sp.type]){ seen.add(sp.type); intro = {type:sp.type, txt:INTRO[sp.type], life:3.5}; }
+      if (sp.type==='swarm'){ for (let i=0;i<5;i++) makeFoe('swarm', sp.x+rand(-14,14), sp.y+rand(-14,14)); }
+      else { const f = makeFoe(sp.type, sp.x, sp.y); if (sp.elite || Math.random() < .03+stage*.006+threat().elite) makeElite(f); }
+      burst(sp.x, sp.y, COL.foe, 8, 140, .3, 3); } }
+  dgSpawns = dgSpawns.filter(sp => !sp.done);
+  if (!r.cleared && (r.kind==='fight' || r.kind==='elite') && !dgSpawns.length && !foes.some(f => !f.dead)){
+    if (r.wave < r.waves) dgNextWave(); else dgClear(); }
+  for (const f of foes){ if (f.dead) continue; f.x = clamp(f.x, b.x0+f.r, b.x1-f.r); f.y = clamp(f.y, b.y0+f.r, b.y1-f.r); }
+  for (const b2 of barrels){ b2.x = clamp(b2.x, b.x0+12, b.x1-12); b2.y = clamp(b2.y, b.y0+12, b.y1-12); }
+  if (r.shop) for (const it of r.shop){ it.cd = Math.max(0, it.cd-dt); if (!it.sold && Math.hypot(P.x-it.x, P.y-it.y) < 20) buy(it); }
+  if (dgHatch && Math.hypot(P.x-dgHatch.x, P.y-dgHatch.y) < 22){ dgHatch = null; dgCollect(); stageClear(); return true; }
+  const open = r.cleared, half = DOOR/2;
+  let exit = null;
+  const dx = Math.abs(P.x-c.x) < half-6, dy = Math.abs(P.y-c.y) < half-6;
+  if (P.y < b.y0+P.r){ if (open && r.doors.n && dx){ P.x = clamp(P.x, c.x-half+P.r, c.x+half-P.r); if (P.y < b.y0-8) exit = 'n'; } else P.y = b.y0+P.r; }
+  if (P.y > b.y1-P.r){ if (open && r.doors.s && dx){ P.x = clamp(P.x, c.x-half+P.r, c.x+half-P.r); if (P.y > b.y1+8) exit = 's'; } else P.y = b.y1-P.r; }
+  if (P.x < b.x0+P.r){ if (open && r.doors.w && dy){ P.y = clamp(P.y, c.y-half+P.r, c.y+half-P.r); if (P.x < b.x0-8) exit = 'w'; } else P.x = b.x0+P.r; }
+  if (P.x > b.x1-P.r){ if (open && r.doors.e && dy){ P.y = clamp(P.y, c.y-half+P.r, c.y+half-P.r); if (P.x > b.x1+8) exit = 'e'; } else P.x = b.x1-P.r; }
+  if (exit){ goRoom(exit); return false; }
+  return false;
+}
+const RCOL = {boss:'#ff5d6c', treasure:'#ffd75e', shop:'#7fe0c4', elite:'#ffb347'};
+function drawRoom(){
+  const r = DG.cur, c = roomC(r), x0 = c.x-RW/2, y0 = c.y-RH/2, x1 = c.x+RW/2, y1 = c.y+RH/2, T = 12, half = DOOR/2;
+  // floor tiles
+  ctx.strokeStyle = 'rgba(255,255,255,.035)'; ctx.lineWidth = 1; ctx.beginPath();
+  for (let x = x0+40; x < x1; x += 40){ ctx.moveTo(x, y0); ctx.lineTo(x, y1); }
+  for (let y = y0+40; y < y1; y += 40){ ctx.moveTo(x0, y); ctx.lineTo(x1, y); }
+  ctx.stroke();
+  // darkness outside
+  ctx.fillStyle = 'rgba(6,4,10,.86)';
+  ctx.fillRect(VX-20, VY-20, W+40, y0-T-(VY-20)); ctx.fillRect(VX-20, y1+T, W+40, VY+H+20-(y1+T));
+  ctx.fillRect(VX-20, y0-T, x0-T-(VX-20), RH+2*T); ctx.fillRect(x1+T, y0-T, VX+W+20-(x1+T), RH+2*T);
+  // walls with door gaps
+  const seg = (ax, ay, bx, by) => { ctx.fillRect(Math.min(ax,bx), Math.min(ay,by), Math.abs(bx-ax)||T, Math.abs(by-ay)||T); };
+  ctx.fillStyle = TH.rock;
+  const gapH = d => r.doors[d] ? half : 0;
+  seg(x0-T, y0-T, c.x-gapH('n'), y0-T); seg(c.x+gapH('n'), y0-T, x1+T, y0-T);
+  seg(x0-T, y1, c.x-gapH('s'), y1); seg(c.x+gapH('s'), y1, x1+T, y1);
+  ctx.fillRect(x0-T, y0-T, T, c.y-gapH('w')-(y0-T)); ctx.fillRect(x0-T, c.y+gapH('w'), T, y1+T-(c.y+gapH('w')));
+  ctx.fillRect(x1, y0-T, T, c.y-gapH('e')-(y0-T)); ctx.fillRect(x1, c.y+gapH('e'), T, y1+T-(c.y+gapH('e')));
+  ctx.fillStyle = TH.rockHi; ctx.fillRect(x0-T, y0-T, RW+2*T, 3); ctx.fillRect(x0, y0-2, RW, 2);
+  ctx.strokeStyle = OUT; ctx.lineWidth = 2; ctx.strokeRect(x0, y0, RW, RH);
+  for (const [px,py] of [[x0,y0],[x1,y0],[x0,y1],[x1,y1]]){ ctx.fillStyle = TH.rockHi; ctx.fillRect(px-9, py-9, 18, 18); ctx.strokeStyle = OUT; ctx.strokeRect(px-9, py-9, 18, 18); }
+  // doors
+  for (const d in DIRS){ if (!r.doors[d]) continue;
+    const n = DG.map.get(dkey(r.gx+DIRS[d][0], r.gy+DIRS[d][1])), col = (n && n.seen && RCOL[n.kind]) || TH.rockHi;
+    const horiz = d==='n' || d==='s', px = d==='w' ? x0-T : d==='e' ? x1 : c.x-half, py = d==='n' ? y0-T : d==='s' ? y1 : c.y-half;
+    const w = horiz ? DOOR : T, h = horiz ? T : DOOR;
+    ctx.fillStyle = col; if (horiz){ ctx.fillRect(px-5, py-2, 5, T+4); ctx.fillRect(px+w, py-2, 5, T+4); } else { ctx.fillRect(px-2, py-5, T+4, 5); ctx.fillRect(px-2, py+h, T+4, 5); }
+    if (!r.cleared){ ctx.fillStyle = 'rgba(255,93,93,.55)'; ctx.fillRect(px, py, w, h); ctx.strokeStyle = COL.foe; ctx.lineWidth = 2; ctx.beginPath();
+      for (let k = 6; k < (horiz ? w : h); k += 9){ if (horiz){ ctx.moveTo(px+k, py); ctx.lineTo(px+k, py+h); } else { ctx.moveTo(px, py+k); ctx.lineTo(px+w, py+k); } } ctx.stroke(); }
+    else { ctx.globalAlpha = .35+.25*Math.sin(t*4); ctx.fillStyle = col; ctx.fillRect(px, py, w, h); ctx.globalAlpha = 1; }
+  }
+  // spawn warnings
+  for (const sp of dgSpawns){ const k = 1-Math.max(0, sp.t)/sp.max;
+    ctx.strokeStyle = sp.elite ? '#ffd75e' : COL.foe; ctx.lineWidth = 2; ctx.globalAlpha = .4+.6*k;
+    ctx.beginPath(); ctx.arc(sp.x, sp.y, 16-8*k, 0, 6.283); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sp.x-5, sp.y-5); ctx.lineTo(sp.x+5, sp.y+5); ctx.moveTo(sp.x+5, sp.y-5); ctx.lineTo(sp.x-5, sp.y+5); ctx.stroke(); ctx.globalAlpha = 1; }
+  // shop
+  if (r.shop) for (const it of r.shop){
+    ctx.fillStyle = it.sold ? '#2a2230' : '#3a3044'; roundRect(it.x-17, it.y-12, 34, 30, 6); ctx.fill(); ol(2);
+    if (!it.sold){
+      const ic = {heal:['+','#ff5d6c'], maxhp:['♥','#ff8fae'], perk:['★','#6fd3ff'], gun:['G','#ffb347']}[it.kind];
+      ctx.textAlign = 'center'; txt(ic[0], it.x, it.y+8, 18, ic[1]);
+      txt(it.name, it.x, it.y-20, 10, COL.ink);
+      txt(String(it.price), it.x, it.y+32, 13, SAVE.gold >= it.price ? '#ffd75e' : '#8a7d80');
+    } else { ctx.textAlign = 'center'; txt('완료', it.x, it.y+8, 11, '#8a7d80'); }
+  }
+  // hatch to the next floor
+  if (dgHatch){ const hx = dgHatch.x, hy = dgHatch.y;
+    ctx.fillStyle = '#05030a'; ctx.beginPath(); ctx.ellipse(hx, hy, 22, 14, 0, 0, 6.283); ctx.fill();
+    ctx.globalCompositeOperation = 'lighter'; glow(hx, hy, 40, TH.bossCol, .5+.2*Math.sin(t*5)); ctx.globalCompositeOperation = 'source-over';
+    ctx.strokeStyle = TH.bossCol; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.ellipse(hx, hy, 22+3*Math.sin(t*5), 14+2*Math.sin(t*5), 0, 0, 6.283); ctx.stroke();
+    ctx.textAlign = 'center'; txt('다음 층 ▼', hx, hy-26, 14, COL.ink); }
+}
+function drawMinimap(){
+  if (!inRoom()) return;
+  const cs = 11, gp = 3, L = DG.list.filter(r => r.seen);
+  let mnx = 1e9, mxx = -1e9, mny = 1e9, mxy = -1e9; for (const r of L){ mnx = Math.min(mnx, r.gx); mxx = Math.max(mxx, r.gx); mny = Math.min(mny, r.gy); mxy = Math.max(mxy, r.gy); }
+  const w = (mxx-mnx+1)*(cs+gp), h = (mxy-mny+1)*(cs*.8+gp), ox = W-10-w, oy = boss ? 52 : 10;
+  ctx.globalAlpha = .9; ctx.fillStyle = 'rgba(15,10,20,.7)'; roundRect(ox-5, oy-5, w+7, h+7, 5); ctx.fill();
+  for (const r of L){ const x = ox+(r.gx-mnx)*(cs+gp), y = oy+(r.gy-mny)*(cs*.8+gp), cur = r===DG.cur;
+    ctx.fillStyle = cur ? '#f5ece0' : r.visited ? (r.cleared ? '#6a5d70' : '#8a4050') : '#3a3040';
+    ctx.fillRect(x, y, cs, cs*.8);
+    if (RCOL[r.kind] && r.kind!=='elite'){ ctx.fillStyle = RCOL[r.kind]; ctx.fillRect(x+3, y+2, cs-6, cs*.8-4); }
+    if (cur){ ctx.strokeStyle = COL.tracer; ctx.lineWidth = 1.5; ctx.strokeRect(x-1, y-1, cs+2, cs*.8+2); } }
+  ctx.globalAlpha = 1;
+}
+
 function reset(){
   cam.x = 0; cam.y = 0; view();
   CH = CHARS[SAVE.char] || CHARS.soldier; runGold = 0;
@@ -940,9 +1142,10 @@ function reset(){
   foes=[]; shots=[]; eshots=[]; decals=[]; lobs=[]; flames=[]; holes=[]; meteors=[]; corpseQ=[]; droneT=[]; evT=55; rerolls=2+U('reroll'); seen=new Set(['grunt','mini']); intro=null; items=[]; gems=[]; barrels=[]; parts=[]; pops=[]; rings=[]; bolts=[];
   score=0; combo=0; comboT=0; wave=0; toSpawn=0; spawnT=0; breakT=.6; banner=null; shake=0; fireT=0; stop=0; flash=0; kills=0; t=0;
   pendingLv=0; xp=0; level=1; need=6; boss=null;
-  stage=1; stageT=0; bossSpawned=false; clearT=0; stageKills=0; TH=THEMES[0]; runT=0; threatLv=0; bankedScore=0; goldDirty=false;
+  stage=1; stageT=0; bossSpawned=false; clearT=0; stageKills=0; TH=THEMES[0]; runT=0; DG=null; dgSpawns=[]; dgHatch=null; dgFade=0; threatLv=0; bankedScore=0; goldDirty=false;
 }
 reset();
+
 
 /* ---------- fx helpers ---------- */
 function burst(x,y,color,n,sp=200,life=.5,r=3){
@@ -968,6 +1171,7 @@ function beginStage(){
   stageT=0; bossSpawned=false; clearT=0; stageKills=0; spawnT=1.2;
   wave = (stage-1)*3+1;
   const loop = Math.floor((stage-1)/THEMES.length);
+  if (mode==='dungeon'){ genFloor(); say(stageLabel(), COL.tracer, 50, 2.4, TH.name + (loop ? ' '+['','II','III','IV','V'][Math.min(4,loop)] : '')); SND.wave(); checkpoint(); return; }
   say('STAGE '+stage, COL.tracer, 50, 2.4, TH.name + (loop ? ' '+['','II','III','IV','V'][Math.min(4,loop)] : ''));
   SND.wave(); stageEvent(); checkpoint();
 }
@@ -976,10 +1180,11 @@ function stageClear(){
   let tot=0; for (const g of gems){ if (g.coin) bankGold(g.v); else tot+=g.v; }
   bankGold(20*stage); bankScore(); flushGold(); track('clear-stage'+stage); gems=[]; if (tot) gainXP(tot);
   const bonus = Math.round(1000*stage*D.score); score += bonus;
-  $('clearEyebrow').textContent = 'STAGE '+stage+' · '+TH.name;
+  $('clearEyebrow').textContent = stageLabel()+' · '+TH.name;
   const nt = THEMES[stage%THEMES.length];
-  $('clearStats').innerHTML = cell('처치', stageKills+'') + cell('클리어 보너스', '+'+bonus.toLocaleString()) + cell('골드', '+'+(20*stage)) + cell('체력 회복', '+2');
-  $('clearNext').innerHTML = `<span class="swatch" style="background:linear-gradient(135deg,${nt.ground},${nt.rockHi} 60%,${nt.bossCol})"></span><span><span class="tag">NEXT · STAGE ${stage+1}</span><br><b style="font-family:var(--display);font-weight:400;font-size:19px">${nt.name}</b><br><span class="sub" style="font-size:12.5px">보스 · ${nt.boss}</span></span>`;
+  $('clearStats').innerHTML = cell('처치', stageKills+'') + cell('클리어 보너스', '+'+bonus.toLocaleString()) + cell('골드', '+'+(20*stage)) + cell('체력 회복', '+3');
+  $('clearTitle').textContent = mode==='dungeon' ? '층 돌파' : '지역 정복'; $('nextBtn').textContent = mode==='dungeon' ? '다음 층으로' : '다음 지역으로';
+  $('clearNext').innerHTML = `<span class="swatch" style="background:linear-gradient(135deg,${nt.ground},${nt.rockHi} 60%,${nt.bossCol})"></span><span><span class="tag">NEXT · ${stageLabel(mode,stage+1)}</span><br><b style="font-family:var(--display);font-weight:400;font-size:19px">${nt.name}</b><br><span class="sub" style="font-size:12.5px">보스 · ${nt.boss}</span></span>`;
   $('clear').hidden=false; SND.lvl();
   setTimeout(() => $('nextBtn').focus({preventScroll:true}), 30);
 }
@@ -1007,7 +1212,7 @@ function startWave(){
   if (wave>1) dropCrate(VX+rand(W*.2,W*.8), VY+rand(H*.2,H*.8), pickOne(Object.keys(CRATE)));
 }
 function pickType(){
-  if (mode==='stage'){
+  if (stagey()){
     let pool = TH.pool.slice();
     if (stage > THEMES.length) for (const k in TYPES) if (k!=='mini' && !pool.some(q=>q[0]===k)) pool.push([k,1]);
     let sum = pool.reduce((a,q)=>a+q[1],0), r = Math.random()*sum;
@@ -1084,7 +1289,7 @@ function spawnBoss(){
   boss = {type:'boss', x:VX+W/2, y:VY-50, r:36, hp, max:hp, sp:42, pts:1000, xpv:0, flash:0, cd:2.2, phase:0, kx:0, ky:0, orbCD:0, charge:0, fuse:-1};
   foes.push(boss);
 }
-function dropCrate(x,y,kind){ items.push({kind, x:clamp(x,VX+20,VX+W-20), y:clamp(y,VY+20,VY+H-20), life:15, t:0}); }
+function dropCrate(x,y,kind){ const B=bounds(); items.push({kind, x:clamp(x,B.x0+20,B.x1-20), y:clamp(y,B.y0+20,B.y1-20), life:mode==='dungeon'?40:15, t:0}); }
 function dropCoins(x,y,n,v){ for (let i=0;i<n;i++) gems.push({x:x+rand(-12,12), y:y+rand(-12,12), v, coin:true, vx:rand(-90,90), vy:rand(-90,90), t:rand(0,3)}); }
 function makeElite(f){ f.elite=true; f.hp*=4; f.max*=4; f.r*=1.3; f.pts*=5; f.xpv*=4; f.sp*=1.05;
   if (!seen.has('elite')){ seen.add('elite'); intro={type:'runner', txt:['엘리트','금색 왕관 적. 잡으면 보물상자를 떨어뜨릴 수 있어요'], life:3.5}; } }
@@ -1273,7 +1478,7 @@ function kill(e){
   if (e.gold){ dropCoins(e.x,e.y,30,3); items.push({kind:'chest', x:e.x, y:e.y, life:25, t:0}); say('황금 고블린 처치!', '#ffd75e', 40, 1.8); SND.lvl(); rings.push({x:e.x,y:e.y,r:0,max:160,life:.6,L:.6,color:'#ffd75e'}); }
   if (e.type==='split') for (let i=0;i<3;i++){ const m = makeFoe('mini', e.x+rand(-8,8), e.y+rand(-8,8)); m.kx=rand(-200,200); m.ky=rand(-200,200); }
   if (e.type==='boss'){
-    boss=null; stop=.25; flash=.8; addShake(22); SND.boom(true); rerolls++; if (mode==='stage') clearT=1.8;
+    boss=null; stop=.25; flash=.8; addShake(22); SND.boom(true); rerolls++; if (mode==='stage') clearT=1.8; if (mode==='dungeon' && DG && DG.cur){ DG.cur.cleared=true; const c=roomC(DG.cur); dgHatch={x:c.x,y:c.y+RH/2-80}; for (const g of gems) g.vacuum=true; }
     say('보스 격파!', COL.tracer, 46, 2);
     dropGems(e.x,e.y,35); dropCoins(e.x,e.y,15,3); items.push({kind:'heart',x:e.x-20,y:e.y,life:20,t:0}); items.push({kind:'heart',x:e.x+20,y:e.y,life:20,t:0});
     dropCrate(e.x, e.y+30, pickOne(Object.keys(CRATE)));
@@ -1326,16 +1531,16 @@ function die(){
   state='dying'; burst(P.x,P.y,COL.ally,40,280,.9,4); burst(P.x,P.y,COL.tracer,24,220,.8); SND.boom(true);
   const final=Math.floor(score), isBest = final>best;
   bankScore(); saveSave();
-  track('gameover-'+(mode==='stage' ? 'stage'+stage : 'wave'+wave));
+  track('gameover-'+(stagey() ? mode+stage : 'wave'+wave));
   if (mode==='stage' && window.DuskToss && window.DuskToss.available) window.DuskToss.submit(final);
   if (isBest){ best=final; SAVE.best[bestKey()] = best; }
-  SAVE.stats.runs++; SAVE.stats.kills += kills; if (mode==='stage') SAVE.stats.bestStage=Math.max(SAVE.stats.bestStage,stage); else SAVE.stats.bestWave=Math.max(SAVE.stats.bestWave,wave);
+  SAVE.stats.runs++; SAVE.stats.kills += kills; if (stagey()) SAVE.stats.bestStage=Math.max(SAVE.stats.bestStage,stage); else SAVE.stats.bestWave=Math.max(SAVE.stats.bestWave,wave);
   SAVE.run = null;
   setTimeout(() => {
     state='over'; document.body.classList.remove('playing');
     $('finalScore').textContent = final.toLocaleString();
     $('finalGold').textContent = '+'+runGold.toLocaleString()+' 골드 · 보유 '+SAVE.gold.toLocaleString();
-    $('finalWave').innerHTML = cell(mode==='stage'?'도달 지역':'도달 웨이브', mode==='stage' ? 'STAGE '+stage : 'WAVE '+wave) + cell('난이도', D.name) + cell('레벨', 'Lv '+level) + cell('처치', kills.toLocaleString()) + cell('대원', CH.name) + cell('최고 기록', best.toLocaleString());
+    $('finalWave').innerHTML = cell(mode==='dungeon'?'도달 층':mode==='stage'?'도달 지역':'도달 웨이브', stagey() ? stageLabel() : 'WAVE '+wave) + cell('난이도', D.name) + cell('레벨', 'Lv '+level) + cell('처치', kills.toLocaleString()) + cell('대원', CH.name) + cell('최고 기록', best.toLocaleString());
     $('newBest').hidden = !isBest;
     const fb = $('finalBuild'); fb.innerHTML='';
     for (const p of PERKS) if (S[p.id]){ const s=document.createElement('span'); s.textContent=p.name+(p.max>1?' '+S[p.id]:''); fb.appendChild(s); }
@@ -1494,8 +1699,8 @@ function continueRun(){
   P.max=r.max; P.hp=Math.max(1,r.hp); P.gun=GUNS[r.gun]?r.gun:P.base; P.ammo=r.ammo<0?Infinity:r.ammo; P.ult=r.ult||0; P.revived=r.revived;
   rerolls=r.rerolls; runT=r.runT||0; bankedScore=r.bankedScore!=null ? r.bankedScore : r.score; threatLv=threat().lv; runGold=r.runGold||0; seen=new Set(r.seen||['grunt','mini']);
   state='play'; for (const k of ['menu','over','pick','clear']) $(k).hidden=true; moveStick=aimStick=null;
-  if (mode==='stage'){ stage=r.stage; beginStage(); } else { wave=r.wave-1; breakT=.8; }
-  say('이어하기', COL.ally, 36, 1.4, mode==='stage' ? 'STAGE '+stage+' 처음부터' : 'WAVE '+r.wave+' 처음부터');
+  if (stagey()){ stage=r.stage; beginStage(); } else { wave=r.wave-1; breakT=.8; }
+  say('이어하기', COL.ally, 36, 1.4, stagey() ? stageLabel()+' 처음부터' : 'WAVE '+r.wave+' 처음부터');
 }
 
 $('pauseBtn').addEventListener('click', () => state==='paused' ? resumeGame() : pauseGame());
@@ -1620,7 +1825,7 @@ function updateContinue(){
   cb.hidden = !r;
   if (r){
     const c = CHARS[r.char]||CHARS.soldier;
-    $('contTitle').textContent = r.mode==='stage' ? 'STAGE '+r.stage+' · '+THEMES[(r.stage-1)%THEMES.length].name : '무한 · WAVE '+r.wave;
+    $('contTitle').textContent = (r.mode==='stage'||r.mode==='dungeon') ? stageLabel(r.mode,r.stage)+' · '+THEMES[(r.stage-1)%THEMES.length].name : '무한 · WAVE '+r.wave;
     $('contSub').textContent = c.name+' · Lv '+r.level+' · 점수 '+r.score.toLocaleString()+' · '+(DIFFS[r.diff]||DIFFS.normal).name;
   }
   $('startBtn').textContent = r ? (newArm ? '저장 지우고 새로 출격' : '새로 출격') : '출격';
@@ -1853,7 +2058,7 @@ function tossReady(){ $('menuRankBtn').hidden = !(window.DuskToss && window.Dusk
 addEventListener('dusktoss', tossReady);
 
 let newArm = false;
-function start(){ SAVE.run = null; saveSave(); newArm=false; initAudio(); track('start-'+mode+'-'+SAVE.char); document.body.classList.add('playing'); reset(); state='play'; $('menu').hidden=true; $('over').hidden=true; $('pick').hidden=true; $('clear').hidden=true; moveStick=aimStick=null; if (mode==='stage') beginStage(); }
+function start(){ SAVE.run = null; saveSave(); newArm=false; initAudio(); track('start-'+mode+'-'+SAVE.char); document.body.classList.add('playing'); reset(); state='play'; $('menu').hidden=true; $('over').hidden=true; $('pick').hidden=true; $('clear').hidden=true; moveStick=aimStick=null; if (stagey()) beginStage(); }
 $('nextBtn').addEventListener('click', nextStage);
 function startPressed(){ if (SAVE.run && !newArm){ newArm=true; updateContinue(); return; } start(); }
 $('startBtn').addEventListener('click', startPressed);
@@ -1892,7 +2097,7 @@ function update(dt){
     } else if (mouse.active){ P.ang=Math.atan2(mouse.y+VY-P.y, mouse.x+VX-P.x); firing=mouse.down; }
     fireT -= dt;
     if (firing && fireT<=0){ fire(); fireT = GUNS[P.gun].rate/(1+S.rate*.14); }
-    perkTick(dt); if (state==='play') eventTick(dt);
+    perkTick(dt); if (state==='play' && mode!=='dungeon') eventTick(dt);
     runT += dt;
     goldSaveT += dt; if (goldSaveT > 5){ goldSaveT = 0; bankScore(); flushGold(); }
     { const tl = threat().lv; if (tl > threatLv){ threatLv = tl; if (tl>=1){ say('위협 '+tl+'단계', COL.foe, 34, 1.6, '적이 더 강하고, 많고, 빨리 공격해요'); SND.boss(); } } }
@@ -1907,7 +2112,8 @@ function update(dt){
     P.inv=Math.max(0,P.inv-dt); P.recoil=Math.max(0,P.recoil-dt*30);
     comboT-=dt; if (comboT<=0) combo=0;
 
-    if (mode==='stage'){
+    if (mode==='dungeon'){ if (dgTick(dt)) return; }
+    else if (mode==='stage'){
       if (clearT>0){ clearT-=dt; if (clearT<=0){ stageClear(); return; } }
       else {
         stageT+=dt;
@@ -1935,7 +2141,7 @@ function update(dt){
   const orbN = S.orbit + (S.evoOrbit?3:0), orbR = S.evoOrbit?64:48;
   for (const e of foes){
     if (e.dead) continue;
-    if (e.type!=='boss' && Math.hypot(e.x-P.x,e.y-P.y) > Math.max(W,H)*1.25){ const q=edgePoint(); e.x=q[0]; e.y=q[1]; e.fuse=-1; e.warp=0; }
+    if (mode!=='dungeon' && e.type!=='boss' && Math.hypot(e.x-P.x,e.y-P.y) > Math.max(W,H)*1.25){ const q=edgePoint(); e.x=q[0]; e.y=q[1]; e.fuse=-1; e.warp=0; }
     if (e.slow>0) e.slow-=dt;
     if (e.frozen>0) e.frozen-=dt;
     if (e.poison>0){ e.poison-=dt; e.ptick=(e.ptick||0)-dt;
@@ -2052,8 +2258,9 @@ function update(dt){
     }
     s.x+=s.vx*dt; s.y+=s.vy*dt; s.life-=dt;
     if (s.kind==='rocket'){ s.vx*=1.03; s.vy*=1.03; if (Math.random()<.6) parts.push({x:s.x,y:s.y,vx:rand(-20,20),vy:rand(-20,20),life:.3,max:.3,color:'#8a7d80',r:3}); }
-    if (!onScreen(s.x,s.y)){
-      if (s.bounce>0){ s.bounce--; if (s.x<VX||s.x>VX+W) s.vx*=-1; else s.vy*=-1; s.x=clamp(s.x,VX,VX+W); s.y=clamp(s.y,VY,VY+H); s.hit.clear(); s.life=Math.max(s.life,.4); }
+    const SB = bounds();
+    if (s.x<SB.x0||s.x>SB.x1||s.y<SB.y0||s.y>SB.y1){
+      if (s.bounce>0){ s.bounce--; if (s.x<SB.x0||s.x>SB.x1) s.vx*=-1; else s.vy*=-1; s.x=clamp(s.x,SB.x0,SB.x1); s.y=clamp(s.y,SB.y0,SB.y1); s.hit.clear(); s.life=Math.max(s.life,.4); }
       else s.life=0;
     }
     for (const b of barrels){
@@ -2482,6 +2689,7 @@ function render(){
   ctx.save();
   if (shake>0) ctx.translate(rand(-shake,shake)*.5, rand(-shake,shake)*.5);
   ctx.translate(-VX,-VY);
+  if (inRoom()) drawRoom();
 
   for (const L of lobs){
     ctx.fillStyle=`rgba(255,61,110,${.06+.18*L.k})`; ctx.beginPath(); ctx.arc(L.tx,L.ty,55,0,6.283); ctx.fill();
@@ -2643,8 +2851,10 @@ function render(){
     ctx.fillStyle='#4a1a26'; ctx.fillRect(20,14,bw,8);
     ctx.fillStyle=TH.bossCol; ctx.fillRect(20,14,bw*Math.max(0,boss.hp/boss.max),8);
     ctx.fillStyle='rgba(255,255,255,.25)'; ctx.fillRect(20,14,bw*Math.max(0,boss.hp/boss.max),2);
-    ctx.textAlign='left'; txt(TH.boss+' · '+(mode==='stage'?'STAGE '+stage:'WAVE '+wave), 20, 43, 14, COL.ink);
+    ctx.textAlign='left'; txt(TH.boss+' · '+(stagey()?stageLabel():'WAVE '+wave), 20, 43, 14, COL.ink);
   }
+  if (state==='play' || state==='pick' || state==='paused') drawMinimap();
+  if (dgFade>0){ ctx.fillStyle='rgba(5,3,8,'+(dgFade/.35)+')'; ctx.fillRect(0,0,W,H); }
   if (intro && state==='play'){
     const a = Math.min(1, intro.life*2, (3.5-intro.life)*4), y = boss ? 52 : 12, col = COL[intro.type]||COL.ink;
     ctx.globalAlpha=a; ctx.fillStyle='rgba(20,15,24,.88)'; roundRect(12,y,W-24,48,10); ctx.fill();
@@ -2680,7 +2890,8 @@ function render(){
 let hudKey='';
 function hud(){
   let wt;
-  if (mode==='stage'){ const left=Math.max(0,Math.ceil(STAGE_LEN-stageT)); wt='STAGE '+stage+' · '+(bossSpawned||left===0 ? '보스전' : '보스까지 '+Math.floor(left/60)+':'+String(left%60).padStart(2,'0')); }
+  if (mode==='dungeon'){ const L=DG?DG.list.filter(r=>r.kind==='fight'||r.kind==='elite'):[]; wt=stageLabel()+' · 방 '+L.filter(r=>r.cleared).length+'/'+L.length; }
+  else if (mode==='stage'){ const left=Math.max(0,Math.ceil(STAGE_LEN-stageT)); wt='STAGE '+stage+' · '+(bossSpawned||left===0 ? '보스전' : '보스까지 '+Math.floor(left/60)+':'+String(left%60).padStart(2,'0')); }
   else wt='무한 WAVE '+Math.max(1,wave)+' · 최고 '+best.toLocaleString();
   if (threatLv>0) wt += ' · 위협 '+threatLv;
   const key=[SAVE.gold,Math.floor(score),wt,P.hp,P.max,P.gun,P.ammo,level,xp,need].join('|');
@@ -2724,7 +2935,7 @@ function loop(now){
   let dt=Math.min(.033,(now-last)/1000); last=now;
   if (stop>0){ stop-=dt; dt=0; }
   if (state==='menu'||state==='over'){ cam.x+=dt*22; cam.y+=dt*9; }
-  if (state==='play'||state==='dying'){ const k=Math.min(1,dt*9); cam.x+=(P.x-cam.x)*k; cam.y+=(P.y-cam.y)*k; } view();
+  if (state==='play'||state==='dying'){ const k=Math.min(1,dt*9); if (inRoom()){ const c=roomC(DG.cur); cam.x+=(c.x-cam.x)*k; cam.y+=(c.y-cam.y)*k; } else { cam.x+=(P.x-cam.x)*k; cam.y+=(P.y-cam.y)*k; } } view();
   if (state==='play'||state==='dying') update(dt);
   render(); hud(); knobs();
   requestAnimationFrame(loop);
